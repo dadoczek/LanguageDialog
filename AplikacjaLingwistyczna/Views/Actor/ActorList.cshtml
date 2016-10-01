@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Model.Models.Actor>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DialogueId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DialogueId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "Actor", new { idActor = item.ActorId },null) |
+            @Html.ActionLink("Delete","Delete", "Actor", new { idActor=item.ActorId, idDialogue = item.DialogueId },null)
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,54 @@
+﻿@using Contract.Dtos
+@model EditDialogueDto
+
+
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#General">General</a></li>
+    <li><a data-toggle="tab" href="#Actors">Actors</a></li>
+    <li><a data-toggle="tab" href="#Issue">Issues</a></li>
+</ul>
+
+<div class="tab-content">
+    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.GeneralWindow)
+    {
+        <div id="General" class="tab-pane fade in active">
+            @Html.Partial("EditGeneral", Model)
+        </div>
+    }
+    else
+    {
+        <div id="General" class="tab-pane fade">
+            @Html.Partial("EditGeneral", Model)
+        </div>
+    }
+
+    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.ActorWindow)
+    {
+        <div id="Actors" class="tab-pane fade in active">
+            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
+        </div>
+    }
+    else
+    {
+        <div id="Actors" class="tab-pane fade">
+            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
+        </div>
+    }
+
+    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.IssueWindow)
+    {
+        <div id="Issue" class="tab-pane fade in active">
+            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
+        </div>
+    }
+    else
+    {
+        <div id="Issue" class="tab-pane fade">
+            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "GetPage")
+</div>

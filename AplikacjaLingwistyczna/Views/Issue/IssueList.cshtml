@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Model.Models.Issue>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(i => i.IssueNr)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actor.Name)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })  |
+            @Html.ActionLink(" ", "ChangePosition","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = 1 }, new { @class = "glyphicon glyphicon-chevron-down" }) 
+            @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
+            @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
+            <form action="" method="post" enctype="multipart/form-data">
+
+                <input type="file" name="file" id="file" />
+
+                <input type="submit" />
+            </form>
+        </td>
+    </tr>
+}
+
+</table>

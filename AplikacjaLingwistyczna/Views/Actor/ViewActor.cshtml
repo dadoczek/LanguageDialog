@@ -1,0 +1,10 @@
+﻿@using Model.Models
+@using Contract.Dtos
+@model EditDialogueDto
+
+<div>
+    @Html.Partial("~/Views/Actor/CreateActor.cshtml", new Actor {DialogueId = Model.Dialogue.DialogueId })
+</div>
+<div>
+    @Html.Partial("~/Views/Actor/ActorList.cshtml", Model.Dialogue.Actors)
+</div>

@@ -1,0 +1,86 @@
+﻿@using Contract.Dtos
+@model DialoguePageDto
+
+@{
+    ViewBag.Title = "PageDialogue";
+}
+
+<h2>PageDialogue</h2>
+
+    @Html.ActionLink("Create New", "Create")
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Elements.Select(d => d.Name) )*@
+            Nazwa Dialogu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Dialogues) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.DialogueId }) |
+            @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+        </td>
+    </tr>
+}
+
+</table>
+
+@*<p id="my-button" style="cursor:pointer;">Open Dialog</p>
+
+<div id="dialog" title="Create Album" style="overflow: hidden;">
+
+
+    <script>
+        $('#dialog_link').click(function () {
+            $('#Dialog').dialog();
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                title: 'hi there',
+                modal: true,
+                open: function (event, ui) {
+                    $(this).load("@Url.Action("Create")");
+                },
+                buttons: {
+                    "Close": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $('#my-button').click(function () {
+                $('#dialog').dialog('open');
+            });
+        });
+    </script>
+</div>*@
+
+
+    @*<script type="text/javascript">
+            $(function () {
+                $('.modal').click(function () {
+                    $('<div/>').appenParam('body').dialog({
+                        close: function (event, ui) {
+                            dialog.remove();
+                        },
+                        modal: true
+                    }).load(this.href, {});
+
+                    return false;
+                });
+            });
+        </script>*@

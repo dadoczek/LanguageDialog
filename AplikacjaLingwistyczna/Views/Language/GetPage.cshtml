@@ -1,0 +1,35 @@
+﻿@using Contract.Dtos
+@using Model.Models
+@model LanguagePageDto
+
+@{
+    ViewBag.Title = "GetPage";
+}
+
+<h2>GetPage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nazwa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Language) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id=item.LanguageId }, new { @class = "glyphicon glyphicon-edit" }) |
+            @Html.ActionLink(" ", "Create", new { IdParent = item.LanguageId }, new { @class = "glyphicon glyphicon-plus" }) |
+            @Html.ActionLink(" ", "Remove", new { IdLanguage = item.LanguageId }, new { @class = "glyphicon glyphicon-trash" })
+        </td>
+    </tr>
+}
+
+</table>
