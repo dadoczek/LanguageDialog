@@ -57,12 +57,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRepoApplication\IDialogueApplication.cs" />
-    <Compile Include="AbstractRepoApplication\ILanguageApplication.cs" />
-    <Compile Include="Factory\Factory.cs" />
-    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="AbstractApp\IDialogueApplication.cs" />
+    <Compile Include="AbstractApp\ILanguageApplication.cs" />
+    <Compile Include="Factories\Factory.cs" />
+    <Compile Include="Factories\IFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepoApplictaion\DialogueApplication.cs" />
+    <Compile Include="Applictaion\BaseApplication.cs" />
+    <Compile Include="Applictaion\DialogueApplication.cs" />
+    <Compile Include="Applictaion\LanguageApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -24,3 +24,16 @@ C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Contr
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.dll
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.pdb
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Contract.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Contract.pdb
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Model.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Model.pdb
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFramework.xml
+D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
+D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.dll
+D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.pdb

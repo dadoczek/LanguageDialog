@@ -1,7 +1,7 @@
 ﻿using Contract.Dtos;
 using Contract.Params;
-using Core.AbstractRepoApplication;
-using Core.Factory;
+using Core.AbstractApp;
+using Core.Factories;
 using System.Web.Mvc;
 
 namespace AplikacjaLingwistyczna.Controllers

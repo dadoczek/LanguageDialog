@@ -38,3 +38,23 @@ C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Core\
 C:\Users\Adrian\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Core\bin\Debug\Core.dll.config
 C:\Users\Adrian\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Adrian\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projekty\AplikacjaLingwistyczna\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projekty\AplikacjaLingwistyczna\Core\obj\Debug\Core.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\obj\Debug\Core.pdb
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Core.dll.config
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Core.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Core.pdb
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Contract.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Model.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Repository.dll
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Contract.pdb
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Model.pdb
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Repository.pdb
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.xml
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projekty\AplikacjaLingwistyczna\Core\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

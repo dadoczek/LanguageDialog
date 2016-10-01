@@ -1,14 +1,14 @@
 ﻿using Contract.Dtos;
 using Contract.Params;
 using Contract.Responses;
-using Core.AbstractRepoApplication;
-using Core.Factory;
+using Core.AbstractApp;
+using Core.Factories;
 using Model.Models;
 using Repository.AbstractRepo;
 
-namespace Core.RepoApplictaion
+namespace Core.Applictaion
 {
-    internal class DialogueApplication : IDialogueApplication
+    internal class DialogueApplication : BaseApplication, IDialogueApplication
     {
         private readonly IDialogueRepository _dialogueRepository;
         private readonly ILanguageRepository _languageRepository;
@@ -21,7 +21,7 @@ namespace Core.RepoApplictaion
 
         public BaseResponse Add(Dialogue dialogue)
         {
-            return BaseResponse.DoSuccess(() =>
+            return DoSuccess(() =>
             {
                 _dialogueRepository.Add(dialogue);
             });
@@ -29,7 +29,7 @@ namespace Core.RepoApplictaion
 
         public BaseResponse Edit(Dialogue dialogue)
         {
-            return BaseResponse.DoSuccess(() =>
+            return DoSuccess(() =>
             {
                 _dialogueRepository.Edit(dialogue);
             });
@@ -37,7 +37,7 @@ namespace Core.RepoApplictaion
 
         public DialogueCollectionResponse GetAll()
         {
-            return BaseResponse.Do(() => new DialogueCollectionResponse
+            return Do(() => new DialogueCollectionResponse
             {
                 Diaogues = _dialogueRepository.GetAll()
             });
@@ -45,7 +45,7 @@ namespace Core.RepoApplictaion
 
         public DialogueResponse GetOne(int id)
         {
-            return BaseResponse.Do(() => new DialogueResponse
+            return Do(() => new DialogueResponse
             {
                 Dialogue = _dialogueRepository.GetOne(id)
             });
@@ -53,7 +53,7 @@ namespace Core.RepoApplictaion
 
         public DialoguePageResponse GetPage(DialoguePageParams @params)
         {
-            return BaseResponse.Do(() => new DialoguePageResponse
+            return Do(() => new DialoguePageResponse
             {
                 Data = _dialogueRepository.GetPage(@params)
             });
@@ -61,7 +61,7 @@ namespace Core.RepoApplictaion
 
         public CreateDialogueResponse GetToCreateData(CreateDialogueDto data)
         {
-            return BaseResponse.Do(() =>
+            return Do(() =>
             {
                 data.Languages = _languageRepository.GetMainAll();
                 return new CreateDialogueResponse
@@ -73,7 +73,7 @@ namespace Core.RepoApplictaion
 
         public CreateDialogueResponse GetToCreateData()
         {
-            return BaseResponse.Do(() => new CreateDialogueResponse
+            return Do(() => new CreateDialogueResponse
             {
                 Data = new CreateDialogueDto
                 {
@@ -84,7 +84,7 @@ namespace Core.RepoApplictaion
 
         public EditDialogueResponse GetToEditData(EditDialogueDto data)
         {
-            return BaseResponse.Do(() =>
+            return Do(() =>
             {
                 data.Languages = _languageRepository.GetMainAll();
                 return new EditDialogueResponse
@@ -96,7 +96,7 @@ namespace Core.RepoApplictaion
 
         public EditDialogueResponse GetToEditData(DialogueEditWievParams @params)
         {
-            return BaseResponse.Do(() => new EditDialogueResponse
+            return Do(() => new EditDialogueResponse
             {
                 Data = new EditDialogueDto
                 {
@@ -109,7 +109,7 @@ namespace Core.RepoApplictaion
 
         public BaseResponse Remove(int id)
         {
-            return BaseResponse.DoSuccess(() =>
+            return DoSuccess(() =>
             {
                 _dialogueRepository.Remove(id);
             });

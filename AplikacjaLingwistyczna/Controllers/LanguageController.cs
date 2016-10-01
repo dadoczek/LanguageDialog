@@ -1,23 +1,23 @@
-﻿using Core.Factory;
+﻿using Core.AbstractApp;
+using Core.Factories;
 using Model.Models;
-using Repository.AbstractRepo;
 using System.Web.Mvc;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
     public class LanguageController : Controller
     {
-        private readonly ILanguageRepository _languageCrud;
+        private readonly ILanguageApplication _languageCrud;
 
         public LanguageController(IFactory factory)
         {
-            _languageCrud = factory.GetLanguageRepository;
+            _languageCrud = factory.GetLanguageApplication;
         }
 
         public ActionResult GetPage(int page = 1)
         {
             var model = _languageCrud.GetPage(page);
-            return View(model);
+            return View(model.LanguagePageDto);
         }
 
         [HttpGet]

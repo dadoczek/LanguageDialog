@@ -3,7 +3,7 @@ using Contract.Params;
 using Contract.Responses;
 using Model.Models;
 
-namespace Core.AbstractRepoApplication
+namespace Core.AbstractApp
 {
     public interface IDialogueApplication
     {

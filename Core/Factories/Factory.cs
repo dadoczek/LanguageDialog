@@ -1,10 +1,10 @@
-﻿using Core.AbstractRepoApplication;
-using Core.RepoApplictaion;
+﻿using Core.AbstractApp;
+using Core.Applictaion;
 using Model.Context;
 using Repository.AbstractRepo;
 using Repository.Repositories;
 
-namespace Core.Factory
+namespace Core.Factories
 {
     public class Factory : IFactory
     {
@@ -19,5 +19,6 @@ namespace Core.Factory
         public ITrackFileInfoRepository GetTrackFileInfoRepository => new EfTrackFileInfoRepository(new EfContext());
 
         public IDialogueApplication GetDialogueApplication => new DialogueApplication(this);
+        public ILanguageApplication GetLanguageApplication => new LanguageApplication(this);
     }
 }

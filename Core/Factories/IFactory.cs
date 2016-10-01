@@ -1,7 +1,7 @@
-﻿using Core.AbstractRepoApplication;
+﻿using Core.AbstractApp;
 using Repository.AbstractRepo;
 
-namespace Core.Factory
+namespace Core.Factories
 {
     public interface IFactory
     {
@@ -11,5 +11,6 @@ namespace Core.Factory
         IIssueRepository GetIssueRepository { get; }
         ITrackFileInfoRepository GetTrackFileInfoRepository { get; }
         IDialogueApplication GetDialogueApplication { get; }
+        ILanguageApplication GetLanguageApplication { get; }
     }
 }

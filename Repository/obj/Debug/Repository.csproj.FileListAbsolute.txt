@@ -34,3 +34,21 @@ C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Repos
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.dll
 C:\Users\adadok\OneDrive\Praca inżynierska\Program\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.pdb
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Repository.dll.config
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Repository.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Repository.pdb
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Contract.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Model.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Contract.pdb
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Model.pdb
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\EntityFramework.xml
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projekty\AplikacjaLingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projekty\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+D:\Projekty\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.dll
+D:\Projekty\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.pdb

@@ -1,4 +1,4 @@
-﻿using Core.Factory;
+﻿using Core.Factories;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
