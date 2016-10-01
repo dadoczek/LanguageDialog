@@ -42,11 +42,29 @@ namespace AplikacjaLingwistyczna.Controllers
             return View(language);
         }
 
-        public ActionResult Remove(int idLanguage)
+        public ActionResult Remove(int id)
         {
-            _languageCrud.Remove(idLanguage);
+            _languageCrud.Remove(id);
             return RedirectToAction("GetPage");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var model =  _languageCrud.GetOne(id);
+            return View(model.Language);
+        }
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "ParentId, Name, LanguageId")] Language language)
+        {
+            if (ModelState.IsValid)
+            {
+                _languageCrud.Edit(language);
+                return RedirectToAction("GetPage");
+            }
+
+            return View(language);
+        }
     }
 }
