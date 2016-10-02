@@ -1,4 +1,5 @@
-﻿using Core.AbstractApp;
+﻿using System;
+using Core.AbstractApp;
 using Core.Applictaion;
 using Model.Context;
 using Repository.AbstractRepo;
@@ -19,6 +20,9 @@ namespace Core.Factories
         public ITrackFileInfoRepository GetTrackFileInfoRepository => new EfTrackFileInfoRepository(new EfContext());
 
         public IDialogueApplication GetDialogueApplication => new DialogueApplication(this);
+
         public ILanguageApplication GetLanguageApplication => new LanguageApplication(this);
+
+        public IActorApplication GetActorApplication => new ActorApplication(this);
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="Params\DialogueEditWievParams.cs" />
     <Compile Include="Params\DialoguePageParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\ActorResponse.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\CreateDialogueResponse.cs" />
     <Compile Include="Responses\DialoguePageResponse.cs" />

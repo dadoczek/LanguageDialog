@@ -12,5 +12,6 @@ namespace Core.Factories
         ITrackFileInfoRepository GetTrackFileInfoRepository { get; }
         IDialogueApplication GetDialogueApplication { get; }
         ILanguageApplication GetLanguageApplication { get; }
+        IActorApplication GetActorApplication { get; }
     }
 }

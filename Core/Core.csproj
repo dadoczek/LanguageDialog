@@ -57,8 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractApp\IActorApplication.cs" />
     <Compile Include="AbstractApp\IDialogueApplication.cs" />
     <Compile Include="AbstractApp\ILanguageApplication.cs" />
+    <Compile Include="Applictaion\ActorApplication.cs" />
     <Compile Include="Factories\Factory.cs" />
     <Compile Include="Factories\IFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
