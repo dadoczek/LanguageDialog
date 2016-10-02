@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Contract.Params;
+using Model.Models;
 
 namespace Repository.AbstractRepo
 {
@@ -6,8 +7,8 @@ namespace Repository.AbstractRepo
     {
         void Add(Issue newIssue);
         void Edit(Issue editIssue);
-        void Remove(int dialogueId, int positionId);
-        void ChangePosition(int dialogueId, int positionId, int direction);
-        Issue GetOne(int positionId, int idDialogue);
+        void Remove(IssueParams @params);
+        void ChangePosition(IssueParams @params);
+        Issue GetOne(IssueParams @params);
     }
 }

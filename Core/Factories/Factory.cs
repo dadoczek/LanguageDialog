@@ -24,5 +24,7 @@ namespace Core.Factories
         public ILanguageApplication GetLanguageApplication => new LanguageApplication(this);
 
         public IActorApplication GetActorApplication => new ActorApplication(this);
+
+        IIssueApplication IFactory.GetIssueApplication => new IssueApplication(this);
     }
 }

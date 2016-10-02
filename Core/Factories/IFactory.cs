@@ -13,5 +13,6 @@ namespace Core.Factories
         IDialogueApplication GetDialogueApplication { get; }
         ILanguageApplication GetLanguageApplication { get; }
         IActorApplication GetActorApplication { get; }
+        IIssueApplication GetIssueApplication { get; }
     }
 }

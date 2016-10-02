@@ -46,6 +46,7 @@
     <Compile Include="Dtos\EditDialogueDto.cs" />
     <Compile Include="Dtos\LanguagePageDto.cs" />
     <Compile Include="Dtos\PagingDto.cs" />
+    <Compile Include="Params\IssueParams.cs" />
     <Compile Include="Params\DialogueEditWievParams.cs" />
     <Compile Include="Params\DialoguePageParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Responses\DiaogueCollectionResponse.cs" />
     <Compile Include="Responses\DiaogueResponse.cs" />
     <Compile Include="Responses\EditDialogueResponse.cs" />
+    <Compile Include="Responses\IssueResponse.cs" />
     <Compile Include="Responses\LanguagePagResponse.cs" />
     <Compile Include="Responses\LanguageResponse.cs" />
     <Compile Include="Responses\LanguagesResponse.cs" />

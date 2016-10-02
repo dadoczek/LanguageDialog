@@ -1,4 +1,5 @@
-﻿using Model.Context;
+﻿using Contract.Params;
+using Model.Context;
 using Model.Models;
 using Repository.AbstractRepo;
 using System.Data.Entity;
@@ -24,47 +25,47 @@ namespace Repository.Repositories
             _context.SaveChanges();
         }
 
-        public Issue GetOne(int positionId, int idDialogue)
+        public Issue GetOne(IssueParams @params)
         {
-            return _context.Issue.FirstOrDefault(issue => issue.DialogueId == idDialogue && issue.IssueNr == positionId);
+            return _context.Issue.FirstOrDefault(issue => issue.DialogueId == @params.DialogueId && issue.IssueNr == @params.PositionId);
         }
 
-        public void ChangePosition(int dialogueId, int positionId, int direction)
+        public void ChangePosition(IssueParams @params)
         {
-            SetElements(dialogueId);
+            SetElements(@params.DialogueId);
 
             var coutElements = _elements.Count();
 
-            if (positionId > 0 && positionId <= coutElements)
+            if (@params.PositionId > 0 && @params.PositionId <= coutElements)
             {
-                UpPosition(positionId, direction);
-                DownPosition(positionId, direction);
+                UpPosition(@params);
+                DownPosition(@params);
             }
             _context.SaveChanges();
         }
 
-        private void UpPosition(int position, int direction)
+        private void UpPosition(IssueParams @params)
         {
-            if (direction != -1) return;
+            if (@params.Direction != -1) return;
 
-            var element1 = GetOneQuery(position);
+            var element1 = GetOneQuery(@params.PositionId);
             element1.IssueNr--;
 
-            var element2 = GetOneQuery(position - 1);
+            var element2 = GetOneQuery(@params.PositionId - 1);
             element2.IssueNr++;
 
             Edit(element1);
             Edit(element2);
         }
 
-        private void DownPosition(int position, int direction)
+        private void DownPosition(IssueParams @params)
         {
-            if (direction != 1) return;
+            if (@params.Direction != 1) return;
 
-            var element1 = GetOneQuery(position);
+            var element1 = GetOneQuery(@params.PositionId);
             element1.IssueNr++;
 
-            var element2 = GetOneQuery(position + 1);
+            var element2 = GetOneQuery(@params.PositionId + 1);
             element2.IssueNr--;
 
             Edit(element1);
@@ -78,14 +79,14 @@ namespace Repository.Repositories
         }
 
 
-        public void Remove(int dialogueId, int positionId)
+        public void Remove(IssueParams @params)
         {
-            SetElements(dialogueId);
+            SetElements(@params.DialogueId);
 
-            var removeIssue = GetOneQuery(positionId);
+            var removeIssue = GetOneQuery(@params.PositionId);
             _context.Issue.Remove(removeIssue);
 
-            RebuildPosition(positionId);
+            RebuildPosition(@params.PositionId);
 
             _context.SaveChanges();
         }

@@ -1,4 +1,6 @@
 ﻿using Contract.Dtos;
+using Contract.Params;
+using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using Repository.AbstractRepo;
@@ -9,11 +11,11 @@ namespace AplikacjaLingwistyczna.Controllers
 {
     public class IssueController : Controller
     {
-        private readonly IIssueRepository _issueCrud;
+        private readonly IIssueApplication _issueApp;
 
         public IssueController(IFactory factory)
         {
-            _issueCrud = factory.GetIssueRepository;
+            _issueApp = factory.GetIssueApplication;
         }
 
 
@@ -22,7 +24,7 @@ namespace AplikacjaLingwistyczna.Controllers
         {
             if (ModelState.IsValid)
             {
-                _issueCrud.Add(model);
+                _issueApp.Add(model);
             }
             return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
 
@@ -30,20 +32,33 @@ namespace AplikacjaLingwistyczna.Controllers
 
         public ActionResult Delete(int positionId, int idDialogue)
         {
-            _issueCrud.Remove(idDialogue, positionId);
+            _issueApp.Remove(new IssueParams
+            {
+                DialogueId = idDialogue,
+                PositionId = positionId }
+            );
             return RedirectToAction("Edit", "Dialogue", new { idDialogue = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
         }
 
         public ActionResult ChangePosition(int positionId, int idDialogue, int direction)
         {
-            _issueCrud.ChangePosition(idDialogue, positionId, direction);
+            _issueApp.ChangePosition(new IssueParams
+            {
+                DialogueId = idDialogue,
+                PositionId = positionId,
+                Direction = direction
+            });
             return RedirectToAction("Edit", "Dialogue", new { idDialogue = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
         }
 
         [HttpGet]
         public ActionResult Edit(int positionId, int idDialogue)
         {
-            var issue = _issueCrud.GetOne(positionId, idDialogue);
+            var issue = _issueApp.GetOne(new IssueParams
+            {
+                DialogueId = idDialogue,
+                PositionId = positionId
+            });
             if (issue == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             return View(issue);
@@ -53,7 +68,7 @@ namespace AplikacjaLingwistyczna.Controllers
         {
             if (ModelState.IsValid)
             {
-                _issueCrud.Edit(model);
+                _issueApp.Edit(model);
                 return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
             }
             else
