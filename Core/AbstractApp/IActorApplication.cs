@@ -8,6 +8,6 @@ namespace Core.AbstractApp
         BaseResponse Add(Actor actor);
         BaseResponse Remove(int id);
         BaseResponse Edit(Actor actor);
-        ActorResponse GetOne(int id);
+        DataResponse<Actor> GetOne(int id);
     }
 }

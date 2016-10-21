@@ -48,14 +48,14 @@ namespace Repository.Repositories
             };
         }
 
-        public Language GetOne(int languageId)
+        public Language GetOne(int id)
         {
-            return _context.Language.Find(languageId);
+            return _context.Language.Find(id);
         }
 
-        public void Remove(int languageId)
+        public void Remove(int id)
         {
-            var language = _context.Language.First(lang => lang.LanguageId == languageId);
+            var language = _context.Language.First(lang => lang.LanguageId == id);
             _context.Language.Remove(language);
             _context.SaveChanges();
         }

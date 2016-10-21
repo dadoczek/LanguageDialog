@@ -15,26 +15,26 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public void Add(Actor newActor)
+        public void Add(Actor actor)
         {
-            _context.Actor.Add(newActor);
+            _context.Actor.Add(actor);
             _context.SaveChanges();
         }
 
-        public void Edit(Actor editActor)
+        public void Edit(Actor actor)
         {
-            _context.Entry(editActor).State = EntityState.Modified;
+            _context.Entry(actor).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public Actor GetOne(int idActor)
+        public Actor GetOne(int id)
         {
-            return _context.Actor.FirstOrDefault(a => a.ActorId == idActor);
+            return _context.Actor.FirstOrDefault(a => a.ActorId == id);
         }
 
-        public void Remove(int removeId)
+        public void Remove(int id)
         {
-            var removeActor = _context.Actor.Find(removeId);
+            var removeActor = _context.Actor.Find(id);
             _context.Actor.Remove(removeActor);
             _context.SaveChanges();
         }

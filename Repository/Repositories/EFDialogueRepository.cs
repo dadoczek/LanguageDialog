@@ -20,16 +20,16 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public void Add(Dialogue addDialogue)
+        public void Add(Dialogue dialogue)
         {
-            addDialogue.Status = DialogueStatus.Edit;
-            _context.Dialogue.Add(addDialogue);
+            dialogue.Status = DialogueStatus.Edit;
+            _context.Dialogue.Add(dialogue);
             _context.SaveChanges();
         }
 
-        public void Edit(Dialogue editDialogue)
+        public void Edit(Dialogue dialogue)
         {
-            _context.Entry(editDialogue).State = EntityState.Modified;
+            _context.Entry(dialogue).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
@@ -38,9 +38,9 @@ namespace Repository.Repositories
             return _context.Dialogue.AsNoTracking();
         }
 
-        public Dialogue GetOne(int dialogueId)
+        public Dialogue GetOne(int id)
         {
-            return _context.Dialogue.FirstOrDefault(d => d.DialogueId == dialogueId);
+            return _context.Dialogue.FirstOrDefault(d => d.DialogueId == id);
         }
 
         public DialoguePageDto GetPage(DialoguePageParams @params)
@@ -76,9 +76,9 @@ namespace Repository.Repositories
             };
         }
 
-        public void Remove(int removeId)
+        public void Remove(int id)
         {
-            var removeDialogue = _context.Dialogue.First(d => d.DialogueId == removeId);
+            var removeDialogue = _context.Dialogue.First(d => d.DialogueId == id);
             _context.Dialogue.Remove(removeDialogue);
             _context.SaveChanges();
         }

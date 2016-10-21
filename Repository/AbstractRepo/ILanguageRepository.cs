@@ -12,9 +12,9 @@ namespace Repository.AbstractRepo
 
         LanguagePageDto GetPage(int page);
 
-        Language GetOne(int languageId);
+        Language GetOne(int id);
 
-        void Remove(int languageId);
+        void Remove(int id);
 
         void Add(Language language);
 

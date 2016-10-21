@@ -1,4 +1,5 @@
 ﻿using Contract.Dtos;
+using Contract.Enum;
 using Contract.Params;
 using Core.AbstractApp;
 using Core.Factories;
@@ -18,7 +19,7 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult GetAll()
         {
             var model = _dialogueApp.GetAll();
-            return View(model.Diaogues);
+            return View(model.Data);
         }
 
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
@@ -40,7 +41,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Dialogue")] CreateDialogueDto model)
+        public ActionResult Create([Bind(Include = "Dialogue")] DialogueViewDto model)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +50,7 @@ namespace AplikacjaLingwistyczna.Controllers
             }
             else
             {
-                var result = _dialogueApp.GetToCreateData(model);
+                var result = _dialogueApp.SetLanguages(model);
                 return View(result.Data);
             }
         }
@@ -68,22 +69,22 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Dialogue")]EditDialogueDto editModel)
+        public ActionResult Edit([Bind(Include = "Dialogue")]DialogueViewDto editModel)
         {
             if (ModelState.IsValid)
             {
-                editModel = _dialogueApp.GetToEditData(editModel).Data;
+                editModel = _dialogueApp.SetLanguages(editModel).Data;
                 return View(editModel);
             }
             else
             {
-                editModel = _dialogueApp.GetToEditData(editModel).Data;
+                editModel = _dialogueApp.SetLanguages(editModel).Data;
                 return View("Edit", editModel);
             }
         }
 
         [HttpPost]
-        public ActionResult EditGeneral([Bind(Include = "Dialogue")]EditDialogueDto editModel)
+        public ActionResult EditGeneral([Bind(Include = "Dialogue")]DialogueViewDto editModel)
         {
             if (ModelState.IsValid)
             {

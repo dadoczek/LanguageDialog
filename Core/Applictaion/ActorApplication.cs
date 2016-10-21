@@ -32,11 +32,11 @@ namespace Core.Applictaion
             });
         }
 
-        public ActorResponse GetOne(int id)
+        public DataResponse<Actor> GetOne(int id)
         {
-            return Do(() => new ActorResponse
+            return Do(() => new DataResponse<Actor>
             {
-                Actor = _ActorRepository.GetOne(id)
+                Data = _ActorRepository.GetOne(id)
             });
         }
 

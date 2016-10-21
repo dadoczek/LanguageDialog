@@ -41,11 +41,11 @@ namespace Core.Applictaion
             });
         }
 
-        public IssueResponse GetOne(IssueParams @params)
+        public DataResponse<Issue> GetOne(IssueParams @params)
         {
-            return Do(() => new IssueResponse
+            return Do(() => new DataResponse<Issue>
             {
-                Issue = _IssueRepository.GetOne(@params)
+                Data = _IssueRepository.GetOne(@params)
             });
         }
 

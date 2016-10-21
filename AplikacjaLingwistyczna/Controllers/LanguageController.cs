@@ -17,7 +17,7 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult GetPage(int page = 1)
         {
             var model = _languageCrud.GetPage(page);
-            return View(model.LanguagePageDto);
+            return View(model.Data);
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult Edit(int id)
         {
             var model =  _languageCrud.GetOne(id);
-            return View(model.Language);
+            return View(model.Data);
         }
 
         [HttpPost]

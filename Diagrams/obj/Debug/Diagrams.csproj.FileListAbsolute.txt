@@ -1,0 +1,5 @@
+D:\Projekty\AplikacjaLingwistyczna\Diagrams\bin\Debug\Diagrams.dll
+D:\Projekty\AplikacjaLingwistyczna\Diagrams\bin\Debug\Diagrams.pdb
+D:\Projekty\AplikacjaLingwistyczna\Diagrams\obj\Debug\Diagrams.csprojResolveAssemblyReference.cache
+D:\Projekty\AplikacjaLingwistyczna\Diagrams\obj\Debug\Diagrams.dll
+D:\Projekty\AplikacjaLingwistyczna\Diagrams\obj\Debug\Diagrams.pdb

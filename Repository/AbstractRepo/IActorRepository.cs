@@ -4,9 +4,9 @@ namespace Repository.AbstractRepo
 {
     public interface IActorRepository
     {
-        void Add(Actor newActor);
-        void Remove(int removeId);
-        void Edit(Actor editActor);
-        Actor GetOne(int idActor);
+        void Add(Actor actor);
+        void Remove(int id);
+        void Edit(Actor actor);
+        Actor GetOne(int id);
     }
 }

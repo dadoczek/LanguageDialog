@@ -1,17 +1,18 @@
-﻿using Contract.Responses;
+﻿using Contract.Dtos;
+using Contract.Responses;
 using Model.Models;
 
 namespace Core.AbstractApp
 {
     public interface ILanguageApplication
     {
-        LanguagesResponse GetAll();
+        QueryableDataResponse<Language> GetAll();
 
-        LanguagesResponse GetMainAll();
+        QueryableDataResponse<Language> GetMainAll();
 
-        LanguagePageResponse GetPage(int page);
+        DataResponse<LanguagePageDto> GetPage(int page);
 
-        LanguageResponse GetOne(int languageId);
+        DataResponse<Language> GetOne(int languageId);
 
         BaseResponse Remove(int languageId);
 

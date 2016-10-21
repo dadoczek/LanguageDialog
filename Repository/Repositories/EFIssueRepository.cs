@@ -17,11 +17,11 @@ namespace Repository.Repositories
             _context = context;
         }
 
-        public void Add(Issue newIssue)
+        public void Add(Issue issue)
         {
-            var position = _context.Issue.Count(issue => issue.DialogueId == newIssue.DialogueId) + 1;
-            newIssue.IssueNr = position;
-            _context.Issue.Add(newIssue);
+            var position = _context.Issue.Count(i => issue.DialogueId == i.DialogueId) + 1;
+            issue.IssueNr = position;
+            _context.Issue.Add(issue);
             _context.SaveChanges();
         }
 
@@ -72,9 +72,9 @@ namespace Repository.Repositories
             Edit(element2);
         }
 
-        public void Edit(Issue editIssue)
+        public void Edit(Issue issue)
         {
-            _context.Entry(editIssue).State = EntityState.Modified;
+            _context.Entry(issue).State = EntityState.Modified;
             _context.SaveChanges();
         }
 

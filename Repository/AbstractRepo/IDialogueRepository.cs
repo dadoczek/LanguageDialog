@@ -7,15 +7,15 @@ namespace Repository.AbstractRepo
 {
     public interface IDialogueRepository
     {
-        void Add(Dialogue addDialogue);
+        void Add(Dialogue dialogue);
 
-        void Remove(int removeId);
+        void Remove(int id);
 
-        void Edit(Dialogue editDialogue);
+        void Edit(Dialogue dialogue);
 
         IQueryable<Dialogue> GetAll();
 
-        Dialogue GetOne(int dialogueId);
+        Dialogue GetOne(int id);
 
         DialoguePageDto GetPage(DialoguePageParams @params);
     }

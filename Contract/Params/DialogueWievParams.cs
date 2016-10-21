@@ -1,4 +1,4 @@
-﻿using Contract.Dtos;
+﻿using Contract.Enum;
 
 namespace Contract.Params
 {

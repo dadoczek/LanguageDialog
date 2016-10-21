@@ -24,6 +24,7 @@
             @Html.ActionLink(" ", "ChangePosition","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = 1 }, new { @class = "glyphicon glyphicon-chevron-down" }) 
             @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
             @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
+            @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })
             <form action="" method="post" enctype="multipart/form-data">
 
                 <input type="file" name="file" id="file" />

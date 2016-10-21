@@ -1,4 +1,5 @@
-﻿using Contract.Responses;
+﻿using Contract.Dtos;
+using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
@@ -33,35 +34,35 @@ namespace Core.Applictaion
             });
         }
 
-        public LanguagesResponse GetAll()
+        public QueryableDataResponse<Language> GetAll()
         {
-            return Do(() => new LanguagesResponse
+            return Do(() => new QueryableDataResponse<Language>
             {
-                Languages = _languageRepository.GetAll()
+                Data = _languageRepository.GetAll()
             });
         }
 
-        public LanguagesResponse GetMainAll()
+        public QueryableDataResponse<Language> GetMainAll()
         {
-            return Do(() => new LanguagesResponse
+            return Do(() => new QueryableDataResponse<Language>
             {
-                Languages = _languageRepository.GetMainAll()
+                Data = _languageRepository.GetMainAll()
             });
         }
 
-        public LanguageResponse GetOne(int languageId)
+        public DataResponse<Language> GetOne(int languageId)
         {
-            return Do(() => new LanguageResponse
+            return Do(() => new DataResponse<Language>
             {
-                Language = _languageRepository.GetOne(languageId)
+                Data = _languageRepository.GetOne(languageId)
             });
         }
 
-        public LanguagePageResponse GetPage(int page)
+        public DataResponse<LanguagePageDto> GetPage(int page)
         {
-            return Do(() => new LanguagePageResponse
+            return Do(() => new DataResponse<LanguagePageDto>
             {
-                LanguagePageDto = _languageRepository.GetPage(page)
+                Data = _languageRepository.GetPage(page)
             });
         }
 

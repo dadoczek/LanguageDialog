@@ -1,5 +1,4 @@
-﻿using System;
-using Core.AbstractApp;
+﻿using Core.AbstractApp;
 using Core.Applictaion;
 using Model.Context;
 using Repository.AbstractRepo;
@@ -25,6 +24,6 @@ namespace Core.Factories
 
         public IActorApplication GetActorApplication => new ActorApplication(this);
 
-        IIssueApplication IFactory.GetIssueApplication => new IssueApplication(this);
+        public IIssueApplication GetIssueApplication => new IssueApplication(this);
     }
 }

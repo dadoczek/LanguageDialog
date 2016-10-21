@@ -5,8 +5,8 @@ namespace Repository.AbstractRepo
 {
     public interface IIssueRepository
     {
-        void Add(Issue newIssue);
-        void Edit(Issue editIssue);
+        void Add(Issue issue);
+        void Edit(Issue issue);
         void Remove(IssueParams @params);
         void ChangePosition(IssueParams @params);
         Issue GetOne(IssueParams @params);

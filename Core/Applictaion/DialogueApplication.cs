@@ -35,70 +35,46 @@ namespace Core.Applictaion
             });
         }
 
-        public DialogueCollectionResponse GetAll()
+        public QueryableDataResponse<Dialogue> GetAll()
         {
-            return Do(() => new DialogueCollectionResponse
+            return Do(() => new QueryableDataResponse<Dialogue>
             {
-                Diaogues = _dialogueRepository.GetAll()
+                Data = _dialogueRepository.GetAll()
             });
         }
 
-        public DialogueResponse GetOne(int id)
+        public DataResponse<Dialogue> GetOne(int id)
         {
-            return Do(() => new DialogueResponse
+            return Do(() => new DataResponse<Dialogue>
             {
-                Dialogue = _dialogueRepository.GetOne(id)
+                Data = _dialogueRepository.GetOne(id)
             });
         }
 
-        public DialoguePageResponse GetPage(DialoguePageParams @params)
+        public DataResponse<DialoguePageDto> GetPage(DialoguePageParams @params)
         {
-            return Do(() => new DialoguePageResponse
+            return Do(() => new DataResponse<DialoguePageDto>
             {
                 Data = _dialogueRepository.GetPage(@params)
             });
         }
 
-        public CreateDialogueResponse GetToCreateData(CreateDialogueDto data)
+        public DataResponse<DialogueViewDto> GetToCreateData()
         {
-            return Do(() =>
+            return Do(() => new DataResponse<DialogueViewDto>
             {
-                data.Languages = _languageRepository.GetMainAll();
-                return new CreateDialogueResponse
-                {
-                    Data = data
-                };
-            });
-        }
-
-        public CreateDialogueResponse GetToCreateData()
-        {
-            return Do(() => new CreateDialogueResponse
-            {
-                Data = new CreateDialogueDto
+                Data = new DialogueViewDto
                 {
                     Languages = _languageRepository.GetMainAll()
                 },
             });
         }
 
-        public EditDialogueResponse GetToEditData(EditDialogueDto data)
+        public DataResponse<DialogueViewDto> GetToEditData(DialogueEditWievParams @params)
         {
-            return Do(() =>
+            return Do(() => new DataResponse<DialogueViewDto>
             {
-                data.Languages = _languageRepository.GetMainAll();
-                return new EditDialogueResponse
-                {
-                    Data = data
-                };
-            });
-        }
-
-        public EditDialogueResponse GetToEditData(DialogueEditWievParams @params)
-        {
-            return Do(() => new EditDialogueResponse
-            {
-                Data = new EditDialogueDto
+                Data = new DialogueViewDto
                 {
                     Dialogue = _dialogueRepository.GetOne(@params.Id),
                     ActiveDialogueEditWindow = @params.DialogueEditWindow,
@@ -112,6 +88,18 @@ namespace Core.Applictaion
             return DoSuccess(() =>
             {
                 _dialogueRepository.Remove(id);
+            });
+        }
+
+        public DataResponse<DialogueViewDto> SetLanguages(DialogueViewDto data)
+        {
+            return Do(() =>
+            {
+                data.Languages = _languageRepository.GetMainAll();
+                return new DataResponse<DialogueViewDto>
+                {
+                    Data = data
+                };
             });
         }
     }

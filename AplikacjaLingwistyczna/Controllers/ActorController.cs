@@ -1,4 +1,5 @@
 ﻿using Contract.Dtos;
+using Contract.Enum;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
