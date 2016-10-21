@@ -9,7 +9,7 @@ namespace Core.Factories
         ILanguageRepository GetLanguageRepository { get; }
         IActorRepository GetActorRepository { get; }
         IIssueRepository GetIssueRepository { get; }
-        ITrackFileInfoRepository GetTrackFileInfoRepository { get; }
+        IFileRepository GetTrackFileInfoRepository { get; }
         IDialogueApplication GetDialogueApplication { get; }
         ILanguageApplication GetLanguageApplication { get; }
         IActorApplication GetActorApplication { get; }

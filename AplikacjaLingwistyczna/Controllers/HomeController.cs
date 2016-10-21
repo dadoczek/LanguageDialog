@@ -11,14 +11,14 @@ namespace AplikacjaLingwistyczna.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Adrian Dadok - Praca inżynierska";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Adrian Dadok - Kontakt";
 
             return View();
         }

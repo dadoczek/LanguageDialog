@@ -6,11 +6,6 @@ namespace Model.Models
 {
     public class Issue
     {
-        public Issue()
-        {
-            TracksFileName = new List<TrackFileInfo>();
-        }
-
         [Key]
         public int IssueId { get; set; }
 
@@ -26,12 +21,9 @@ namespace Model.Models
         public virtual Dialogue Dialogue { get; set; }
 
         [ForeignKey("Actor")]
-
         public int ActorId { get; set; }
-
         public virtual Actor Actor { get; set; }
 
-
-        public virtual ICollection<TrackFileInfo> TracksFileName { get; set; }
+        public virtual AudioFile AudioFile { get; set; }
     }
 }

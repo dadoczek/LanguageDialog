@@ -5,21 +5,21 @@ using System;
 
 namespace Repository.Repositories
 {
-    internal class EfTrackFileInfoRepository : ITrackFileInfoRepository
+    internal class EfFileRepository : IFileRepository
     {
         private readonly EfContext _context;
 
-        public EfTrackFileInfoRepository(EfContext context)
+        public EfFileRepository(EfContext context)
         {
             _context = context;
         }
 
-        public void Add(TrackFileInfo newTrack)
+        public void Add(AudioFile newTrack)
         {
             throw new NotImplementedException();
         }
 
-        public void Edit(TrackFileInfo editTrack)
+        public void Edit(AudioFile editTrack)
         {
             throw new NotImplementedException();
         }

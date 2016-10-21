@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 {
-    public class TrackFileInfo
+    public class AudioFile
     {
-        [Key]
-        public int TrackId { get; set; }
+        [Key, ForeignKey("Issue")]
+        public int Id { get; set; }
 
-        [Required]
         public string FileName { get; set; }
 
-        [ForeignKey("Issue")]
-        public int IssueId { get; set; }
+        [Required]
+        public string sufix { get; set; }
+
+        
+        public byte[] Data { get; set; }
 
         public virtual Issue Issue { get; set; }
     }

@@ -11,6 +11,7 @@ namespace Model.Models
         {
             Actors = new List<Actor>();
             Issues = new List<Issue>();
+            UserDialogue = new List<UserDialogue>();
         }
 
         [Key]
@@ -27,8 +28,14 @@ namespace Model.Models
         public int? LanguageId { get; set; }
         public virtual Language Language { get; set; }
 
+        [Required]
+        [ForeignKey("Autor")]
+        public string AutorId { get; set; }
+        public virtual User Autor { get; set; }
+
         public virtual ICollection<Actor> Actors { get; set; }
 
         public virtual ICollection<Issue> Issues { get; set; }
+        public virtual ICollection<UserDialogue> UserDialogue { get; set; }
     }
 }

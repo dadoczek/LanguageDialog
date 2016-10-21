@@ -15,7 +15,8 @@ namespace Model.Context
         public DbSet<Language> Language { get; set; }
         public DbSet<Actor> Actor { get; set; }
         public DbSet<Issue> Issue { get; set; }
-        public DbSet<TrackFileInfo> TrackFileInfo { get; set; }
+        public DbSet<AudioFile> AudioFile { get; set; }
+        public DbSet<UserDialogue> UserDialogue { get; set; }
 
         public static EfContext Create()
         {

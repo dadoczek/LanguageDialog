@@ -64,14 +64,31 @@
     <Compile Include="Migrations\201609281715472_start.Designer.cs">
       <DependentUpon>201609281715472_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610211622281_Link_Autor-Dialogue.cs" />
+    <Compile Include="Migrations\201610211622281_Link_Autor-Dialogue.Designer.cs">
+      <DependentUpon>201610211622281_Link_Autor-Dialogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610211629429_Add_UserDialogue.cs" />
+    <Compile Include="Migrations\201610211629429_Add_UserDialogue.Designer.cs">
+      <DependentUpon>201610211629429_Add_UserDialogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610211634391_changeInfrastructure.cs" />
+    <Compile Include="Migrations\201610211634391_changeInfrastructure.Designer.cs">
+      <DependentUpon>201610211634391_changeInfrastructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610211750423_FileTable.cs" />
+    <Compile Include="Migrations\201610211750423_FileTable.Designer.cs">
+      <DependentUpon>201610211750423_FileTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Dialogue.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserDialogue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\TrackFileInfo.cs" />
+    <Compile Include="Models\AudioFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -80,6 +97,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609281715472_start.resx">
       <DependentUpon>201609281715472_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610211622281_Link_Autor-Dialogue.resx">
+      <DependentUpon>201610211622281_Link_Autor-Dialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610211629429_Add_UserDialogue.resx">
+      <DependentUpon>201610211629429_Add_UserDialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610211634391_changeInfrastructure.resx">
+      <DependentUpon>201610211634391_changeInfrastructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610211750423_FileTable.resx">
+      <DependentUpon>201610211750423_FileTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

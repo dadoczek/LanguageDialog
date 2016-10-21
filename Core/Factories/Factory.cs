@@ -16,7 +16,7 @@ namespace Core.Factories
 
         public IIssueRepository GetIssueRepository => new EfIssueRepository(new EfContext());
 
-        public ITrackFileInfoRepository GetTrackFileInfoRepository => new EfTrackFileInfoRepository(new EfContext());
+        public IFileRepository GetTrackFileInfoRepository => new EfFileRepository(new EfContext());
 
         public IDialogueApplication GetDialogueApplication => new DialogueApplication(this);
 
