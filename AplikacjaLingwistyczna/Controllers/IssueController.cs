@@ -1,10 +1,8 @@
-﻿using Contract.Dtos;
-using Contract.Enum;
+﻿using Contract.Enum;
 using Contract.Params;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
-using Repository.AbstractRepo;
 using System.Net;
 using System.Web.Mvc;
 

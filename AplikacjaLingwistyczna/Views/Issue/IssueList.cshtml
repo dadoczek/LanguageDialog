@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Model.Models.Issue>
+﻿@using AplikacjaLingwistyczna.Models
+@model IEnumerable<Model.Models.Issue>
 
 <table class="table">
     <tr>
@@ -25,12 +26,7 @@
             @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
             @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
             @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })
-            <form action="" method="post" enctype="multipart/form-data">
-
-                <input type="file" name="file" id="file" />
-
-                <input type="submit" />
-            </form>
+            @Html.Partial("~/Views/AudioFile/ViewAudioFile.cshtml", new UploadFileDto{ IssueId = item.IssueId, DialogueId = item.DialogueId })
         </td>
     </tr>
 }

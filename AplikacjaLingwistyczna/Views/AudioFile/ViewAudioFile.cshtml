@@ -1,20 +1,21 @@
-﻿@model Model.Models.Issue
+﻿@model AplikacjaLingwistyczna.Models.UploadFileDto
 
 <div>
-    @if (Model.AudioFile != null)
+    @if (Model.Issue.AudioFile != null)
     {
-            @Html.DisplayNameFor(model => model.AudioFile.FileName)
+            @Html.DisplayNameFor(model => model.Issue.AudioFile.FileName)
     }
     else
     {
-        using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post,
-            new { enctype = "multipart/form-data" }))
+        using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
             <fieldset>
                 <div class="editor-field">
-                    @Html.TextBox("file", "", new { type = "file" })
+                    @Html.Hidden("Issue", Model.IssueId)
+                    @Html.Hidden("Issue", Model.DialogueId)
+                    @Html.TextBox("File", "", new { type = "file" })
                 </div>
                 <div class="editor-field">
                     <input type="submit" value="Upload" />
@@ -22,7 +23,12 @@
             </fieldset>
         }
     }
-
+    @*<div>
+        @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Dialogue.DialogueId, IssueNr = (Model.Dialogue.Issues.Count + 1), Dialogue = Model.Dialogue })
+    </div>
+    <div>
+        @Html.Partial("~/Views/Issue/IssueList.cshtml", Model.Dialogue.Issues)
+    </div>*@
         @*<dt>
             @Html.DisplayNameFor(model => model.IssueNr)
         </dt>
