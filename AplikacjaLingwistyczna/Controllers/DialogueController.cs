@@ -3,10 +3,13 @@ using Contract.Enum;
 using Contract.Params;
 using Core.AbstractApp;
 using Core.Factories;
+using System.Linq;
+using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
+    [Authorize]
     public class DialogueController : Controller
     {
         private readonly IDialogueApplication _dialogueApp;
@@ -16,12 +19,14 @@ namespace AplikacjaLingwistyczna.Controllers
             _dialogueApp = factory.GetDialogueApplication;
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult GetAll()
         {
             var model = _dialogueApp.GetAll();
             return View(model.Data);
         }
 
+        [AllowAnonymous]
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
         {
             var model = _dialogueApp.GetPage(new DialoguePageParams
@@ -36,7 +41,6 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult Create()
         {
             var model = _dialogueApp.GetToCreateData();
-
             return View(model.Data);
         }
 
@@ -45,6 +49,19 @@ namespace AplikacjaLingwistyczna.Controllers
         {
             if (ModelState.IsValid)
             {
+                var claimsIdentity = User.Identity as ClaimsIdentity;
+                if (claimsIdentity != null)
+                {
+                    // the principal identity is a claims identity.
+                    // now we need to find the NameIdentifier claim
+                    var userIdClaim = claimsIdentity.Claims
+                        .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                    if (userIdClaim != null)
+                    {
+                        model.Dialogue.AutorId = userIdClaim.Value;
+                    }
+                }
                 _dialogueApp.Add(model.Dialogue);
                 return RedirectToAction("GetPage");
             }
@@ -97,6 +114,7 @@ namespace AplikacjaLingwistyczna.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Remove(int idDialogue)
         {
             _dialogueApp.Remove(idDialogue);

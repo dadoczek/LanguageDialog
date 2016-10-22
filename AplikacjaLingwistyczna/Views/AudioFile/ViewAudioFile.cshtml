@@ -1,0 +1,57 @@
+﻿@model Model.Models.Issue
+
+<div>
+    @if (Model.AudioFile != null)
+    {
+            @Html.DisplayNameFor(model => model.AudioFile.FileName)
+    }
+    else
+    {
+        using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <fieldset>
+                <div class="editor-field">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+                <div class="editor-field">
+                    <input type="submit" value="Upload" />
+                </div>
+            </fieldset>
+        }
+    }
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.IssueNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DialogueId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DialogueId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActorId)
+        </dd>*@
+</div>

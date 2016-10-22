@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
+    [Authorize(Roles ="Admin,Moderator")]
     public class LanguageController : Controller
     {
         private readonly ILanguageApplication _languageCrud;

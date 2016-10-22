@@ -65,7 +65,11 @@ namespace Core.Applictaion
             {
                 Data = new DialogueViewDto
                 {
-                    Languages = _languageRepository.GetMainAll()
+                    Languages = _languageRepository.GetMainAll(),
+                    Dialogue = new Dialogue
+                    {
+                        AutorId = "0"
+                    }
                 },
             });
         }

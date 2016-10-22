@@ -14,6 +14,7 @@ namespace Model.Models
         [Key]
         public int LanguageId { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [ForeignKey("ParentLanguage")]

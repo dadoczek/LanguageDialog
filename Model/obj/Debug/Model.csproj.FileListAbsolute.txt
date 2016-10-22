@@ -50,3 +50,4 @@ D:\Projekty\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrations.Link_AutorDi
 D:\Projekty\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrations.Add_UserDialogue.resources
 D:\Projekty\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrations.changeInfrastructure.resources
 D:\Projekty\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrations.FileTable.resources
+D:\Projekty\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrations.LanguageName.resources
