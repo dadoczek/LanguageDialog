@@ -10,6 +10,7 @@
             @Html.DisplayNameFor(model => model.Actor)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model.OrderBy(i => i.IssueNr)) {
@@ -25,8 +26,10 @@
             @Html.ActionLink(" ", "ChangePosition","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = 1 }, new { @class = "glyphicon glyphicon-chevron-down" }) 
             @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
             @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
-            @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })
-            @Html.Partial("~/Views/AudioFile/ViewAudioFile.cshtml", new UploadFileDto{ IssueId = item.IssueId, DialogueId = item.DialogueId })
+         @*   @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })*@
+        </td>
+        <td>
+            @Html.Partial("~/Views/AudioFile/ViewAudioFile.cshtml", item)
         </td>
     </tr>
 }

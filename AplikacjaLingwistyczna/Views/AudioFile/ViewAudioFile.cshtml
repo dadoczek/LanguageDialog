@@ -1,9 +1,9 @@
-﻿@model AplikacjaLingwistyczna.Models.UploadFileDto
+﻿@model Model.Models.Issue
 
 <div>
-    @if (Model.Issue.AudioFile != null)
+    @if (Model.AudioFile != null)
     {
-            @Html.DisplayNameFor(model => model.Issue.AudioFile.FileName)
+            @Html.DisplayNameFor(model => model.AudioFile.FileName)
     }
     else
     {
@@ -11,16 +11,14 @@
         {
             @Html.AntiForgeryToken()
 
-            <fieldset>
-                <div class="editor-field">
-                    @Html.Hidden("Issue", Model.IssueId)
-                    @Html.Hidden("Issue", Model.DialogueId)
-                    @Html.TextBox("File", "", new { type = "file" })
-                </div>
-                <div class="editor-field">
-                    <input type="submit" value="Upload" />
-                </div>
-            </fieldset>
+            @Html.HiddenFor(model => model.IssueId)
+            @Html.HiddenFor(model => model.DialogueId)
+            @Html.HiddenFor(model => model.IssueNr)
+            @Html.HiddenFor(model => model.Text)
+
+            @Html.TextBox("file", "", new { type = "file" })
+
+            <input type="submit" value="Upload" />
         }
     }
     @*<div>
