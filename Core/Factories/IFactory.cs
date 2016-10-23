@@ -14,5 +14,7 @@ namespace Core.Factories
         ILanguageApplication GetLanguageApplication { get; }
         IActorApplication GetActorApplication { get; }
         IIssueApplication GetIssueApplication { get; }
+        IFileApplication GetFileApplication { get; }
+        IFileRepository GetFileRepository { get; }
     }
 }

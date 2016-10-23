@@ -25,5 +25,8 @@ namespace Core.Factories
         public IActorApplication GetActorApplication => new ActorApplication(this);
 
         public IIssueApplication GetIssueApplication => new IssueApplication(this);
+        public IFileApplication GetFileApplication => new FileApplication(this);
+
+        public IFileRepository GetFileRepository => new EfFileRepository(new EfContext());
     }
 }

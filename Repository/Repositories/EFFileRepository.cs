@@ -2,6 +2,7 @@
 using Model.Models;
 using Repository.AbstractRepo;
 using System;
+using System.Data.Entity;
 
 namespace Repository.Repositories
 {
@@ -16,12 +17,14 @@ namespace Repository.Repositories
 
         public void Add(AudioFile newTrack)
         {
-            throw new NotImplementedException();
+            _context.AudioFile.Add(newTrack);
+            _context.SaveChanges();
         }
 
         public void Edit(AudioFile editTrack)
         {
-            throw new NotImplementedException();
+            _context.Entry(editTrack).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void Remove(int trackId, int dialogueId)
