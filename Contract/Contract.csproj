@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\DialoguePageDto.cs" />
+    <Compile Include="Dtos\DialoguePlayDto.cs" />
     <Compile Include="Dtos\DialogueSortDto.cs" />
     <Compile Include="Dtos\DialogueViewDto.cs" />
     <Compile Include="Dtos\LanguagePageDto.cs" />

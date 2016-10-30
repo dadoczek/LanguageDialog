@@ -1,4 +1,5 @@
-﻿using Core.AbstractApp;
+﻿using System;
+using Core.AbstractApp;
 using Core.Applictaion;
 using Model.Context;
 using Repository.AbstractRepo;
@@ -28,5 +29,8 @@ namespace Core.Factories
         public IFileApplication GetFileApplication => new FileApplication(this);
 
         public IFileRepository GetFileRepository => new EfFileRepository(new EfContext());
+
+        public IPlayerDialogueAppplication GetPlayerDiaogueApplication => new PlayerDialogueAppplication(this);
+
     }
 }

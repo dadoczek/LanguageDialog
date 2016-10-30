@@ -2,11 +2,13 @@
 @using Contract.Enum
 @model DialogueViewDto
 
+<h4>@Model.Dialogue.Name</h4>
+<hr />
 
 <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#General">General</a></li>
-    <li><a data-toggle="tab" href="#Actors">Actors</a></li>
-    <li><a data-toggle="tab" href="#Issue">Issues</a></li>
+    <li><a data-toggle="tab" href="#General">Ogólne</a></li>
+    <li><a data-toggle="tab" href="#Actors">Aktorzy</a></li>
+    <li><a data-toggle="tab" href="#Issue">Kwestie</a></li>
 </ul>
 
 <div class="tab-content">
@@ -51,5 +53,5 @@
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "GetPage")
+    @Html.ActionLink("Wróć do listy", "GetPage")
 </div>

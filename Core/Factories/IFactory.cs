@@ -16,5 +16,6 @@ namespace Core.Factories
         IIssueApplication GetIssueApplication { get; }
         IFileApplication GetFileApplication { get; }
         IFileRepository GetFileRepository { get; }
+        IPlayerDialogueAppplication GetPlayerDiaogueApplication { get; }
     }
 }

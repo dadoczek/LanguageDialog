@@ -4,10 +4,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.Display("Tekst")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Actor)
+            @Html.Display("Aktor")
         </th>
         <th></th>
         <th></th>
@@ -22,14 +22,14 @@
             @Html.DisplayFor(modelItem => item.Actor.Name)
         </td>
         <td>
+            @Html.Partial("~/Views/AudioFile/ViewAudioFile.cshtml", item)
+        </td>
+        <td>
             @Html.ActionLink(" ", "Edit","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })  |
             @Html.ActionLink(" ", "ChangePosition","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = 1 }, new { @class = "glyphicon glyphicon-chevron-down" }) 
             @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
             @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
          @*   @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })*@
-        </td>
-        <td>
-            @Html.Partial("~/Views/AudioFile/ViewAudioFile.cshtml", item)
         </td>
     </tr>
 }

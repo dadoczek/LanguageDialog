@@ -3,10 +3,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DialogueId)
+            @Html.DisplayName("Nazwa")
         </th>
         <th></th>
     </tr>
@@ -14,14 +11,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.Display("Nazwa")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DialogueId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", "Actor", new { idActor = item.ActorId },null) |
-            @Html.ActionLink("Delete","Delete", "Actor", new { idActor=item.ActorId, idDialogue = item.DialogueId },null)
+            @Html.ActionLink(" ", "Edit", "Actor", new { idActor = item.ActorId }, new { @class = "glyphicon glyphicon-edit" }) |
+            @Html.ActionLink(" ","Delete", "Actor", new { idActor=item.ActorId, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
         </td>
     </tr>
 }
