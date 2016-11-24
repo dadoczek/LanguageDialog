@@ -191,6 +191,7 @@
     <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\AudioFileController.cs" />
     <Compile Include="Controllers\DialogueController.cs" />
+    <Compile Include="Controllers\DialoguePlayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -277,6 +278,8 @@
     <Content Include="Views\Language\GetPage.cshtml" />
     <Content Include="Views\Language\Edit.cshtml" />
     <Content Include="Views\AudioFile\ViewAudioFile.cshtml" />
+    <Content Include="Views\DialoguePlay\Play.cshtml" />
+    <Content Include="Views\DialoguePlay\PleySetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,10 +1,7 @@
-﻿using Model.Models;
-
-namespace Contract.Dtos
+﻿namespace Contract.Responses
 {
-    public class DialoguePlayDto
+    public class PlaySetting
     {
-        public Dialogue Dialogue { get; set; }
         public int? SelectActor { get; set; }
         public bool VisableMyText { get; set; }
         public bool VisableOtherText { get; set; }

@@ -15,18 +15,21 @@ namespace Core.Applictaion
             _factory = factory;
         }
 
-        public DataResponse<DialoguePlayDto> GetDialogue(int idDialogue)
+        public DataResponse<PlayResponse> GetPlayerModel(int idDialogue)
         {
             return Do(() =>
             {
                 var dialogue = _factory.GetDialogueRepository.GetOne(idDialogue);
-                var result = new DialoguePlayDto
+                var result = new PlayResponse
                 {
                     Dialogue = dialogue,
-                    VisableMyText = true,
-                    VisableOtherText = true
+                    Setting = new PlaySetting
+                    {
+                        VisableMyText = true,
+                        VisableOtherText = true
+                    }
                 };
-                return new DataResponse<DialoguePlayDto> { Data = result};
+                return new DataResponse<PlayResponse> { Data = result};
             });
             
         }
