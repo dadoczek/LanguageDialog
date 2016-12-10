@@ -37,3 +37,16 @@ D:\Projekty\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFramework.xml
 D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
 D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.dll
 D:\Projekty\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.pdb
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Contract.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Contract.pdb
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Model.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFramework.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Model.pdb
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFramework.xml
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.dll
+C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.pdb
