@@ -28,6 +28,8 @@ namespace Core.Applictaion
                     {
                         VisableMyText = true,
                         VisableOtherText = true,
+                        IdNowPlay = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr,
+                        SelectActor = -1
                     }
                 };
                 return new DataResponse<PlayResponse> { Data = result};

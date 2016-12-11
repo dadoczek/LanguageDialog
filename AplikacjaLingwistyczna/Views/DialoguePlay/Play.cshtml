@@ -9,18 +9,18 @@
 <table style="width:100%" >
     <tr>
         <th style="width:60%">
-            @foreach(var element in Model.Dialogue.Issues.OrderBy(i=>i.IssueNr))
+            @foreach (var element in Model.Dialogue.Issues.OrderBy(i => i.IssueNr))
             {
                 <div>
                     @Html.Label(element.Actor.Name + ":", new { @style = "color:deepskyblue" })
-                    @if(!Model.Setting.SelectActor.HasValue)
+                    @if (Model.Setting.SelectActor < 0)
                     {
                         if (Model.Setting.VisableOtherText)
                         {
                             <p>@element.Text</p>
                         }
                     }
-                    else if ((element.ActorId == Model.Setting.SelectActor.Value && Model.Setting.VisableMyText) || element.ActorId != Model.Setting.SelectActor.Value && Model.Setting.VisableOtherText)
+                    else if ((element.ActorId == Model.Setting.SelectActor && Model.Setting.VisableMyText) || element.ActorId != Model.Setting.SelectActor && Model.Setting.VisableOtherText)
                     {
                         <p>@element.Text</p>
                     }
@@ -32,7 +32,7 @@
                 </div>
             }
 
-            <button onclick="PlayDialogue(@Model.Setting.)">Play</button> 
+            <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, @Model.Setting.SelectActor )">Play</button> 
 
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>
@@ -40,13 +40,33 @@
 </table>
 
 <script>
+    $numer = -1;
     function PlayIssue(nr)
     {
         document.getElementById("play-issue " + nr).play();
     };
 
-    function PlayDialogue(nr)
+    function PlayDialogue(nr, id, idActor)
     {
+        if ($numer == -1)
+        {
+            $numer = nr;
+        }
+
+        $.ajax({
+            url: '@Url.Action("PlayDialogue", "DialoguePlay")',
+            data: { nr: $numer, idDialogue: id, idActor: idActor },
+            success: function (data) {
+                $numer = data;
+                document.getElementById("play-issue " + data).play();
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                alert(xhr.responseText);
+
+            }    
+        });
+
+        
     }
 
 </script>
