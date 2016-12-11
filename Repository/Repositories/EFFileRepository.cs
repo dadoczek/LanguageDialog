@@ -3,6 +3,7 @@ using Model.Models;
 using Repository.AbstractRepo;
 using System;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Repository.Repositories
 {
@@ -13,6 +14,10 @@ namespace Repository.Repositories
         public EfFileRepository(EfContext context)
         {
             _context = context;
+        }
+        public AudioFile GetAudioFile(int audioId)
+        {
+            return _context.AudioFile.FirstOrDefault(a => a.Id == audioId);
         }
 
         public void Add(AudioFile newTrack)

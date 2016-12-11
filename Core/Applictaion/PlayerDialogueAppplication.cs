@@ -43,5 +43,17 @@ namespace Core.Applictaion
             });
 
         }
+
+        public DataResponse<byte[]> GetAudioBytes(int audioId)
+        {
+            return Do(() =>
+            {
+                var repo = _factory.GetTrackFileInfoRepository;
+
+                var audioFile = repo.GetAudioFile(audioId);
+
+                return new DataResponse<byte[]> { Data = audioFile.Data };
+            });
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Core.AbstractApp;
 using Contract.Responses;
+using System.IO;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -26,6 +27,13 @@ namespace AplikacjaLingwistyczna.Controllers
         {
             var result = _playerApp.ReloadDialogue(model);
             return View(result.Data);
+        }
+        public ActionResult PlayAudio(int fileId)
+        {
+            byte[] bytes = _playerApp.GetAudioBytes(fileId).Data;
+
+            MemoryStream ms = new MemoryStream(bytes);
+            return File(ms, "audio/mpeg");
         }
     }
 }

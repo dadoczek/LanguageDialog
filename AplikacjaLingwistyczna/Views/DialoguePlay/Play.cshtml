@@ -6,26 +6,29 @@
     <dl class="dl-horizontal"></dl>
 </div>
 
-<table style="width:100%">
+<table style="width:100%" >
     <tr>
         <th style="width:60%">
             @foreach(var element in Model.Dialogue.Issues.OrderBy(i=>i.IssueNr))
             {
                 <div>
-                    @Html.Label(element.Actor.Name + ":")
+                    @Html.Label(element.Actor.Name + ":", new { @style = "color:deepskyblue" })
                     @if(!Model.Setting.SelectActor.HasValue)
                     {
                         if (Model.Setting.VisableOtherText)
                         {
-                            Html.Label(element.Text);
+                            <p>@element.Text</p>
                         }
                     }
-                    else if((element.ActorId == Model.Setting.SelectActor.Value && Model.Setting.VisableMyText) || element.ActorId != Model.Setting.SelectActor.Value && Model.Setting.VisableOtherText)
+                    else if ((element.ActorId == Model.Setting.SelectActor.Value && Model.Setting.VisableMyText) || element.ActorId != Model.Setting.SelectActor.Value && Model.Setting.VisableOtherText)
                     {
-                        Html.Label(element.Text);
+                        <p>@element.Text</p>
                     }
-                </div>
 
+                    <audio controls>
+                        <source src="PlayAudio?fileId=@element.IssueId" type="audio/mpeg" />
+                    </audio>  
+                </div>
             }
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>
