@@ -26,7 +26,7 @@
         </td>
         <td>
             @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.DialogueId }) |
+            @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { }) |
             @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
         </td>
     </tr>

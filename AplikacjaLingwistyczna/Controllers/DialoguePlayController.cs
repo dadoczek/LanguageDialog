@@ -24,7 +24,8 @@ namespace AplikacjaLingwistyczna.Controllers
         [HttpPost]
         public ActionResult Play(PlayResponse model)
         {
-            return View(model);
+            var result = _playerApp.ReloadDialogue(model);
+            return View(result.Data);
         }
     }
 }

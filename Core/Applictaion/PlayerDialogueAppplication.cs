@@ -33,5 +33,15 @@ namespace Core.Applictaion
             });
             
         }
+
+        public DataResponse<PlayResponse> ReloadDialogue(PlayResponse playResponse)
+        {
+            return Do(() =>
+            {
+                playResponse.Dialogue = _factory.GetDialogueRepository.GetOne(playResponse.Dialogue.DialogueId);
+                return new DataResponse<PlayResponse> { Data = playResponse };
+            });
+
+        }
     }
 }

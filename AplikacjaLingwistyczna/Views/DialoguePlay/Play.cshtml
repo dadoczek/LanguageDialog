@@ -3,7 +3,34 @@
 <div>
     <h4>@Model.Dialogue.Name</h4>
     <hr />
-    <dl class="dl-horizontal">
-    </dl>
+    <dl class="dl-horizontal"></dl>
 </div>
+
+<table style="width:100%">
+    <tr>
+        <th style="width:60%">
+            @foreach(var element in Model.Dialogue.Issues.OrderBy(i=>i.IssueNr))
+            {
+                <div>
+                    @Html.Label(element.Actor.Name + ":")
+                    @if(!Model.Setting.SelectActor.HasValue)
+                    {
+                        if (Model.Setting.VisableOtherText)
+                        {
+                            Html.Label(element.Text);
+                        }
+                    }
+                    else if((element.ActorId == Model.Setting.SelectActor.Value && Model.Setting.VisableMyText) || element.ActorId != Model.Setting.SelectActor.Value && Model.Setting.VisableOtherText)
+                    {
+                        Html.Label(element.Text);
+                    }
+                </div>
+
+            }
+        </th>
+        <th style="width:auto"> @Html.Partial("PlaySetting") </th>
+    </tr>
+</table>
+
+
 
