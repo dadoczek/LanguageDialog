@@ -25,15 +25,30 @@
                         <p>@element.Text</p>
                     }
 
-                    <audio controls>
+                    <audio id="play-issue @element.IssueNr">
                         <source src="PlayAudio?fileId=@element.IssueId" type="audio/mpeg" />
-                    </audio>  
+                    </audio> 
+                    <button onclick="PlayIssue(@element.IssueNr)">Play</button> 
                 </div>
             }
+
+            <button onclick="PlayDialogue(@Model.Setting.)">Play</button> 
+
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>
     </tr>
 </table>
 
+<script>
+    function PlayIssue(nr)
+    {
+        document.getElementById("play-issue " + nr).play();
+    };
+
+    function PlayDialogue(nr)
+    {
+    }
+
+</script>
 
 

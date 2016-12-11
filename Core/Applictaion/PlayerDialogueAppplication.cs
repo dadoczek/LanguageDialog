@@ -3,6 +3,7 @@ using Contract.Dtos;
 using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
+using System.Linq;
 
 namespace Core.Applictaion
 {
@@ -26,7 +27,7 @@ namespace Core.Applictaion
                     Setting = new PlaySetting
                     {
                         VisableMyText = true,
-                        VisableOtherText = true
+                        VisableOtherText = true,
                     }
                 };
                 return new DataResponse<PlayResponse> { Data = result};
