@@ -13,7 +13,7 @@
             {
                 <div>
                     @Html.Label(element.Actor.Name + ":", new { @style = "color:deepskyblue" })
-                    @if (Model.Setting.SelectActor < 0)
+                    @if (Model.Setting.SelectActor == null)
                     {
                         if (Model.Setting.VisableOtherText)
                         {
@@ -31,8 +31,15 @@
                     <button onclick="PlayIssue(@element.IssueNr)">Play</button> 
                 </div>
             }
+            @if (@Model.Setting.SelectActor != null)
+            {
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, @Model.Setting.SelectActor)">Play</button>
+            }
+            else
+            {
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, -1)">Play</button>
+            }
 
-            <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, @Model.Setting.SelectActor )">Play</button> 
 
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>

@@ -28,7 +28,7 @@
             @Html.ActionLink(" ", "Edit","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })  |
             @Html.ActionLink(" ", "ChangePosition","Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = 1 }, new { @class = "glyphicon glyphicon-chevron-down" }) 
             @Html.ActionLink(" ", "ChangePosition", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId, direction = -1 }, new { @class = "glyphicon glyphicon-chevron-up" }) |
-            @Html.ActionLink(" ", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
+            @Html.ActionLink(" ", "Delete", "Issue", new { positionId = item.IssueNr, idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-remove" })
          @*   @Html.ActionLink("Lista Audio", "Delete", new { positionId = item.IssueNr, idDialogue = item.DialogueId })*@
         </td>
     </tr>

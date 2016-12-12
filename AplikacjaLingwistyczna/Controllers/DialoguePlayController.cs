@@ -44,13 +44,24 @@ namespace AplikacjaLingwistyczna.Controllers
 
             do
             {
-                var last = model.Dialogue.Issues.OrderBy(i => i.IssueNr).Last().IssueNr;
-                if (nr >= last)
+                if(nr < 0)
                 {
                     nr = model.Dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
                 }
-                nr = +nr + 1;
-                if (idActor == null)
+                else
+                {
+                    var last = model.Dialogue.Issues.OrderBy(i => i.IssueNr).Last().IssueNr;
+                    if (nr >= last)
+                    {
+                        nr = model.Dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
+                    }
+                    else
+                    {
+                        nr++;
+                    }
+                }
+                
+                if (idActor < 0)
                 {
                     isPlay = true;
                 }

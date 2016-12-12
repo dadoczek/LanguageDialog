@@ -1,6 +1,4 @@
-﻿using System;
-using Contract.Dtos;
-using Contract.Responses;
+﻿using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
 using System.Linq;
@@ -28,8 +26,7 @@ namespace Core.Applictaion
                     {
                         VisableMyText = true,
                         VisableOtherText = true,
-                        IdNowPlay = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr,
-                        SelectActor = -1
+                        IdNowPlay = -1,
                     }
                 };
                 return new DataResponse<PlayResponse> { Data = result};
