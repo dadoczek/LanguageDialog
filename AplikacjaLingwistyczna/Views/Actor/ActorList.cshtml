@@ -11,7 +11,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.Display("Nazwa")
+            @item.Name
         </td>
         <td>
             @Html.ActionLink(" ", "Edit", "Actor", new { idActor = item.ActorId }, new { @class = "glyphicon glyphicon-edit" }) |
