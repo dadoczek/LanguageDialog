@@ -280,6 +280,7 @@
     <Content Include="Views\AudioFile\ViewAudioFile.cshtml" />
     <Content Include="Views\DialoguePlay\Play.cshtml" />
     <Content Include="Views\DialoguePlay\PlaySetting.cshtml" />
+    <Content Include="Views\Dialogue\SortPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

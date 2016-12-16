@@ -2,6 +2,7 @@
 using Core.Factories;
 using Model.Models;
 using System.Web.Mvc;
+using System.Collections.Generic;
 
 namespace AplikacjaLingwistyczna.Controllers
 {

@@ -8,6 +8,8 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using Model.Models;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -15,9 +17,12 @@ namespace AplikacjaLingwistyczna.Controllers
     public class DialogueController : Controller
     {
         private readonly IDialogueApplication _dialogueApp;
+        private readonly IFactory _factory;
+        public static IEnumerable<Language> Languages;
 
         public DialogueController(IFactory factory)
         {
+            _factory = factory;
             _dialogueApp = factory.GetDialogueApplication;
         }
 
@@ -38,6 +43,21 @@ namespace AplikacjaLingwistyczna.Controllers
                 Sort = sort
             });
             return View(model.Data);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult SortPage(DialogueSortDto sort)
+        {
+            Languages = _factory.GetLanguageRepository.GetAll();
+            ViewData.Add("UserId", User.Identity.GetUserId());
+            sort.IdUser = User.Identity.GetUserId();
+            var model = _dialogueApp.GetPage(new DialoguePageParams
+            {
+                Page = 1,
+                Sort = sort
+            });
+            return View("GetPage", model);
         }
 
         [HttpGet]

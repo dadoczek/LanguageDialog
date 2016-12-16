@@ -4,6 +4,7 @@ using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using Repository.AbstractRepo;
+using System.Collections.Generic;
 
 namespace Core.Applictaion
 {
@@ -11,7 +12,6 @@ namespace Core.Applictaion
     {
         private readonly Factory _factory;
         private readonly ILanguageRepository _languageRepository;
-
         public LanguageApplication(Factory factory)
         {
             _factory = factory;
@@ -36,6 +36,7 @@ namespace Core.Applictaion
 
         public QueryableDataResponse<Language> GetAll()
         {
+            Languages = _languageRepository.GetAll();
             return Do(() => new QueryableDataResponse<Language>
             {
                 Data = _languageRepository.GetAll()

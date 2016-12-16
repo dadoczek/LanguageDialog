@@ -13,6 +13,7 @@ namespace Core.Applictaion
         private readonly IDialogueRepository _dialogueRepository;
         private readonly ILanguageRepository _languageRepository;
 
+
         public DialogueApplication(IFactory factory)
         {
             _dialogueRepository = factory.GetDialogueRepository;

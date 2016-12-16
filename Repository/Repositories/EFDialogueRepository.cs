@@ -45,14 +45,17 @@ namespace Repository.Repositories
 
         public DialoguePageDto GetPage(DialoguePageParams @params)
         {
-            if (@params.Sort == null)
-            {
-                @params.Sort = new DialogueSortDto
-                {
-                    SizePage = 2
-                };
-            }
             IQueryable<Dialogue> elements = _context.Set<Dialogue>();
+
+            if(@params.Sort.LanguageId.HasValue)
+            {
+                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
+            }
+
+            if(!string.IsNullOrEmpty(@params.Sort.IdUser) && @params.Sort.OnlyMy)
+            {
+                elements = elements.Where(d => d.AutorId == @params.Sort.IdUser);
+            }
 
             if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
                 elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
