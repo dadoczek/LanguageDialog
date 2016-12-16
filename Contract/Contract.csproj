@@ -52,7 +52,6 @@
     <Compile Include="Params\DialogueWievParams.cs" />
     <Compile Include="Params\DialoguePageParams.cs" />
     <Compile Include="Responses\PlayResponse.cs" />
-    <Compile Include="Params\SaveFileParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\DataResponse.cs" />

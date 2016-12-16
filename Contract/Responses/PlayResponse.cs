@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Contract.Dtos;
+using Model.Models;
 
 namespace Contract.Responses
 {

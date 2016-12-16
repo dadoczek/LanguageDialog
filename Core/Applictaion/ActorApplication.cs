@@ -1,26 +1,25 @@
-﻿using System;
-using Contract.Responses;
+﻿using Contract.Responses;
 using Core.AbstractApp;
+using Core.Factories;
 using Model.Models;
 using Repository.AbstractRepo;
-using Core.Factories;
 
 namespace Core.Applictaion
 {
     internal class ActorApplication : BaseApplication, IActorApplication
     {
-        private readonly IActorRepository _ActorRepository;
+        private readonly IActorRepository _actorRepository;
 
         public ActorApplication(IFactory factory)
         {
-            _ActorRepository = factory.GetActorRepository;
+            _actorRepository = factory.GetActorRepository;
         }
 
         public BaseResponse Add(Actor actor)
         {
             return DoSuccess(() =>
             {
-                _ActorRepository.Add(actor);
+                _actorRepository.Add(actor);
             });
         }
 
@@ -28,7 +27,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _ActorRepository.Edit(actor);
+                _actorRepository.Edit(actor);
             });
         }
 
@@ -36,15 +35,15 @@ namespace Core.Applictaion
         {
             return Do(() => new DataResponse<Actor>
             {
-                Data = _ActorRepository.GetOne(id)
+                Data = _actorRepository.GetOne(id)
             });
         }
 
-        public BaseResponse Remove(int Id)
+        public BaseResponse Remove(int id)
         {
             return DoSuccess(() =>
             {
-                _ActorRepository.Remove(Id);
+                _actorRepository.Remove(id);
             });
         }
     }

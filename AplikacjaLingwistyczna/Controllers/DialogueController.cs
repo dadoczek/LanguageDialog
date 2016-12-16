@@ -3,13 +3,12 @@ using Contract.Enum;
 using Contract.Params;
 using Core.AbstractApp;
 using Core.Factories;
+using Microsoft.AspNet.Identity;
+using Model.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using System.Collections.Generic;
-using Model.Models;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -57,7 +56,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 Page = 1,
                 Sort = sort
             });
-            return View("GetPage", model);
+            return View("GetPage", model.Data);
         }
 
         [HttpGet]

@@ -32,7 +32,7 @@ namespace AplikacjaLingwistyczna.Controllers
         {
             byte[] bytes = _playerApp.GetAudioBytes(fileId).Data;
 
-            MemoryStream ms = new MemoryStream(bytes);
+            var ms = new MemoryStream(bytes);
             return File(ms, "audio/mpeg");
         }
 

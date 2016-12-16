@@ -2,12 +2,13 @@
 using Core.AbstractApp;
 using Core.Factories;
 using System.Linq;
+using Contract.Dtos;
 
 namespace Core.Applictaion
 {
     internal class PlayerDialogueAppplication : BaseApplication, IPlayerDialogueAppplication
     {
-        private Factory _factory;
+        private readonly Factory _factory;
 
         public PlayerDialogueAppplication(Factory factory)
         {
@@ -86,8 +87,8 @@ namespace Core.Applictaion
                 }
                 else
                 {
-                    var Actor = dialogue.Actors.FirstOrDefault(a => a.ActorId == idActor);
-                    isPlay = !Actor.Issues.Any(i => i.IssueNr == nr);
+                    var actor = dialogue.Actors.FirstOrDefault(a => a.ActorId == idActor);
+                    isPlay = actor.Issues.All(i => i.IssueNr != nr);
                 }
 
             } while (!isPlay);

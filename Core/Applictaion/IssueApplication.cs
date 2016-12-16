@@ -9,18 +9,18 @@ namespace Core.Applictaion
 {
     internal class IssueApplication : BaseApplication, IIssueApplication
     {
-        private readonly IIssueRepository _IssueRepository;
+        private readonly IIssueRepository _issueRepository;
 
         public IssueApplication(IFactory factory)
         {
-            _IssueRepository = factory.GetIssueRepository;
+            _issueRepository = factory.GetIssueRepository;
         }
 
         public BaseResponse Add(Issue issue)
         {
             return DoSuccess(() =>
             {
-                _IssueRepository.Add(issue);
+                _issueRepository.Add(issue);
             });
         }
 
@@ -28,7 +28,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _IssueRepository.ChangePosition(@params);
+                _issueRepository.ChangePosition(@params);
             });
         }
 
@@ -36,7 +36,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _IssueRepository.Edit(issue);
+                _issueRepository.Edit(issue);
             });
         }
 
@@ -44,7 +44,7 @@ namespace Core.Applictaion
         {
             return Do(() => new DataResponse<Issue>
             {
-                Data = _IssueRepository.GetOne(@params)
+                Data = _issueRepository.GetOne(@params)
             });
         }
 
@@ -52,7 +52,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _IssueRepository.Remove(@params);
+                _issueRepository.Remove(@params);
             });
         }
     }

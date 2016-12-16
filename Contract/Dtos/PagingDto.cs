@@ -18,9 +18,9 @@ namespace Contract.Dtos
             Page = page;
             CountElement = countElement;
             SizePage = sizePage;
-            CountPage = (int)Math.Ceiling(((decimal)CountElement / (decimal)SizePage));
-            IsPreviousPage = (page > 1) ? true : false;
-            IsNextPage = (page < CountPage) ? true : false;
+            CountPage = (int)Math.Ceiling(CountElement / (decimal)SizePage);
+            IsPreviousPage = page > 1;
+            IsNextPage = page < CountPage;
         }
 
         public int SkipElement()

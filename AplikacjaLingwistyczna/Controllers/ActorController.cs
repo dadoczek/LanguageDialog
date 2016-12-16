@@ -1,5 +1,4 @@
-﻿using Contract.Dtos;
-using Contract.Enum;
+﻿using Contract.Enum;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
@@ -40,7 +39,7 @@ namespace AplikacjaLingwistyczna.Controllers
             var actor = _actorApp.GetOne(idActor);
             if (actor == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            return View(actor);
+            return View(actor.Data);
         }
         [HttpPost]
         public ActionResult Edit(Actor model)

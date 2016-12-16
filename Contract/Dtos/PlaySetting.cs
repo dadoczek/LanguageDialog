@@ -1,4 +1,4 @@
-﻿namespace Contract.Responses
+﻿namespace Contract.Dtos
 {
     public class PlaySetting
     {

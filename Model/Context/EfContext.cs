@@ -7,7 +7,7 @@ namespace Model.Context
     public class EfContext : IdentityDbContext<User>
     {
         public EfContext()
-            : base("Aplikacja_Lingwistyczna_1", throwIfV1Schema: false)
+            : base("Aplikacja_Lingwistyczna_1", false)
         {
         }
 

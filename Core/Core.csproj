@@ -59,13 +59,11 @@
   <ItemGroup>
     <Compile Include="AbstractApp\IActorApplication.cs" />
     <Compile Include="AbstractApp\IDialogueApplication.cs" />
-    <Compile Include="AbstractApp\IAudioFileApplication.cs" />
     <Compile Include="AbstractApp\IFileApplication.cs" />
     <Compile Include="AbstractApp\IIssueApplication.cs" />
     <Compile Include="AbstractApp\ILanguageApplication.cs" />
     <Compile Include="AbstractApp\IPlayerDialogueAppplication.cs" />
     <Compile Include="Applictaion\ActorApplication.cs" />
-    <Compile Include="Applictaion\AudioFileApplication.cs" />
     <Compile Include="Applictaion\FileApplication.cs" />
     <Compile Include="Applictaion\IssueApplication.cs" />
     <Compile Include="Applictaion\PlayerDialogueAppplication.cs" />

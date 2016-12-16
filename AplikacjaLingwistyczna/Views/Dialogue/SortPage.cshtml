@@ -11,7 +11,7 @@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.Label("Tekst: ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Tekst: ", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -19,7 +19,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SizePage, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SizePage, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SizePage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SizePage, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Język", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Język", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.LanguageId, new SelectList(DialogueController.Languages, "LanguageId", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
         else
         {
             <div class="form-group">
-                @Html.Label("Tylko moje", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Label("Tylko moje", new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
                         @Html.EditorFor(model => model.OnlyMy)

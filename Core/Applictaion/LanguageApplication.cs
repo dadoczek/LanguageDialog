@@ -10,11 +10,10 @@ namespace Core.Applictaion
 {
     internal class LanguageApplication : BaseApplication, ILanguageApplication
     {
-        private readonly Factory _factory;
         private readonly ILanguageRepository _languageRepository;
-        public LanguageApplication(Factory factory)
+        public static IEnumerable<Language> Languages;
+        public LanguageApplication(IFactory factory)
         {
-            _factory = factory;
             _languageRepository = factory.GetLanguageRepository;
         }
 
