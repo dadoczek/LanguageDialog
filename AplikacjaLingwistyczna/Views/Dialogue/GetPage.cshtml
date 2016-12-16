@@ -25,9 +25,17 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit"}) |
-            @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { }) |
-            @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+            @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId)
+            {
+                @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })
+            }
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+            }
+            @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { })
+            
         </td>
     </tr>
 }

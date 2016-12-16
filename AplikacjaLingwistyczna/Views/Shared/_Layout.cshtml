@@ -24,7 +24,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Informacje", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Języki", "GetPage", "Language")</li >
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Języki", "GetPage", "Language")</li>
+                    }
                     <li> @Html.ActionLink("Dialogi", "GetPage", "Dialogue") </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

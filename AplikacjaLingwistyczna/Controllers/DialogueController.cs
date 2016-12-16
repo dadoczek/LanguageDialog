@@ -5,7 +5,9 @@ using Core.AbstractApp;
 using Core.Factories;
 using System.Linq;
 using System.Security.Claims;
+using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -29,6 +31,7 @@ namespace AplikacjaLingwistyczna.Controllers
         [AllowAnonymous]
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
         {
+            ViewData.Add("UserId", User.Identity.GetUserId());
             var model = _dialogueApp.GetPage(new DialoguePageParams
             {
                 Page = page,
