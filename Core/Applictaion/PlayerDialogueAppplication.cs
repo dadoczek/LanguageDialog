@@ -55,5 +55,44 @@ namespace Core.Applictaion
                 return new DataResponse<byte[]> { Data = audioFile.Data };
             });
         }
+
+        public int PlayDialogue(int? nr, int idDialogue, int idActor)
+        {
+            var dialogue = _factory.GetDialogueRepository.GetOne(idDialogue);
+            bool isPlay;
+
+            do
+            {
+                if (nr < 0)
+                {
+                    nr = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
+                }
+                else
+                {
+                    var last = dialogue.Issues.OrderBy(i => i.IssueNr).Last().IssueNr;
+                    if (nr >= last)
+                    {
+                        nr = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
+                    }
+                    else
+                    {
+                        nr++;
+                    }
+                }
+
+                if (idActor < 0)
+                {
+                    isPlay = true;
+                }
+                else
+                {
+                    var Actor = dialogue.Actors.FirstOrDefault(a => a.ActorId == idActor);
+                    isPlay = !Actor.Issues.Any(i => i.IssueNr == nr);
+                }
+
+            } while (!isPlay);
+
+            return nr.Value;
+        }
     }
 }

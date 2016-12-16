@@ -1,9 +1,8 @@
-﻿using Core.Factories;
-using System.Web.Mvc;
+﻿using Contract.Responses;
 using Core.AbstractApp;
-using Contract.Responses;
+using Core.Factories;
 using System.IO;
-using System.Linq;
+using System.Web.Mvc;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -39,41 +38,7 @@ namespace AplikacjaLingwistyczna.Controllers
 
         public int PlayDialogue(int? nr, int idDialogue, int idActor)
         {
-            var model = _playerApp.GetPlayerModel(idDialogue).Data;
-            bool isPlay;
-
-            do
-            {
-                if(nr < 0)
-                {
-                    nr = model.Dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
-                }
-                else
-                {
-                    var last = model.Dialogue.Issues.OrderBy(i => i.IssueNr).Last().IssueNr;
-                    if (nr >= last)
-                    {
-                        nr = model.Dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
-                    }
-                    else
-                    {
-                        nr++;
-                    }
-                }
-                
-                if (idActor < 0)
-                {
-                    isPlay = true;
-                }
-                else
-                {
-                    var Actor = model.Dialogue.Actors.FirstOrDefault(a => a.ActorId == idActor);
-                    isPlay = !Actor.Issues.Any(i => i.IssueNr == nr);
-                }
-
-            } while (!isPlay);
-
-            return nr.Value;
+            return _playerApp.PlayDialogue(nr, idDialogue, idActor);
         }
     }
 }
