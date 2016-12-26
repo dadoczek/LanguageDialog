@@ -1,9 +1,11 @@
 ﻿@model Model.Models.Issue
 
-<div>
+@Ajax.ActionLink("Open popup", "RecordAudio","AudioFile",Model, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" })<br />
+
+   <div>
     @if (Model.AudioFile != null)
     {
-            @Html.DisplayNameFor(model => model.AudioFile.FileName)
+        @Html.DisplayNameFor(model => model.AudioFile.FileName)
     }
     else
     {
@@ -18,44 +20,9 @@
 
             @Html.TextBox("file", "", new { type = "file" })
 
-            <input type="submit" value="Upload" />
+            <button onclick="openPopup()"></button>
+
+
         }
     }
-    @*<div>
-        @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Dialogue.DialogueId, IssueNr = (Model.Dialogue.Issues.Count + 1), Dialogue = Model.Dialogue })
-    </div>
-    <div>
-        @Html.Partial("~/Views/Issue/IssueList.cshtml", Model.Dialogue.Issues)
-    </div>*@
-        @*<dt>
-            @Html.DisplayNameFor(model => model.IssueNr)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IssueNr)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DialogueId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DialogueId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ActorId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ActorId)
-        </dd>*@
 </div>

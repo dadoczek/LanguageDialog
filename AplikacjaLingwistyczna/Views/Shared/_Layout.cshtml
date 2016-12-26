@@ -34,13 +34,14 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Praca inżynierska Adrian Dadok</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    <div id="result" style="display: none"></div>
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Praca inżynierska Adrian Dadok</p>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

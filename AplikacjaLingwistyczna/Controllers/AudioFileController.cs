@@ -11,10 +11,19 @@ namespace AplikacjaLingwistyczna.Controllers
     public class AudioFileController : Controller
     {
         private readonly IFileApplication _fileApp;
+        private IFactory _factory;
         public AudioFileController(IFactory factory)
         {
+            _factory = factory;
             _fileApp = factory.GetFileApplication;
         }
+
+        [HttpGet]
+        public ActionResult RecordAudio(Issue issue)
+        {
+            return PartialView(issue);
+        }
+
 
         [HttpPost]
         public ActionResult Upload(Issue issue, HttpPostedFileBase file)

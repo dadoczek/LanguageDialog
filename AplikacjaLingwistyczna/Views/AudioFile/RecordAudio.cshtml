@@ -1,0 +1,8 @@
+﻿@model Model.Models.Issue
+    
+@*<div id="AudioRecord @Model.IssueNr" style="display: none">*@
+    <audio id="Audio @Model.IssueNr" controls>
+        <source src="" type="audio/mpeg" />
+    </audio>
+
+@Scripts.Render("~/bundles/Record")
