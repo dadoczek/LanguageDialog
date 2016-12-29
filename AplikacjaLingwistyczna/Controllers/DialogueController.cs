@@ -35,13 +35,35 @@ namespace AplikacjaLingwistyczna.Controllers
         [AllowAnonymous]
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
         {
-            ViewData.Add("UserId", User.Identity.GetUserId());
             var model = _dialogueApp.GetPage(new DialoguePageParams
             {
                 Page = page,
                 Sort = sort
             });
             return View(model.Data);
+        }
+
+        public ActionResult GetMyDialoguePage(DialogueSortDto sort, int page = 1)
+        {
+            if (sort == null)
+                sort = new DialogueSortDto();
+            sort.IdUser = User.Identity.GetUserId();
+
+            ViewData.Add("UserId", User.Identity.GetUserId());
+            var model = _dialogueApp.GetMyDialoguePage(new DialoguePageParams
+            {
+                Page = page,
+                Sort = sort
+            });
+            return View("GetPage",model.Data);
+        }
+
+        [HttpPost]
+        public string PublishDialogue(int dialogueId)
+        {
+            var result = _dialogueApp.PublishDialogue(dialogueId);
+
+            return result.Message;
         }
 
         [AllowAnonymous]

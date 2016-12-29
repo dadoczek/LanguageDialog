@@ -18,5 +18,6 @@ namespace Repository.AbstractRepo
         Dialogue GetOne(int id);
 
         DialoguePageDto GetPage(DialoguePageParams @params);
+        DialoguePageDto GetMyDialoguePage(DialoguePageParams @params);
     }
 }

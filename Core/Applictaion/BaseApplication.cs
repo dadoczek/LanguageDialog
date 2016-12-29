@@ -5,12 +5,13 @@ namespace Core.Applictaion
 {
     internal class BaseApplication
     {
-        public static T Do<T>(Func<T> action) where T : BaseResponse, new()
+        public static T Do<T>(Func<T> action, bool setSuccess = true) where T : BaseResponse, new()
         {
             try
             {
                 var result = action();
-                result.Status = SerializationStatus.Success;
+                if(setSuccess)
+                    result.Status = SerializationStatus.Success;
                 return result;
             }
             catch (Exception ex)

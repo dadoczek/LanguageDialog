@@ -1,8 +1,10 @@
-﻿using Contract.Dtos;
+﻿using System.Linq;
+using Contract.Dtos;
 using Contract.Params;
 using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
+using Model.EnumType;
 using Model.Models;
 using Repository.AbstractRepo;
 
@@ -60,6 +62,61 @@ namespace Core.Applictaion
             });
         }
 
+        public DataResponse<DialoguePageDto> GetMyDialoguePage(DialoguePageParams @params)
+        {
+            return Do(() => new DataResponse<DialoguePageDto>
+            {
+                Data = _dialogueRepository.GetMyDialoguePage(@params)
+            });
+        }
+
+        public BaseResponse PublishDialogue(int dialogueId)
+        {
+            return Do(() => 
+            {
+                var dialogue = _dialogueRepository.GetOne(dialogueId);
+                var publishStatus = PubishIsAkcept(dialogue);
+                if (publishStatus == PublishStatus.Akcept)
+                {
+                    dialogue.Status = DialogueStatus.Pubish;
+                    _dialogueRepository.Edit(dialogue);
+                    var result = new BaseResponse
+                    {
+                        IsValid = true,
+                        Status = SerializationStatus.Success,
+                        Message = "Publikacja zakończona sukcesem"
+                    };
+                    return result;
+                }
+                else
+                {
+                    var result = new BaseResponse
+                    {
+                        IsValid = true,
+                        Status = SerializationStatus.Warning,
+                    };
+                    if (publishStatus == PublishStatus.AudioWarning)
+                        result.Message = "Brak części nagrań audio";
+                    if (publishStatus == PublishStatus.ActorWarning)
+                        result.Message = "Brak przynajmniej 2 aktorów";
+                    if (publishStatus == PublishStatus.IssueWarnig)
+                        result.Message = "Brak choć jednej kwestii dialogowej na aktora";
+                    return result;
+                }
+            });
+        }
+
+        private PublishStatus PubishIsAkcept(Dialogue dialogue)
+        {
+            if(dialogue.Actors.Count < 2)
+                return PublishStatus.ActorWarning;
+            if(dialogue.Actors.Any(a => !a.Issues.Any()))
+                return  PublishStatus.IssueWarnig;
+            if(dialogue.Issues.Any(i => i.AudioFile == null))
+                return PublishStatus.AudioWarning;
+            return PublishStatus.Akcept;
+        }
+
         public DataResponse<DialogueViewDto> GetToCreateData()
         {
             return Do(() => new DataResponse<DialogueViewDto>
@@ -106,6 +163,15 @@ namespace Core.Applictaion
                     Data = data
                 };
             });
+        }
+
+
+        private enum PublishStatus
+        {
+            Akcept,
+            ActorWarning,
+            IssueWarnig,
+            AudioWarning,
         }
     }
 }

@@ -84,8 +84,11 @@ namespace Repository.Repositories
             SetElements(@params.DialogueId);
 
             var removeIssue = GetOneQuery(@params.PositionId);
-            _context.AudioFile.Remove(removeIssue.AudioFile);
-            _context.SaveChanges();
+            if (removeIssue.AudioFile != null)
+            {
+                _context.AudioFile.Remove(removeIssue.AudioFile);
+                _context.SaveChanges();
+            }
             _context.Issue.Remove(removeIssue);
 
             RebuildPosition(@params.PositionId);

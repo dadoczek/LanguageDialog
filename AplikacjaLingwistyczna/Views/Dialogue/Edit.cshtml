@@ -52,7 +52,29 @@
     }
 </div>
 
+<button onclick="PublishDialogue(@Model.Dialogue.DialogueId)" class="btn btn-success"> Publikuj</button>
+
 <div>
     @Html.ActionLink("Wróć do listy", "GetPage")
 </div>
+
+<script>
+    function PublishDialogue(id)
+    {
+        $.ajax({
+            url: '@Url.Action("PublishDialogue", "Dialogue")',
+            type: "POST",
+            data: { dialogueId: id },
+            success: function (data) {
+                var message = data;
+                alert(message);
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                alert(xhr.responseText);
+
+            }
+        });
+    }
+
+</script>
 

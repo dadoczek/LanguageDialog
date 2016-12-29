@@ -29,6 +29,10 @@
                         <li>@Html.ActionLink("Języki", "GetPage", "Language")</li>
                     }
                     <li> @Html.ActionLink("Dialogi", "GetPage", "Dialogue") </li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Moje dialogi", "GetMyDialoguePage", "Dialogue")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

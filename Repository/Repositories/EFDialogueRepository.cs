@@ -47,23 +47,17 @@ namespace Repository.Repositories
         {
             IQueryable<Dialogue> elements = _context.Set<Dialogue>();
 
-            if(@params.Sort.LanguageId.HasValue)
-            {
-                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
-            }
+            elements = QueryPageDialogue(@params, elements);
 
-            if(!string.IsNullOrEmpty(@params.Sort.IdUser) && @params.Sort.OnlyMy)
-            {
-                elements = elements.Where(d => d.AutorId == @params.Sort.IdUser);
-            }
+            return GetDialogeDto(@params, elements);
+        }
 
-            if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
-                elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
-
+        private DialoguePageDto GetDialogeDto(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
             var countElement = elements.Count();
 
-            var pagingSystem = @params.Sort.SizePage != null 
-                ? new PagingDto(@params.Page, countElement, (int)@params.Sort.SizePage) 
+            var pagingSystem = @params.Sort.SizePage != null
+                ? new PagingDto(@params.Page, countElement, (int)@params.Sort.SizePage)
                 : new PagingDto(@params.Page, countElement);
 
             elements = elements
@@ -77,6 +71,46 @@ namespace Repository.Repositories
                 Dialogues = elements,
                 Paging = pagingSystem
             };
+        }
+
+        private IQueryable<Dialogue> QueryPageDialogue(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
+            if (@params.Sort.LanguageId.HasValue)
+            {
+                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
+            }
+
+            elements = elements.Where(d => d.Status == DialogueStatus.Pubish);
+
+            if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
+                elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
+
+            return elements;
+        }
+
+        public DialoguePageDto GetMyDialoguePage(DialoguePageParams @params)
+        {
+            IQueryable<Dialogue> elements = _context.Set<Dialogue>();
+
+            elements = QueryMyPageDialogue(@params, elements);
+
+            return GetDialogeDto(@params, elements);
+        }
+
+        private IQueryable<Dialogue> QueryMyPageDialogue(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
+            if (@params.Sort.LanguageId.HasValue)
+            {
+                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
+            }
+            elements = elements.Where(d => d.AutorId == @params.Sort.IdUser);
+
+            elements = elements.Where(d => d.Status == DialogueStatus.Pubish || d.Status == DialogueStatus.Edit);
+
+            if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
+                elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
+
+            return elements;
         }
 
         public void Remove(int id)
