@@ -69,7 +69,8 @@ namespace Repository.Repositories
             return new DialoguePageDto
             {
                 Dialogues = elements,
-                Paging = pagingSystem
+                Paging = pagingSystem,
+                Sort = @params.Sort
             };
         }
 

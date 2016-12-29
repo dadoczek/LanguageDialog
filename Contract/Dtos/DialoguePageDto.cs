@@ -7,5 +7,6 @@ namespace Contract.Dtos
     {
         public PagingDto Paging { get; set; }
         public IQueryable<Dialogue> Dialogues { get; set; }
+        public DialogueSortDto Sort { get; set; }
     }
 }

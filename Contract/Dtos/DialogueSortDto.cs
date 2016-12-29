@@ -6,5 +6,6 @@
         public int? SizePage { get; set; }
         public int? LanguageId { get; set; }
         public string IdUser { get; set; }
+        public bool MyView { get; set; }
     }
 }

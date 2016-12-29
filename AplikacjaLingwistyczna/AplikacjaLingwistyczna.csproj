@@ -328,6 +328,7 @@
     <Content Include="Views\DialoguePlay\PlaySetting.cshtml" />
     <Content Include="Views\Dialogue\SortPage.cshtml" />
     <Content Include="Views\AudioFile\RecordAudio.cshtml" />
+    <Content Include="Views\Dialogue\ListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
+using Contract.Responses;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -35,6 +36,11 @@ namespace AplikacjaLingwistyczna.Controllers
         [AllowAnonymous]
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
         {
+            if(sort == null)
+                sort = new DialogueSortDto();
+            sort.MyView = false;
+
+            Languages = _factory.GetLanguageRepository.GetAll();
             var model = _dialogueApp.GetPage(new DialoguePageParams
             {
                 Page = page,
@@ -45,9 +51,11 @@ namespace AplikacjaLingwistyczna.Controllers
 
         public ActionResult GetMyDialoguePage(DialogueSortDto sort, int page = 1)
         {
+            Languages = _factory.GetLanguageRepository.GetAll();
             if (sort == null)
                 sort = new DialogueSortDto();
             sort.IdUser = User.Identity.GetUserId();
+            sort.MyView = true;
 
             ViewData.Add("UserId", User.Identity.GetUserId());
             var model = _dialogueApp.GetMyDialoguePage(new DialoguePageParams
@@ -73,11 +81,24 @@ namespace AplikacjaLingwistyczna.Controllers
             Languages = _factory.GetLanguageRepository.GetAll();
             ViewData.Add("UserId", User.Identity.GetUserId());
             sort.IdUser = User.Identity.GetUserId();
-            var model = _dialogueApp.GetPage(new DialoguePageParams
+            DataResponse<DialoguePageDto> model;
+            if (sort.MyView)
             {
-                Page = 1,
-                Sort = sort
-            });
+                model = _dialogueApp.GetMyDialoguePage(new DialoguePageParams
+                {
+                    Page = 1,
+                    Sort = sort
+                });
+            }
+            else
+            {
+                model = _dialogueApp.GetPage(new DialoguePageParams
+                {
+                    Page = 1,
+                    Sort = sort
+                });
+            }
+
             return View("GetPage", model.Data);
         }
 

@@ -8,6 +8,7 @@
     
     <div class="form-horizontal">
         @Html.HiddenFor(m => m.IdUser)
+        @Html.HiddenFor(m => m.MyView)
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -21,7 +22,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SizePage, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SizePage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SizePage, new { htmlAttributes = new { @class = "form-control", min = "20", value= "20" } })
                 @Html.ValidationMessageFor(model => model.SizePage, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,22 +34,6 @@
                 @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
             </div>
         </div>
-        @if (string.IsNullOrEmpty(Model.IdUser))
-        {
-            Model.OnlyMy = false;
-        }
-        else
-        {
-            <div class="form-group">
-                @Html.Label("Tylko moje", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.OnlyMy)
-                        @Html.ValidationMessageFor(model => model.OnlyMy, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

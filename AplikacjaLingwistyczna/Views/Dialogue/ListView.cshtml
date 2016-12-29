@@ -1,0 +1,34 @@
+﻿@using Contract.Dtos
+@model DialoguePageDto
+
+<table class="table">
+    <tr>
+        <th>
+            Nazwa Dialogu
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Dialogues)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId)
+                {
+                    @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })
+                }
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+                }
+                @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { })
+
+            </td>
+        </tr>
+    }
+
+</table>
