@@ -50,3 +50,16 @@ C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\bin\Debug\EntityFram
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.dll
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Contract\obj\Debug\Contract.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Contract.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Contract.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Model.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Model.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\bin\Debug\EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\obj\Debug\Contract.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Contract\obj\Debug\Contract.pdb

@@ -72,3 +72,24 @@ C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Model\obj\Debug\Model.Migrati
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Model\obj\Debug\Model.csproj.GenerateResource.Cache
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Model\obj\Debug\Model.dll
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Model\obj\Debug\Model.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Model.dll.config
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Model.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Model.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.start.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.Link_AutorDialogue.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.Add_UserDialogue.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.changeInfrastructure.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.FileTable.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.Migrations.LanguageName.resources
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.pdb

@@ -70,3 +70,21 @@ C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Repository\bin\Debug\Microsof
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.dll
 C:\Users\dadoczek\Documents\AplikacjaLingwistyczna\Repository\obj\Debug\Repository.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Repository.dll.config
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Repository.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Repository.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Contract.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Model.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Contract.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Model.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\obj\Debug\Repository.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Repository\obj\Debug\Repository.pdb

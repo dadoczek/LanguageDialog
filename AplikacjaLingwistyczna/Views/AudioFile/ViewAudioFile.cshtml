@@ -1,28 +1,36 @@
 ﻿@model Model.Models.Issue
-
-@Ajax.ActionLink("Open popup", "RecordAudio","AudioFile",Model, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" })<br />
-
-   <div>
+<div>
     @if (Model.AudioFile != null)
     {
-        @Html.DisplayNameFor(model => model.AudioFile.FileName)
+        @Html.DisplayFor(model => model.AudioFile.FileName)       
+         <audio controls>
+            <source src="@Url.Action("PlayAudio","DialoguePlay", new {fileId = Model.IssueId})" type="audio/mpeg" />
+        </audio>
     }
-    else
+    @using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-            @Html.HiddenFor(model => model.IssueId)
-            @Html.HiddenFor(model => model.DialogueId)
-            @Html.HiddenFor(model => model.IssueNr)
-            @Html.HiddenFor(model => model.Text)
+        @Html.HiddenFor(model => model.IssueId)
+        @Html.HiddenFor(model => model.DialogueId)
+        @Html.HiddenFor(model => model.IssueNr)
+        @Html.HiddenFor(model => model.Text)
 
-            @Html.TextBox("file", "", new { type = "file" })
+        @Html.TextBox("file", "", new { type = "file", id=$"file{Model.IssueId}"})
 
-            <button onclick="openPopup()"></button>
+        @Html.Partial("~/Views/AudioFile/RecordAudio.cshtml")
 
-
-        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
     }
+
 </div>
+
+<script>
+    function selectFile(id) {
+        
+    }
+</script>

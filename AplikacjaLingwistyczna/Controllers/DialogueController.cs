@@ -1,4 +1,5 @@
-﻿using Contract.Dtos;
+﻿using System;
+using Contract.Dtos;
 using Contract.Enum;
 using Contract.Params;
 using Core.AbstractApp;
@@ -36,7 +37,7 @@ namespace AplikacjaLingwistyczna.Controllers
         [AllowAnonymous]
         public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
         {
-            if(sort == null)
+            if (sort == null)
                 sort = new DialogueSortDto();
             sort.MyView = false;
 
@@ -63,7 +64,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 Page = page,
                 Sort = sort
             });
-            return View("GetPage",model.Data);
+            return View("GetPage", model.Data);
         }
 
         [HttpPost]
@@ -151,7 +152,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Dialogue")]DialogueViewDto editModel)
+        public ActionResult Edit([Bind(Include = "Dialogue")] DialogueViewDto editModel)
         {
             if (ModelState.IsValid)
             {
@@ -166,12 +167,12 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditGeneral([Bind(Include = "Dialogue")]DialogueViewDto editModel)
+        public ActionResult EditGeneral([Bind(Include = "Dialogue")] DialogueViewDto editModel)
         {
             if (ModelState.IsValid)
             {
                 _dialogueApp.Edit(editModel.Dialogue);
-                return RedirectToAction("Edit", new { idDialogue = editModel.Dialogue.DialogueId });
+                return RedirectToAction("Edit", new {idDialogue = editModel.Dialogue.DialogueId});
             }
             else
             {
