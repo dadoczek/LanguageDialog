@@ -10,5 +10,5 @@
 /// <reference path="jquery-ui-1.12.1.min.js" />
 /// <reference path="main.js" />
 /// <reference path="modernizr-2.6.2.js" />
-/// <reference path="recorder.js" />
+/// <reference path="recordrtc.js" />
 /// <reference path="respond.js" />

@@ -55,11 +55,25 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public byte[] AudioRecordSave(string data)
+        public ActionResult PostRecordedAudioVideo(int IssueId)
         {
-            byte[] fileByte = Convert.FromBase64String(data);
+            foreach (string upload in Request.Files)
+            {
+                var file = Request.Files[upload];
+                if (file == null) continue;
 
-            return fileByte;
+                var audioFile = new AudioFile
+                {
+                    Id = IssueId,
+                    FileName = file.FileName,
+                    sufix = ".mp3",
+                    Data = new byte[file.ContentLength]
+                };
+
+                file.InputStream.Read(audioFile.Data, 0, file.ContentLength);
+                _fileApp.Add(audioFile);
+            }
+            return Json(Request.Form[0]);
         }
     }
 }

@@ -7,6 +7,7 @@ using Core.Factories;
 using Microsoft.AspNet.Identity;
 using Model.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;

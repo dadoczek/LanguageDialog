@@ -25,7 +25,7 @@ namespace AplikacjaLingwistyczna
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Record").Include(
-                      "~/Scripts/recorder.js"));
+                      "~/Scripts/RecordRTC.js"));
             //"~/Scripts/recorder.js",
             //          "~/Scripts/main.js",
             //          "~/Scripts/recorderWorker.js"));

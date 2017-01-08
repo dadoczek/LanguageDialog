@@ -1,107 +1,170 @@
 ﻿@model Model.Models.Issue
 
 <div>
-    <button onclick="startRecording(this);">record</button>
-    <button onclick="stopRecording(this, @Model.IssueId, @Model.DialogueId);" disabled>stop</button>
+    
+    <audio id="preview" controls></audio> 
 
-    <ul id="recordingslist @Model.IssueId"></ul>
-
-    <script>
-
-  var audio_context;
-  var recorder;
-
-  function startUserMedia(stream) {
-    var input = audio_context.createMediaStreamSource(stream);
-
-    recorder = new Recorder(input);
-  }
-
-  function startRecording(button) {
-    recorder && recorder.record();
-    button.disabled = true;
-    button.nextElementSibling.disabled = false;
-  }
-
-  function stopRecording(button, id, dialogueId) {
-    recorder && recorder.stop();
-    button.disabled = true;
-    button.previousElementSibling.disabled = false;
-
-    createDownloadLink(id, dialogueId);
-
-    recorder.clear();
-  }
-
-  function createDownloadLink(id, dialogueId) {
-    recorder && recorder.exportWAV(function(blob) {
-      var url = URL.createObjectURL(blob);
-      var li = document.createElement('li');
-      var au = document.createElement('audio');
-      var hf = document.createElement('a');
-
-
-
-      var root = document.getElementById("recordingslist " + id);
-      while (root.firstChild) {
-          root.removeChild(root.firstChild);
-      }
-
-      au.controls = true;
-      au.src = url;
-      hf.href = url;
-      hf.download = new Date().toISOString() + '.wav';
-      hf.innerHTML = hf.download;
-
-      debugger;
-        var dataToBlob;
-        var reader = new window.FileReader();
-        reader.readAsDataURL(url);
-        reader.onloadend = function() {
-            dataToBlob = reader.result;
-        };
-
-      $.ajax({
-          url: '@Url.Action("AudioRecordSave", "AudioFile")',
-          type: "POST",
-          data: { data: reader.result },
-          success: function (data) {
-              
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-              alert(xhr.responseText);
-
-          }
-      });
-
-      var file = document.getElementById("file" + id);
-      file.value = "";
-
-      var urlImput = document.getElementById("url" + id);
-      urlImput.value = url;
-
-      li.appendChild(au);
-      li.appendChild(hf);
-      root.appendChild(li);
-    });
-  }
-
-  window.onload = function init() {
-    try {
-      // webkit shim
-      window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-      window.URL = window.URL || window.webkitURL;
-
-      audio_context = new AudioContext;
-    } catch (e) {
-      alert('Nagrywanie audio nie jest obsługiwane na wybranej przeglądarce');
-    }
-
-    navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
-    });
-  };
-    </script>
+    <button id="record" onclick="recorder(@Model.IssueId)">Record</button>
+    <button id="stop" disabled>Stop</button>
+    <button id="delete" disabled>Delete</button>
+    <div id="container"></div>
 
     @Scripts.Render("~/bundles/Record")
+    <script>
+        var  $idIssue;
+        // PostBlob method uses XHR2 and FormData to submit
+        // recorded blob to the PHP server
+        function PostBlob(blob, fileType, fileName) {
+            // FormData
+            var formData = new FormData();
+            formData.append(fileType + '-filename', fileName);
+            formData.append(fileType + '-blob', blob);
+
+            // progress-bar
+            var hr = document.createElement('hr');
+            container.appendChild(hr);
+            var strong = document.createElement('strong');
+            strong.id = 'percentage';
+            strong.innerHTML = fileType + ' upload progress: ';
+            container.appendChild(strong);
+            var progress = document.createElement('progress');
+            container.appendChild(progress);
+
+            // POST the Blob using XHR2
+            xhr('/AudioFile/PostRecordedAudioVideo?IssueId=' + $idIssue,
+                formData,
+                progress,
+                percentage,
+                function(fName) {
+                    container.appendChild(document.createElement('hr'));
+                    var mediaElement = document.createElement(fileType);
+
+                    var source = document.createElement('source');
+                    source.src = window.location.protocol + "//" + window.location.host + "/" + "DialoguePlay/PlayAudio?fileId=" + $idIssue;
+                    source.type = "audio/mpeg";
+
+                    mediaElement.appendChild(source);
+
+                    mediaElement.controls = true;
+                    container.appendChild(mediaElement);
+                    mediaElement.play();
+
+                    progress.parentNode.removeChild(progress);
+                    strong.parentNode.removeChild(strong);
+                    hr.parentNode.removeChild(hr);
+                });
+        }
+
+        var record = document.getElementById('record');
+        var stop = document.getElementById('stop');
+        var deleteFiles = document.getElementById('delete');
+
+        var audio = document.querySelector('audio');
+
+        var preview = document.getElementById('preview');
+
+        var container = document.getElementById('container');
+
+        // if you want to record only audio on chrome
+        // then simply set "isFirefox=true"
+        var isFirefox = !!navigator.mozGetUserMedia;
+
+        var recordAudio, recordVideo;
+        function recorder(id) {
+            $idIssue = id;
+            record.disabled = true;
+            navigator.getUserMedia({
+                    audio: true,
+                    video: false
+                },
+                function(stream) {
+                    preview.src = window.URL.createObjectURL(stream);
+                    preview.play();
+
+                    recordAudio = RecordRTC(stream,
+                    {
+                        onAudioProcessStarted: function() {
+                        }
+                    });
+
+                    recordAudio.startRecording();
+
+                    stop.disabled = false;
+                },
+                function(error) {
+                    alert(JSON.stringify(error, null, '\t'));
+                });
+        };
+
+        var fileName;
+        stop.onclick = function() {
+            record.disabled = false;
+            stop.disabled = true;
+
+            preview.src = '';
+
+            fileName = Math.round(Math.random() * 99999999) + 99999999;
+
+            recordAudio.stopRecording(function() {
+                PostBlob(recordAudio.getBlob(), 'audio', fileName + '.wav');
+            });
+
+            deleteFiles.disabled = false;
+        };
+
+        deleteFiles.onclick = function() {
+            deleteAudioVideoFiles();
+        };
+
+        function deleteAudioVideoFiles() {
+            deleteFiles.disabled = true;
+            if (!fileName) return;
+            var formData = new FormData();
+            formData.append('delete-file', fileName);
+            xhr('/RecordRTC/DeleteFile',
+                formData,
+                null,
+                null,
+                function(response) {
+                    console.log(response);
+                });
+            fileName = null;
+            container.innerHTML = '';
+        }
+
+        function xhr(url, data, progress, percentage, callback) {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState == 4 && request.status == 200) {
+                    callback(request.responseText);
+                }
+            };
+
+            if (url.indexOf('/RecordRTC/DeleteFile') == -1) {
+                request.upload.onloadstart = function() {
+                    percentage.innerHTML = 'Upload started...';
+                };
+
+                request.upload.onprogress = function(event) {
+                    progress.max = event.total;
+                    progress.value = event.loaded;
+                    percentage.innerHTML = 'Upload Progress ' + Math.round(event.loaded / event.total * 100) + "%";
+                };
+
+                request.upload.onload = function() {
+                    percentage.innerHTML = 'Saved!';
+                };
+            }
+
+            request.open('POST', url);
+            request.send(data);
+        }
+
+        window.onbeforeunload = function() {
+            if (!!fileName) {
+                deleteAudioVideoFiles();
+                return 'It seems that you\'ve not deleted audio/video files from the server.';
+            }
+        };
+    </script>
 </div>

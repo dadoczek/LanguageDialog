@@ -30,6 +30,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
         public ActionResult PlayAudio(int fileId)
         {
+
             byte[] bytes = _playerApp.GetAudioBytes(fileId).Data;
 
             var ms = new MemoryStream(bytes);
