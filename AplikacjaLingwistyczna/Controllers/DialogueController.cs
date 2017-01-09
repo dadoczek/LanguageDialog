@@ -182,7 +182,7 @@ namespace AplikacjaLingwistyczna.Controllers
         [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Remove(int idDialogue)
         {
-            _dialogueApp.Remove(idDialogue);
+            var result = _dialogueApp.Remove(idDialogue);
             return RedirectToAction("GetPage");
         }
     }
