@@ -8,5 +8,6 @@ namespace Core.AbstractApp
         BaseResponse Add(AudioFile newTrack);
         BaseResponse Remove(int trackId, int dialogueId);
         BaseResponse Edit(AudioFile editTrack);
+        BaseResponse AddOrEdit(AudioFile audioFile);
     }
 }

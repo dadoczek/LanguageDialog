@@ -4,7 +4,7 @@
     }
 
     config = config || {
-        type: 'video'
+        type: 'audio'
     };
         
     config = new RecordRTCConfiguration(mediaStream, config);

@@ -71,7 +71,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 };
 
                 file.InputStream.Read(audioFile.Data, 0, file.ContentLength);
-                _fileApp.Add(audioFile);
+                _fileApp.AddOrEdit(audioFile);
             }
             return Json(Request.Form[0]);
         }

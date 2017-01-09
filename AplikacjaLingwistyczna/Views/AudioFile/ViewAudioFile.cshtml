@@ -2,10 +2,11 @@
 <div>
     @if (Model.AudioFile != null)
     {
-        @Html.DisplayFor(model => model.AudioFile.FileName)       
-         <audio controls>
+        @Html.DisplayFor(model => model.AudioFile.FileName)
+        <audio id="play-issue @Model.IssueId">
             <source src="@Url.Action("PlayAudio","DialoguePlay", new {fileId = Model.IssueId})" type="audio/mpeg" />
         </audio>
+        <button onclick="PlayIssue(@Model.IssueId)" class="glyphicon glyphicon-volume-down"></button>
     }
     @using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -30,7 +31,8 @@
 </div>
 
 <script>
-    function selectFile(id) {
-        
-    }
+    function PlayIssue(nr) {
+        document.getElementById("play-issue " + nr).load();
+        document.getElementById("play-issue " + nr).play();
+    };
 </script>

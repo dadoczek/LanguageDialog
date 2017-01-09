@@ -6,23 +6,23 @@
 
     <button id="record" onclick="recorder(@Model.IssueId)">Record</button>
     <button id="stop" disabled>Stop</button>
-    <button id="delete" disabled>Delete</button>
     <div id="container"></div>
 
     @Scripts.Render("~/bundles/Record")
     <script>
         var  $idIssue;
-        // PostBlob method uses XHR2 and FormData to submit
-        // recorded blob to the PHP server
+
         function PostBlob(blob, fileType, fileName) {
-            // FormData
-            var formData = new FormData();
+
+            const formData = new FormData();
+
+            var hr = document.createElement('hr');
+            container.appendChild(hr);
+
             formData.append(fileType + '-filename', fileName);
             formData.append(fileType + '-blob', blob);
 
-            // progress-bar
-            var hr = document.createElement('hr');
-            container.appendChild(hr);
+
             var strong = document.createElement('strong');
             strong.id = 'percentage';
             strong.innerHTML = fileType + ' upload progress: ';

@@ -9,7 +9,7 @@ namespace Core.Applictaion
 {
     internal class FileApplication : BaseApplication, IFileApplication
     {
-        private IFileRepository _repo;
+        private readonly IFileRepository _repo;
 
         public FileApplication(IFactory factory)
         {
@@ -29,6 +29,23 @@ namespace Core.Applictaion
             return DoSuccess(() =>
             {
                 _repo.Edit(editTrack);
+            });
+        }
+
+        public BaseResponse AddOrEdit(AudioFile audioFile)
+        {
+            return DoSuccess(() =>
+            {
+                var existAudio = _repo.GetAudioFile(audioFile.Id);
+                if (existAudio != null)
+                {
+                    existAudio.Data = audioFile.Data;
+                    existAudio.FileName = audioFile.FileName;
+                    existAudio.sufix = audioFile.sufix;
+                    _repo.Edit(existAudio);
+                } 
+                else
+                    _repo.Add(audioFile);
             });
         }
 
