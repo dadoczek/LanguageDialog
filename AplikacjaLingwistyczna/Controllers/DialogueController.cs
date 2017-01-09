@@ -1,17 +1,15 @@
-﻿using System;
-using Contract.Dtos;
+﻿using Contract.Dtos;
 using Contract.Enum;
 using Contract.Params;
+using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
 using Microsoft.AspNet.Identity;
 using Model.Models;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
-using Contract.Responses;
 
 namespace AplikacjaLingwistyczna.Controllers
 {

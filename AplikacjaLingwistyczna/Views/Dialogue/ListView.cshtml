@@ -1,4 +1,5 @@
 ﻿@using Contract.Dtos
+@using Model.EnumType
 @model DialoguePageDto
 
 <table class="table">
@@ -16,7 +17,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId)
+                @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId && item.Status == DialogueStatus.Edit)
                 {
                     @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })
                 }
