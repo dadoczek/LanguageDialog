@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using AplikacjaLingwistyczna.Models;
-using Contract.Enum;
-using Core.AbstractApp;
+﻿using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using System.Web;
@@ -27,35 +22,8 @@ namespace AplikacjaLingwistyczna.Controllers
             return PartialView(issue);
         }
 
-
         [HttpPost]
-        public ActionResult Upload(Issue issue, HttpPostedFileBase file)
-        {
-            AudioFile audioFile = null;
-
-            if (file != null)
-            {
-                audioFile = new AudioFile
-                {
-                    Id = issue.IssueId,
-                    FileName = file.FileName,
-                    sufix = ".mp3",
-                    Data = new byte[file.ContentLength]
-                };
-
-                file.InputStream.Read(audioFile.Data, 0, file.ContentLength);
-            }
-            else
-            {
-                return RedirectToAction("Edit", "Dialogue", new { idDialogue = issue.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
-            }
-
-            _fileApp.Add(audioFile);
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = issue.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
-        }
-
-        [HttpPost]
-        public ActionResult PostRecordedAudioVideo(int IssueId)
+        public bool PostRecordedAudioVideo(int IssueId)
         {
             foreach (string upload in Request.Files)
             {
@@ -73,7 +41,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 file.InputStream.Read(audioFile.Data, 0, file.ContentLength);
                 _fileApp.AddOrEdit(audioFile);
             }
-            return Json(Request.Form[0]);
+            return true;
         }
     }
 }

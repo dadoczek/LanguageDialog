@@ -17,15 +17,9 @@
         @Html.HiddenFor(model => model.IssueNr)
         @Html.HiddenFor(model => model.Text)
 
-        @Html.TextBox("file", "", new { type = "file", id=$"file{Model.IssueId}"})
+        @Html.TextBox("file", "", new { type = "file", id=$"file{Model.IssueId}", onchange= $"Save({Model.IssueId})"})
 
         @Html.Partial("~/Views/AudioFile/RecordAudio.cshtml")
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz" class="btn btn-default" />
-            </div>
-        </div>
     }
 
 </div>
@@ -35,4 +29,67 @@
         document.getElementById("play-issue " + nr).load();
         document.getElementById("play-issue " + nr).play();
     };
+
+    function Save(issueId) {
+
+        container = document.getElementById('container ' + issueId);
+
+        var formdata = new FormData();
+        var file = document.getElementById("file" + issueId);
+        for (i = 0; i < file.files.length; i++) {
+            formdata.append(file.files[i].name, file.files[i]);
+        }
+        Post(formdata, issueId);
+    }
+
+    function xhr(url, data, progress, percentage, callback) {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                callback(request.responseText);
+            }
+        };
+
+        if (url.indexOf('/RecordRTC/DeleteFile') == -1) {
+            request.upload.onloadstart = function () {
+                percentage.innerHTML = 'Upload started...';
+            };
+
+            request.upload.onprogress = function (event) {
+                progress.max = event.total;
+                progress.value = event.loaded;
+                percentage.innerHTML = 'Upload Progress ' + Math.round(event.loaded / event.total * 100) + "%";
+            };
+
+            request.upload.onload = function () {
+                percentage.innerHTML = 'Saved!';
+            };
+        }
+
+        request.open('POST', url,true);
+        request.send(data);
+    }
+
+    var container;
+
+
+    function Post(formData, idIssue) {
+
+        var strong = document.createElement('strong');
+        strong.id = 'percentage';
+        strong.innerHTML = "file"+ ' upload progress: ';
+        container.appendChild(strong);
+        var progress = document.createElement('progress');
+        container.appendChild(progress);
+
+        xhr('/AudioFile/PostRecordedAudioVideo?IssueId=' + idIssue,
+            formData,
+            progress,
+            percentage,
+            function (fName) {
+                progress.parentNode.removeChild(progress);
+                strong.parentNode.removeChild(strong);
+            });
+    }
+
 </script>

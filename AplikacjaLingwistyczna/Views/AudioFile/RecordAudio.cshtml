@@ -2,15 +2,21 @@
 
 <div>
     
-    <audio id="preview" controls></audio> 
+    <audio id="preview @Model.IssueId" controls></audio> 
 
-    <button id="record" onclick="recorder(@Model.IssueId)">Record</button>
-    <button id="stop" disabled>Stop</button>
-    <div id="container"></div>
+    <button id="record @Model.IssueId" onclick="recorder(@Model.IssueId)">Record</button>
+    <button id="stop @Model.IssueId"  onclick="stoping()" disabled>Stop</button>
+    <div id="container @Model.IssueId"></div>
 
     @Scripts.Render("~/bundles/Record")
     <script>
-        var  $idIssue;
+        var $idIssue;
+
+        var record;
+        var stop;
+        var preview;
+        var container;
+
 
         function PostBlob(blob, fileType, fileName) {
 
@@ -36,42 +42,29 @@
                 progress,
                 percentage,
                 function(fName) {
-                    container.appendChild(document.createElement('hr'));
-                    var mediaElement = document.createElement(fileType);
-
-                    var source = document.createElement('source');
-                    source.src = window.location.protocol + "//" + window.location.host + "/" + "DialoguePlay/PlayAudio?fileId=" + $idIssue;
-                    source.type = "audio/mpeg";
-
-                    mediaElement.appendChild(source);
-
-                    mediaElement.controls = true;
-                    container.appendChild(mediaElement);
-                    mediaElement.play();
-
                     progress.parentNode.removeChild(progress);
                     strong.parentNode.removeChild(strong);
                     hr.parentNode.removeChild(hr);
                 });
         }
 
-        var record = document.getElementById('record');
-        var stop = document.getElementById('stop');
-        var deleteFiles = document.getElementById('delete');
 
-        var audio = document.querySelector('audio');
-
-        var preview = document.getElementById('preview');
-
-        var container = document.getElementById('container');
 
         // if you want to record only audio on chrome
         // then simply set "isFirefox=true"
         var isFirefox = !!navigator.mozGetUserMedia;
 
-        var recordAudio, recordVideo;
+        var recordAudio;
         function recorder(id) {
             $idIssue = id;
+
+            record = document.getElementById('record '+ $idIssue);
+            stop = document.getElementById('stop '+ $idIssue);
+
+            preview = document.getElementById("preview " + $idIssue);
+
+            container = document.getElementById('container '+ $idIssue);
+
             record.disabled = true;
             navigator.getUserMedia({
                     audio: true,
@@ -97,40 +90,19 @@
         };
 
         var fileName;
-        stop.onclick = function() {
+        function stoping() {
             record.disabled = false;
             stop.disabled = true;
 
             preview.src = '';
 
-            fileName = Math.round(Math.random() * 99999999) + 99999999;
+            fileName = 1;
 
             recordAudio.stopRecording(function() {
                 PostBlob(recordAudio.getBlob(), 'audio', fileName + '.wav');
             });
 
-            deleteFiles.disabled = false;
         };
-
-        deleteFiles.onclick = function() {
-            deleteAudioVideoFiles();
-        };
-
-        function deleteAudioVideoFiles() {
-            deleteFiles.disabled = true;
-            if (!fileName) return;
-            var formData = new FormData();
-            formData.append('delete-file', fileName);
-            xhr('/RecordRTC/DeleteFile',
-                formData,
-                null,
-                null,
-                function(response) {
-                    console.log(response);
-                });
-            fileName = null;
-            container.innerHTML = '';
-        }
 
         function xhr(url, data, progress, percentage, callback) {
             var request = new XMLHttpRequest();
@@ -139,6 +111,7 @@
                     callback(request.responseText);
                 }
             };
+            request.responseType = data.type;
 
             if (url.indexOf('/RecordRTC/DeleteFile') == -1) {
                 request.upload.onloadstart = function() {
@@ -162,7 +135,6 @@
 
         window.onbeforeunload = function() {
             if (!!fileName) {
-                deleteAudioVideoFiles();
                 return 'It seems that you\'ve not deleted audio/video files from the server.';
             }
         };

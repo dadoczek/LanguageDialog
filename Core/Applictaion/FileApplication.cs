@@ -36,11 +36,12 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
+                
+
                 var existAudio = _repo.GetAudioFile(audioFile.Id);
                 if (existAudio != null)
                 {
                     existAudio.Data = audioFile.Data;
-                    existAudio.FileName = audioFile.FileName;
                     existAudio.sufix = audioFile.sufix;
                     _repo.Edit(existAudio);
                 } 

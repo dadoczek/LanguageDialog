@@ -22,12 +22,14 @@ namespace Repository.Repositories
 
         public void Add(AudioFile newTrack)
         {
+            newTrack = SetAudioName(newTrack);
             _context.AudioFile.Add(newTrack);
             _context.SaveChanges();
         }
 
         public void Edit(AudioFile editTrack)
         {
+            editTrack = SetAudioName(editTrack);
             _context.Entry(editTrack).State = EntityState.Modified;
             _context.SaveChanges();
         }
@@ -35,6 +37,13 @@ namespace Repository.Repositories
         public void Remove(int trackId, int dialogueId)
         {
             throw new NotImplementedException();
+        }
+
+        private AudioFile SetAudioName(AudioFile audioFile)
+        {
+            var issue = _context.Issue.Find(audioFile.Id);
+            audioFile.FileName = $"Audio_{issue.Dialogue.Name}_{issue.IssueNr}_{issue.Actor.Name}";
+            return audioFile;
         }
     }
 }
