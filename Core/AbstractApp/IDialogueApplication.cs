@@ -18,5 +18,6 @@ namespace Core.AbstractApp
         DataResponse<DialogueViewDto> GetToEditData(DialogueEditWievParams @params);
         DataResponse<DialogueViewDto> GetToCreateData();
         DataResponse<DialogueViewDto> SetLanguages(DialogueViewDto data);
+        BaseResponse RemoveEdit(int id, string userId);
     }
 }

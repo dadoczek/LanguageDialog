@@ -173,5 +173,29 @@ namespace Core.Applictaion
             IssueWarnig,
             AudioWarning,
         }
+
+        public BaseResponse RemoveEdit(int id, string userId)
+        {
+            return Do(() =>
+            {
+                var dialogue = _dialogueRepository.GetOne(id);
+
+                if (dialogue.Status != DialogueStatus.Edit || dialogue.AutorId != userId)
+                    return new BaseResponse
+                    {
+                        Status = SerializationStatus.Warning,
+                        IsValid = true,
+                        Message = "Brak uprawnień"
+                    };
+
+                _dialogueRepository.Remove(id);
+
+                return new BaseResponse
+                {
+                    Status = SerializationStatus.Success,
+                    IsValid = true,
+                };
+            },false);
+        }
     }
 }

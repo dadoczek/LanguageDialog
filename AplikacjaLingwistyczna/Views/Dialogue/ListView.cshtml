@@ -20,6 +20,7 @@
                 @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId && item.Status == DialogueStatus.Edit)
                 {
                     @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })
+                    @Html.ActionLink(" ", "RemoveEdit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
                 }
 
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))

@@ -185,5 +185,12 @@ namespace AplikacjaLingwistyczna.Controllers
             var result = _dialogueApp.Remove(idDialogue);
             return RedirectToAction("GetPage");
         }
+
+        [Authorize]
+        public ActionResult RemoveEdit(int idDialogue)
+        {
+            var result = _dialogueApp.RemoveEdit(idDialogue, User.Identity.GetUserId());
+            return RedirectToAction("GetPage");
+        }
     }
 }

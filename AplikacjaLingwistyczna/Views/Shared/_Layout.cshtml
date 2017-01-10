@@ -29,7 +29,7 @@
                         <li>@Html.ActionLink("Języki", "GetPage", "Language")</li>
                     }
                     <li> @Html.ActionLink("Dialogi", "GetPage", "Dialogue") </li>
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Moje dialogi", "GetMyDialoguePage", "Dialogue")</li>
                     }
