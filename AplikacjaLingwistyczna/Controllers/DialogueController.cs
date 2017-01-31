@@ -51,6 +51,12 @@ namespace AplikacjaLingwistyczna.Controllers
 
         public ActionResult GetMyDialoguePage(DialogueSortDto sort, int page = 1)
         {
+            var data = MyDialogData(sort, page);
+            return View("GetPage", data);
+        }
+
+        private DialoguePageDto MyDialogData(DialogueSortDto sort, int page)
+        {
             Languages = _factory.GetLanguageRepository.GetAll();
             if (sort == null)
                 sort = new DialogueSortDto();
@@ -63,7 +69,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 Page = page,
                 Sort = sort
             });
-            return View("GetPage", model.Data);
+            return model.Data;
         }
 
         [HttpPost]
@@ -190,7 +196,8 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult RemoveEdit(int idDialogue)
         {
             var result = _dialogueApp.RemoveEdit(idDialogue, User.Identity.GetUserId());
-            return RedirectToAction("GetPage");
+            var data = MyDialogData(null,1);
+            return RedirectToAction("GetPage",data);
         }
     }
 }

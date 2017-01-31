@@ -118,7 +118,10 @@ namespace Repository.Repositories
         {
             var removeDialogue = _context.Dialogue.First(d => d.DialogueId == id);
 
-            _context.AudioFile.RemoveRange(removeDialogue.Issues.Select(i => i.AudioFile));
+            var audioFile = removeDialogue.Issues.Select(i => i.AudioFile).Where(a => a != null).ToList();
+            if (audioFile.Any())
+                _context.AudioFile.RemoveRange(audioFile);
+
             _context.Issue.RemoveRange(removeDialogue.Issues);
             _context.Actor.RemoveRange(removeDialogue.Actors);
 
