@@ -27,7 +27,10 @@
                 {
                     @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
                 }
-                @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { })
+                @if (item.Status == DialogueStatus.Pubish)
+                {
+                    @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { })
+                }
 
             </td>
         </tr>
