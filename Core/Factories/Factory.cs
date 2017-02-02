@@ -9,7 +9,7 @@ namespace Core.Factories
 {
     public class Factory : IFactory
     {
-        public IDialogueRepository GetDialogueRepository => new EfDialogueRepository(new EfContext());
+        public virtual IDialogueRepository GetDialogueRepository => new EfDialogueRepository(new EfContext());
 
         public IActorRepository GetActorRepository => new EfActorRepository(new EfContext());
 

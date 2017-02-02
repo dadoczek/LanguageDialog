@@ -32,7 +32,7 @@ namespace Repository.Repositories
         {
             var elementCount = _context.Language.Count(language => language.ParentId == null);
 
-            var pagingSystem = new PagingDto(page, elementCount, PageSize);
+            var pagingSystem = PagingDto.Create(page, elementCount, PageSize);
 
             var elements = _context.Language
                 .Where(language => language.ParentId == null)

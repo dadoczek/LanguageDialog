@@ -30,7 +30,7 @@ namespace AplikacjaLingwistyczna.Tests.Controllers
             var result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual("Adrian Dadok - Praca inżynierska", result.ViewBag.Message);
         }
 
         [TestMethod]
@@ -44,6 +44,7 @@ namespace AplikacjaLingwistyczna.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+            Assert.AreEqual("Adrian Dadok - Kontakt", result.ViewBag.Message);
         }
     }
 }

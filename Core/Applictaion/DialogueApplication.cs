@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using Contract.Dtos;
 using Contract.Params;
 using Contract.Responses;
@@ -56,18 +57,83 @@ namespace Core.Applictaion
 
         public DataResponse<DialoguePageDto> GetPage(DialoguePageParams @params)
         {
-            return Do(() => new DataResponse<DialoguePageDto>
+            return Do(() =>
             {
-                Data = _dialogueRepository.GetPage(@params)
-            });
+                var dialogues = _dialogueRepository.GetAll();
+                dialogues = QueryPageDialogue(@params, dialogues);
+
+                return new DataResponse<DialoguePageDto>
+                {
+                    Data = GetDialogeDto(@params,dialogues)
+                };
+        });
+    }
+
+        private IQueryable<Dialogue> QueryPageDialogue(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
+            if (@params.Sort.LanguageId.HasValue)
+            {
+                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
+            }
+
+            elements = elements.Where(d => d.Status == DialogueStatus.Pubish);
+
+            if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
+                elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
+
+            return elements;
+        }
+
+        private DialoguePageDto GetDialogeDto(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
+            var countElement = elements.Count();
+
+            var pagingSystem = @params.Sort.SizePage != null
+                ? PagingDto.Create(@params.Page, countElement, (int)@params.Sort.SizePage)
+                : PagingDto.Create(@params.Page, countElement);
+
+            elements = elements
+                .OrderBy(d => d.Name)
+                .Skip(pagingSystem.SkipElement())
+                .Take(pagingSystem.SizePage)
+                .AsNoTracking();
+
+            return new DialoguePageDto
+            {
+                Dialogues = elements.ToList(),
+                Paging = pagingSystem,
+                Sort = @params.Sort
+            };
         }
 
         public DataResponse<DialoguePageDto> GetMyDialoguePage(DialoguePageParams @params)
         {
-            return Do(() => new DataResponse<DialoguePageDto>
+            return Do(() =>
             {
-                Data = _dialogueRepository.GetMyDialoguePage(@params)
+                var dialogues = _dialogueRepository.GetAll();
+                dialogues = QueryMyPageDialogue(@params, dialogues); 
+
+                return new DataResponse<DialoguePageDto>
+                {
+                    Data = GetDialogeDto(@params, dialogues)
+                };
             });
+        }
+
+        private IQueryable<Dialogue> QueryMyPageDialogue(DialoguePageParams @params, IQueryable<Dialogue> elements)
+        {
+            if (@params.Sort.LanguageId.HasValue)
+            {
+                elements = elements.Where(d => d.LanguageId == @params.Sort.LanguageId);
+            }
+            elements = elements.Where(d => d.AutorId == @params.Sort.IdUser);
+
+            elements = elements.Where(d => d.Status == DialogueStatus.Pubish || d.Status == DialogueStatus.Edit);
+
+            if (!string.IsNullOrWhiteSpace(@params.Sort.Name))
+                elements = elements.Where(d => d.Name.ToLower().Contains(@params.Sort.Name.ToLower()));
+
+            return elements;
         }
 
         public BaseResponse PublishDialogue(int dialogueId)

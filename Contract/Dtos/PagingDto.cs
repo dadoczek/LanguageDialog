@@ -6,21 +6,31 @@ namespace Contract.Dtos
     {
         private const int DefoultSizePage = 20;
 
-        public int Page { get; }
-        public int SizePage { get; }
-        public int CountPage { get; }
-        public int CountElement { get; }
-        public bool IsNextPage { get; private set; }
-        public bool IsPreviousPage { get; private set; }
+        public int Page { get; set; }
+        public int SizePage { get; set; }
+        public int CountPage { get; set; }
+        public int CountElement { get; set; }
+        public bool IsNextPage { get; set; }
+        public bool IsPreviousPage { get; set; }
 
-        public PagingDto(int page, int countElement, int sizePage = DefoultSizePage)
+        public static PagingDto Create(int page, int countElement, int sizePage = DefoultSizePage)
         {
-            Page = page;
-            CountElement = countElement;
-            SizePage = sizePage;
-            CountPage = (int)Math.Ceiling(CountElement / (decimal)SizePage);
-            IsPreviousPage = page > 1;
-            IsNextPage = page < CountPage;
+            if ((page - 1) * sizePage > countElement || page <= 0)
+                throw new Exception("Numer Strony nie istnieje");
+
+            var coutPage = (int) Math.Ceiling(countElement / (decimal) sizePage);
+
+            var paging = new PagingDto
+            {
+                Page = page,
+                CountElement = countElement,
+                SizePage = sizePage,
+                CountPage = coutPage,
+                IsPreviousPage = page > 1,
+                IsNextPage = page < coutPage,
+            };
+            return paging;
+
         }
 
         public int SkipElement()
