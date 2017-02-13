@@ -1,6 +1,4 @@
-﻿using Contract.Dtos;
-using Contract.Params;
-using Model.Models;
+﻿using Model.Models;
 using System.Linq;
 
 namespace Repository.AbstractRepo

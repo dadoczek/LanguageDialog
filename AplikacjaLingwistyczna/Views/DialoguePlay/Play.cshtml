@@ -39,7 +39,7 @@
             {
                 <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, -1)" class="glyphicon glyphicon-play"></button>
             }
-            <button onclick="PauseDialoguePlay(@Model.Setting.IdNowPlay)" class="glyphicon glyphicon-play"></button>
+            <button onclick="StopDialoguePlay(@Model.Setting.IdNowPlay)" class="glyphicon glyphicon-pause"></button>
 
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>
@@ -55,7 +55,7 @@
 
     function StopDialoguePlay(nr)
     {
-        var ply = document.getElementById("play-issue " + nr).pause;
+        var ply = document.getElementById("play-issue " + nr).pause();
     };
 
     function PlayDialogue(nr, id, idActor)
