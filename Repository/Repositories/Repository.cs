@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using Model.Context;
 using Repo.AbstractRepo;
 
-[assembly:InternalsVisibleTo("PlayDialogue.Core")]
+[assembly:InternalsVisibleTo("Service")]
 [assembly:InternalsVisibleTo("AplikacjaLingwistyczna.Tests")]
 namespace Repo.Repositories
 {

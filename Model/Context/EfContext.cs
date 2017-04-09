@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Model.Migrations;
 using Model.Models;
 using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-using Model.Migrations;
 
 namespace Model.Context
 {
