@@ -2,7 +2,7 @@
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
-using Repository.AbstractRepo;
+using Repo.AbstractRepo;
 
 namespace Core.Applictaion
 {

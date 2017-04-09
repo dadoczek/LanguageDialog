@@ -1,6 +1,6 @@
 ﻿using Model.Models;
 
-namespace Repository.AbstractRepo
+namespace Repo.AbstractRepo
 {
     public interface IActorRepository
     {

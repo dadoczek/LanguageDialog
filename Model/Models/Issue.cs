@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
@@ -7,7 +6,7 @@ namespace Model.Models
     public class Issue
     {
         [Key]
-        public int IssueId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int IssueNr { get; set; }
@@ -16,7 +15,7 @@ namespace Model.Models
         public string Text { get; set; }
 
         [ForeignKey("Dialogue")]
-        public int DialogueId { get; set; }
+        public int? DialogueId { get; set; }
 
         public virtual Dialogue Dialogue { get; set; }
 

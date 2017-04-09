@@ -30,7 +30,7 @@
         <div class="form-group">
             @Html.Label("Język", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.LanguageId, new SelectList(DialogueController.Languages, "LanguageId", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
+                @Html.DropDownListFor(model => model.LanguageId, new SelectList(DialogueController.Languages, "Id", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
             </div>
         </div>

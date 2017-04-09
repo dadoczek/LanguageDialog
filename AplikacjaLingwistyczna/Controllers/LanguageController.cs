@@ -57,7 +57,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ParentId, Name, LanguageId")] Language language)
+        public ActionResult Edit([Bind(Include = "ParentId, Name, Id")] Language language)
         {
             if (ModelState.IsValid)
             {

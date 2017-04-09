@@ -1,7 +1,7 @@
 ﻿using Contract.Params;
 using Model.Models;
 
-namespace Repository.AbstractRepo
+namespace Repo.AbstractRepo
 {
     public interface IIssueRepository
     {

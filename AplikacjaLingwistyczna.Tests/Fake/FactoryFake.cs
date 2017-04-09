@@ -1,5 +1,5 @@
 ﻿using Core.Factories;
-using Repository.AbstractRepo;
+using Repo.AbstractRepo;
 
 namespace AplikacjaLingwistyczna.Tests.Fake
 {

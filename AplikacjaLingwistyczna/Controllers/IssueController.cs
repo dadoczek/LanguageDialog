@@ -19,7 +19,7 @@ namespace AplikacjaLingwistyczna.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateIssue([Bind(Include = "DialogueId,Text,IssueNr,ActorId")] Issue model)
+        public ActionResult CreateIssue([Bind(Include = "Id,Text,IssueNr,Id")] Issue model)
         {
             if (ModelState.IsValid)
             {

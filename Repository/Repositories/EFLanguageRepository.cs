@@ -1,11 +1,11 @@
-﻿using Contract.Dtos;
+﻿using System.Data.Entity;
+using System.Linq;
+using Contract.Dtos;
 using Model.Context;
 using Model.Models;
-using Repository.AbstractRepo;
-using System.Data.Entity;
-using System.Linq;
+using Repo.AbstractRepo;
 
-namespace Repository.Repositories
+namespace Repo.Repositories
 {
     internal class EfLanguageRepository : ILanguageRepository
     {
@@ -55,7 +55,7 @@ namespace Repository.Repositories
 
         public void Remove(int id)
         {
-            var language = _context.Language.First(lang => lang.LanguageId == id);
+            var language = _context.Language.First(lang => lang.Id == id);
             _context.Language.Remove(language);
             _context.SaveChanges();
         }

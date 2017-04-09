@@ -1,5 +1,5 @@
 ﻿using Core.AbstractApp;
-using Repository.AbstractRepo;
+using Repo.AbstractRepo;
 
 namespace Core.Factories
 {

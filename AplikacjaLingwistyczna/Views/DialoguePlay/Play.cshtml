@@ -26,18 +26,18 @@
                     }
 
                     <audio id="play-issue @element.IssueNr">
-                        <source src="PlayAudio?fileId=@element.IssueId" type="audio/mpeg" />
+                        <source src="PlayAudio?fileId=@element.Id" type="audio/mpeg" />
                     </audio> 
                     <button onclick="PlayIssue(@element.IssueNr)" class="glyphicon glyphicon-volume-down"></button> 
                 </div>
             }
             @if (@Model.Setting.SelectActor != null)
             {
-                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, @Model.Setting.SelectActor)" class="glyphicon glyphicon-play"></button>
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, @Model.Setting.SelectActor)" class="glyphicon glyphicon-play"></button>
             }
             else
             {
-                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.DialogueId, -1)" class="glyphicon glyphicon-play"></button>
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, -1)" class="glyphicon glyphicon-play"></button>
             }
             <button onclick="StopDialoguePlay(@Model.Setting.IdNowPlay)" class="glyphicon glyphicon-pause"></button>
 

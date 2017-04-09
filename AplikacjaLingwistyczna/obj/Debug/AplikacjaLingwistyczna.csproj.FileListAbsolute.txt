@@ -374,7 +374,6 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Ninject.Web.Common.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Ninject.Web.Mvc.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Owin.dll
-C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repository.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Helpers.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Mvc.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Optimization.dll
@@ -387,7 +386,6 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Contract.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Core.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Model.pdb
-C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repository.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\EntityFramework.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\EntityFramework.SqlServer.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -418,3 +416,5 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\obj\Debug\AplikacjaLingwistyczna.csprojResolveAssemblyReference.cache
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\obj\Debug\AplikacjaLingwistyczna.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\obj\Debug\AplikacjaLingwistyczna.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repo.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repo.pdb

@@ -2,11 +2,11 @@
 
 <div>
     
-    <audio id="preview @Model.IssueId" controls></audio> 
+    <audio id="preview @Model.Id" controls></audio> 
 
-    <button id="record @Model.IssueId" onclick="recorder(@Model.IssueId)">Record</button>
-    <button id="stop @Model.IssueId"  onclick="stoping()" disabled>Stop</button>
-    <div id="container @Model.IssueId"></div>
+    <button id="record @Model.Id" onclick="recorder(@Model.Id)">Record</button>
+    <button id="stop @Model.Id"  onclick="stoping()" disabled>Stop</button>
+    <div id="container @Model.Id"></div>
 
     @Scripts.Render("~/bundles/Record")
     <script>
@@ -37,7 +37,7 @@
             container.appendChild(progress);
 
             // POST the Blob using XHR2
-            xhr('/AudioFile/PostRecordedAudioVideo?IssueId=' + $idIssue,
+            xhr('/AudioFile/PostRecordedAudioVideo?Id=' + $idIssue,
                 formData,
                 progress,
                 percentage,

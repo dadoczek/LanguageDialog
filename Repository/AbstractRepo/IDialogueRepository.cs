@@ -1,7 +1,7 @@
-﻿using Model.Models;
-using System.Linq;
+﻿using System.Linq;
+using Model.Models;
 
-namespace Repository.AbstractRepo
+namespace Repo.AbstractRepo
 {
     public interface IDialogueRepository
     {

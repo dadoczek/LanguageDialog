@@ -3,21 +3,21 @@
     @if (Model.AudioFile != null)
     {
         @Html.DisplayFor(model => model.AudioFile.FileName)
-        <audio id="play-issue @Model.IssueId">
-            <source src="@Url.Action("PlayAudio","DialoguePlay", new {fileId = Model.IssueId})" type="audio/mpeg" />
+        <audio id="play-issue @Model.Id">
+            <source src="@Url.Action("PlayAudio","DialoguePlay", new {fileId = Model.Id})" type="audio/mpeg" />
         </audio>
-        <button onclick="PlayIssue(@Model.IssueId)" class="glyphicon glyphicon-volume-down"></button>
+        <button onclick="PlayIssue(@Model.Id)" class="glyphicon glyphicon-volume-down"></button>
     }
     @using (Html.BeginForm("Upload", "AudioFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(model => model.IssueId)
+        @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.DialogueId)
         @Html.HiddenFor(model => model.IssueNr)
         @Html.HiddenFor(model => model.Text)
 
-        @Html.TextBox("file", "", new { type = "file", id=$"file{Model.IssueId}", onchange= $"Save({Model.IssueId})"})
+        @Html.TextBox("file", "", new { type = "file", id=$"file{Model.Id}", onchange= $"Save({Model.Id})"})
 
         @Html.Partial("~/Views/AudioFile/RecordAudio.cshtml")
     }
@@ -82,7 +82,7 @@
         var progress = document.createElement('progress');
         container.appendChild(progress);
 
-        xhr('/AudioFile/PostRecordedAudioVideo?IssueId=' + idIssue,
+        xhr('/AudioFile/PostRecordedAudioVideo?Id=' + idIssue,
             formData,
             progress,
             percentage,

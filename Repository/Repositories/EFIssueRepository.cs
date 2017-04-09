@@ -1,11 +1,11 @@
-﻿using Contract.Params;
+﻿using System.Data.Entity;
+using System.Linq;
+using Contract.Params;
 using Model.Context;
 using Model.Models;
-using Repository.AbstractRepo;
-using System.Data.Entity;
-using System.Linq;
+using Repo.AbstractRepo;
 
-namespace Repository.Repositories
+namespace Repo.Repositories
 {
     internal class EfIssueRepository : IIssueRepository
     {

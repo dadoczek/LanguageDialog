@@ -39,7 +39,7 @@ namespace Core.Applictaion
         {
             return Do(() =>
             {
-                playResponse.Dialogue = _factory.GetDialogueRepository.GetOne(playResponse.Dialogue.DialogueId);
+                playResponse.Dialogue = _factory.GetDialogueRepository.GetOne(playResponse.Dialogue.Id);
                 return new DataResponse<PlayResponse> { Data = playResponse };
             });
 
@@ -87,7 +87,7 @@ namespace Core.Applictaion
                 }
                 else
                 {
-                    var actor = dialogue.Actors.FirstOrDefault(a => a.ActorId == idActor);
+                    var actor = dialogue.Actors.FirstOrDefault(a => a.Id == idActor);
                     isPlay = actor.Issues.All(i => i.IssueNr != nr);
                 }
 

@@ -3,8 +3,8 @@ using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
-using Repository.AbstractRepo;
 using System.Collections.Generic;
+using Repo.AbstractRepo;
 
 namespace Core.Applictaion
 {

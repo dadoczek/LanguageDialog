@@ -177,7 +177,7 @@ namespace AplikacjaLingwistyczna.Controllers
             if (ModelState.IsValid)
             {
                 _dialogueApp.Edit(editModel.Dialogue);
-                return RedirectToAction("Edit", new {idDialogue = editModel.Dialogue.DialogueId});
+                return RedirectToAction("Edit", new {idDialogue = editModel.Dialogue.Id});
             }
             else
             {

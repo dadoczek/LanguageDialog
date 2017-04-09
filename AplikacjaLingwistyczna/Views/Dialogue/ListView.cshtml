@@ -19,17 +19,17 @@
             <td>
                 @if (User.Identity.IsAuthenticated && ViewBag.UserId == item.AutorId && item.Status == DialogueStatus.Edit)
                 {
-                    @Html.ActionLink(" ", "Edit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-edit" })
-                    @Html.ActionLink(" ", "RemoveEdit", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+                    @Html.ActionLink(" ", "Edit", new { idDialogue = item.Id }, new { @class = "glyphicon glyphicon-edit" })
+                    @Html.ActionLink(" ", "RemoveEdit", new { idDialogue = item.Id }, new { @class = "glyphicon glyphicon-trash" })
                 }
 
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink(" ", "Remove", new { idDialogue = item.DialogueId }, new { @class = "glyphicon glyphicon-trash" })
+                    @Html.ActionLink(" ", "Remove", new { idDialogue = item.Id }, new { @class = "glyphicon glyphicon-trash" })
                 }
                 @if (item.Status == DialogueStatus.Pubish)
                 {
-                    @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.DialogueId }, new { })
+                    @Html.ActionLink("Odegraj", "Play", "DialoguePlay", new { dialogueId = item.Id }, new { })
                 }
 
             </td>

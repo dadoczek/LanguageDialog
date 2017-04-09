@@ -2,8 +2,8 @@
 using Core.AbstractApp;
 using Core.Applictaion;
 using Model.Context;
-using Repository.AbstractRepo;
-using Repository.Repositories;
+using Repo.AbstractRepo;
+using Repo.Repositories;
 
 namespace Core.Factories
 {

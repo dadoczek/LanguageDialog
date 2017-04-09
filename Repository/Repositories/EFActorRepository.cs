@@ -1,10 +1,10 @@
-﻿using Model.Context;
-using Model.Models;
-using Repository.AbstractRepo;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
+using Model.Context;
+using Model.Models;
+using Repo.AbstractRepo;
 
-namespace Repository.Repositories
+namespace Repo.Repositories
 {
     public class EfActorRepository : IActorRepository
     {
@@ -29,7 +29,7 @@ namespace Repository.Repositories
 
         public Actor GetOne(int id)
         {
-            return _context.Actor.FirstOrDefault(a => a.ActorId == id);
+            return _context.Actor.FirstOrDefault(a => a.Id == id);
         }
 
         public void Remove(int id)

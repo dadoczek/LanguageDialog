@@ -56,6 +56,7 @@
     <Compile Include="Responses\BaseResponse.cs" />
     <Compile Include="Responses\DataResponse.cs" />
     <Compile Include="Responses\QueryableDataResponse.cs" />
+    <Compile Include="WebModel\PageData.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

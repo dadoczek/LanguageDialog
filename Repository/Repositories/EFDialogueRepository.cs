@@ -1,15 +1,13 @@
-﻿using Contract.Dtos;
-using Contract.Params;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using Model.Context;
 using Model.EnumType;
 using Model.Models;
-using Repository.AbstractRepo;
-using System.Data.Entity;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using Repo.AbstractRepo;
 
 [assembly: InternalsVisibleTo("Core")]
-namespace Repository.Repositories
+namespace Repo.Repositories
 {
     internal class EfDialogueRepository : IDialogueRepository
     {
@@ -40,12 +38,12 @@ namespace Repository.Repositories
 
         public Dialogue GetOne(int id)
         {
-            return _context.Dialogue.FirstOrDefault(d => d.DialogueId == id);
+            return _context.Dialogue.FirstOrDefault(d => d.Id == id);
         }
 
         public void Remove(int id)
         {
-            var removeDialogue = _context.Dialogue.First(d => d.DialogueId == id);
+            var removeDialogue = _context.Dialogue.First(d => d.Id == id);
 
             var audioFile = removeDialogue.Issues.Select(i => i.AudioFile)
                 .Where(a => a != null).ToList();

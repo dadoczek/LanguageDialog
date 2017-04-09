@@ -9,7 +9,7 @@
         <h4>Issue</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IssueId)
+        @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.DialogueId)
         @Html.HiddenFor(model => model.IssueNr)
 
@@ -24,7 +24,7 @@
         <div class="form-group">
             @Html.Label("Aktor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.ActorId, new SelectList(Model.Dialogue.Actors, "ActorId", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
+                @Html.DropDownListFor(model => model.ActorId, new SelectList(Model.Dialogue.Actors, "Id", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.ActorId, "", new { @class = "text-danger" })
             </div>
         </div>

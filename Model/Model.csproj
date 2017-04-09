@@ -60,30 +60,6 @@
   <ItemGroup>
     <Compile Include="Context\EfContext.cs" />
     <Compile Include="EnumType\DialogueStatus.cs" />
-    <Compile Include="Migrations\201609281715472_start.cs" />
-    <Compile Include="Migrations\201609281715472_start.Designer.cs">
-      <DependentUpon>201609281715472_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610211622281_Link_Autor-Dialogue.cs" />
-    <Compile Include="Migrations\201610211622281_Link_Autor-Dialogue.Designer.cs">
-      <DependentUpon>201610211622281_Link_Autor-Dialogue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610211629429_Add_UserDialogue.cs" />
-    <Compile Include="Migrations\201610211629429_Add_UserDialogue.Designer.cs">
-      <DependentUpon>201610211629429_Add_UserDialogue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610211634391_changeInfrastructure.cs" />
-    <Compile Include="Migrations\201610211634391_changeInfrastructure.Designer.cs">
-      <DependentUpon>201610211634391_changeInfrastructure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610211750423_FileTable.cs" />
-    <Compile Include="Migrations\201610211750423_FileTable.Designer.cs">
-      <DependentUpon>201610211750423_FileTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610221430031_LanguageName.cs" />
-    <Compile Include="Migrations\201610221430031_LanguageName.Designer.cs">
-      <DependentUpon>201610221430031_LanguageName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Dialogue.cs" />
@@ -97,26 +73,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609281715472_start.resx">
-      <DependentUpon>201609281715472_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610211622281_Link_Autor-Dialogue.resx">
-      <DependentUpon>201610211622281_Link_Autor-Dialogue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610211629429_Add_UserDialogue.resx">
-      <DependentUpon>201610211629429_Add_UserDialogue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610211634391_changeInfrastructure.resx">
-      <DependentUpon>201610211634391_changeInfrastructure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610211750423_FileTable.resx">
-      <DependentUpon>201610211750423_FileTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610221430031_LanguageName.resx">
-      <DependentUpon>201610221430031_LanguageName.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

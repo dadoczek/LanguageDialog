@@ -12,7 +12,7 @@ namespace Model.Models
         }
 
         [Key]
-        public int LanguageId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

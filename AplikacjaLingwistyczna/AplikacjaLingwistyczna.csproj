@@ -358,9 +358,9 @@
       <Project>{d4828bd6-1e4d-4335-a683-56f2ee69a39d}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
+    <ProjectReference Include="..\Repository\Repo.csproj">
       <Project>{a814028e-afe0-4088-ad79-8e0274070afd}</Project>
-      <Name>Repository</Name>
+      <Name>Repo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -248,7 +248,6 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\EntityFramework.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Repository.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\AplikacjaLingwistyczna.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Contract.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\NSubstitute.xml
@@ -279,7 +278,12 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\EntityFramework.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Repository.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\obj\Debug\AplikacjaLingwistyczna.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\obj\Debug\AplikacjaLingwistyczna.Tests.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\obj\Debug\AplikacjaLingwistyczna.Tests.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Repo.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Service.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Repo.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Service.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\EntityFramework.SqlServer.xml

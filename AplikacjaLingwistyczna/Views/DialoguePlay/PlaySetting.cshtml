@@ -8,13 +8,13 @@
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @Html.HiddenFor(model => model.Dialogue.DialogueId)
+        @Html.HiddenFor(model => model.Dialogue.Id)
         @Html.HiddenFor(model => model.Setting.IdNowPlay)
 
         <div class="form-group">
             @Html.Label("Wybrany aktor:", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Setting.SelectActor, new SelectList(Model.Dialogue.Actors, "ActorId", "Name"), "Wybierz aktora", new { @class = "btn btn-primary dropdown-toggle" })
+                @Html.DropDownListFor(model => model.Setting.SelectActor, new SelectList(Model.Dialogue.Actors, "Id", "Name"), "Wybierz aktora", new { @class = "btn btn-primary dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.Setting.SelectActor, "", new { @class = "text-danger" })
             </div>
         </div>

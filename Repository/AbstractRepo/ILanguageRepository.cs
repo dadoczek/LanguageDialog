@@ -1,8 +1,8 @@
-﻿using Contract.Dtos;
+﻿using System.Linq;
+using Contract.Dtos;
 using Model.Models;
-using System.Linq;
 
-namespace Repository.AbstractRepo
+namespace Repo.AbstractRepo
 {
     public interface ILanguageRepository
     {

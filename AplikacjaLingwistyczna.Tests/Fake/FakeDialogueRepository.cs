@@ -1,7 +1,7 @@
 ﻿using Model.Models;
-using Repository.AbstractRepo;
 using System.Collections.Generic;
 using System.Linq;
+using Repo.AbstractRepo;
 
 namespace AplikacjaLingwistyczna.Tests.Fake
 {
@@ -19,13 +19,13 @@ namespace AplikacjaLingwistyczna.Tests.Fake
 
         public void Add(Dialogue dialogue)
         {
-            dialogue.DialogueId = CouterId();
+            dialogue.Id = CouterId();
             Dialogues.Add(dialogue);
         }
 
         public void Remove(int id)
         {
-            var dialogue = Dialogues.FirstOrDefault(d => d.DialogueId == id);
+            var dialogue = Dialogues.FirstOrDefault(d => d.Id == id);
             Dialogues.Remove(dialogue);
         }
 
@@ -36,7 +36,7 @@ namespace AplikacjaLingwistyczna.Tests.Fake
 
         public Dialogue GetOne(int id)
         {
-            return Dialogues.FirstOrDefault(d => d.DialogueId == id);
+            return Dialogues.FirstOrDefault(d => d.Id == id);
         }
 
         public void Edit(Dialogue dialogue)

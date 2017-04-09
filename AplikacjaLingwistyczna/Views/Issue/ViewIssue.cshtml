@@ -3,7 +3,7 @@
 @model DialogueViewDto
 
 <div>
-    @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Dialogue.DialogueId, IssueNr = (Model.Dialogue.Issues.Count + 1), Dialogue = Model.Dialogue })
+    @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Dialogue.Id, IssueNr = (Model.Dialogue.Issues.Count + 1), Dialogue = Model.Dialogue })
 </div>
 <div>
     @Html.Partial("~/Views/Issue/IssueList.cshtml", Model.Dialogue.Issues)

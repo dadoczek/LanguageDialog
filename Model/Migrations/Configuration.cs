@@ -9,8 +9,8 @@ namespace Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-           
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Model.Context.EfContext context)

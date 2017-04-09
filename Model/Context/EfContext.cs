@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Model.Models;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using Model.Migrations;
 
 namespace Model.Context
 {
@@ -9,6 +11,12 @@ namespace Model.Context
         public EfContext()
             : base("Aplikacja_Lingwistyczna_1", false)
         {
+        }
+
+        public EfContext(string name)
+            : base(name, false)
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, Configuration>());
         }
 
         public DbSet<Dialogue> Dialogue { get; set; }
@@ -21,6 +29,16 @@ namespace Model.Context
         public static EfContext Create()
         {
             return new EfContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Issue>()
+                .HasOptional(s => s.Dialogue)
+                .WithMany()
+                .WillCascadeOnDelete(false);
         }
     }
 }

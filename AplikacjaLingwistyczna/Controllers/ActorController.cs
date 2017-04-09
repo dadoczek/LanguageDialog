@@ -18,7 +18,7 @@ namespace AplikacjaLingwistyczna.Controllers
 
 
         [HttpPost]
-        public ActionResult CreateActor([Bind(Include = "DialogueId,Name")] Actor model)
+        public ActionResult CreateActor([Bind(Include = "Id,Name")] Actor model)
         {
             if (ModelState.IsValid)
             {

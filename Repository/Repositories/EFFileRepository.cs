@@ -1,11 +1,11 @@
-﻿using Model.Context;
-using Model.Models;
-using Repository.AbstractRepo;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using Model.Context;
+using Model.Models;
+using Repo.AbstractRepo;
 
-namespace Repository.Repositories
+namespace Repo.Repositories
 {
     internal class EfFileRepository : IFileRepository
     {

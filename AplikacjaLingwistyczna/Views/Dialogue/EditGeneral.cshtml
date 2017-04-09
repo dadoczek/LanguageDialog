@@ -8,7 +8,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Languages)
-        @Html.HiddenFor(model => model.Dialogue.DialogueId)
+        @Html.HiddenFor(model => model.Dialogue.Id)
         @Html.HiddenFor(model => model.Dialogue.AutorId)
 
         <div class="form-group">
@@ -22,7 +22,7 @@
         <div class="form-group">
             @Html.Label("Język", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Dialogue.LanguageId, new SelectList(Model.Languages, "LanguageId", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
+                @Html.DropDownListFor(model => model.Dialogue.LanguageId, new SelectList(Model.Languages, "Id", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.Dialogue.LanguageId, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -24,7 +24,7 @@ namespace AplikacjaLingwistyczna.Tests.IntegrationTest
         {
             FakeDialogueRepository.Dialogues.Add(new Dialogue
             {
-                DialogueId = 1,
+                Id = 1,
                 Name = "Dialogue 1"
             });
 
@@ -41,7 +41,7 @@ namespace AplikacjaLingwistyczna.Tests.IntegrationTest
             var model = serializer.Deserialize<List<Dialogue>>(json);
 
             Assert.True(model.Count == 1);
-            Assert.True(model[0].DialogueId == 1);
+            Assert.True(model[0].Id == 1);
             Assert.True(model[0].Name == "Dialogue 1");
         }
 
@@ -52,37 +52,37 @@ namespace AplikacjaLingwistyczna.Tests.IntegrationTest
             {
                 new Dialogue
                 {
-                    DialogueId = 1,
+                    Id = 1,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
                 new Dialogue
                 {
-                    DialogueId = 2,
+                    Id = 2,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
                 new Dialogue
                 {
-                    DialogueId = 3,
+                    Id = 3,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
                 new Dialogue
                 {
-                    DialogueId = 4,
+                    Id = 4,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
                 new Dialogue
                 {
-                    DialogueId = 5,
+                    Id = 5,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
                 new Dialogue
                 {
-                    DialogueId = 6,
+                    Id = 6,
                     Name = "Dialogue 1",
                     Status = DialogueStatus.Pubish
                 },
