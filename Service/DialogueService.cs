@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
+using Model.EnumType;
 using Model.Models;
 using Service.Helper;
 
@@ -29,6 +32,18 @@ namespace Service
         public ICollection<Dialogue> GetAll()
         {
             return RepositoryProvider.Do(repo => repo.GetCollection<Dialogue>().ToList());
+        }
+
+        public Func<Dialogue, bool> FilterQuery(string userId)
+        {
+            if (userId == null)
+            {
+                return d => d.Status == DialogueStatus.Pubish;
+            }
+            else
+            {
+                return d => d.AutorId == userId && (d.Status == DialogueStatus.Pubish || d.Status == DialogueStatus.Edit);
+            }
         }
     }
 }
