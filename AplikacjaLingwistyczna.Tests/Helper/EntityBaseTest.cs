@@ -6,11 +6,10 @@ namespace AplikacjaLingwistyczna.Tests.Helper
     {
         protected EfContext Context;
         protected const string TestDb = "TestDb";
-        protected const string TestDb2 = "TestDbWithData";
 
-        public EntityBaseTest(bool withData = false)
+        public EntityBaseTest()
         {
-            Context = withData ? new EfContext(TestDb2): new EfContext(TestDb);
+            Context = new EfContext(TestDb);
         }
     }
 }

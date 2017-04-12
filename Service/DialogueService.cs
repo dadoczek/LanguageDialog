@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using Model.EnumType;
+﻿using Model.EnumType;
 using Model.Models;
 using Service.Helper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
+[assembly:InternalsVisibleTo("AplikacjaLingwistyczna.Tests")]
 namespace Service
 {
     public class DialogueService : EntityBaseService
@@ -34,16 +35,34 @@ namespace Service
             return RepositoryProvider.Do(repo => repo.GetCollection<Dialogue>().ToList());
         }
 
-        public Func<Dialogue, bool> FilterQuery(string userId)
+        internal Func<Dialogue, bool> FilterQuery(string userId = null, string nameFilter = null, int? languageId = null)
         {
             if (userId == null)
             {
-                return d => d.Status == DialogueStatus.Pubish;
+                return d => d.Status == DialogueStatus.Pubish && NameFilter(d, nameFilter) && LanguageFilter(d,languageId);
             }
             else
             {
-                return d => d.AutorId == userId && (d.Status == DialogueStatus.Pubish || d.Status == DialogueStatus.Edit);
+                return d => AutorFilter(d, userId) && NameFilter(d, nameFilter) && LanguageFilter(d, languageId);
             }
+        }
+
+        private static bool NameFilter(Dialogue dialogue, string nameFilter)
+        {
+            return string.IsNullOrWhiteSpace(nameFilter) || dialogue.Name.ToLower().Contains(nameFilter.ToLower());
+        }
+
+        private static bool AutorFilter(Dialogue dialogue, string autorId)
+        {
+            return dialogue.AutorId == autorId && 
+                (dialogue.Status == DialogueStatus.Pubish || dialogue.Status == DialogueStatus.Edit);
+        }
+
+        private static bool LanguageFilter(Dialogue dialogue, int? languageId)
+        {
+            if(languageId != null)
+                return dialogue.LanguageId == languageId;
+            return true;
         }
     }
 }

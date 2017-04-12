@@ -1,5 +1,5 @@
-﻿using System;
-using AplikacjaLingwistyczna.Tests.Helper;
+﻿using AplikacjaLingwistyczna.Tests.Helper;
+using Model.EnumType;
 using Model.Models;
 using NSubstitute;
 using Ploeh.AutoFixture.Xunit2;
@@ -7,7 +7,6 @@ using Repo.AbstractRepo;
 using Service;
 using Service.Helper;
 using System.Linq;
-using Model.EnumType;
 using Xunit;
 using static AplikacjaLingwistyczna.Tests.Helper.DataProvider;
 
@@ -99,23 +98,36 @@ namespace AplikacjaLingwistyczna.Tests.ServiceTest
             Assert.Null(result.FirstOrDefault(d => d.AutorId == UserId2));
         }
 
-        //[Theory]
-        //[InlineData(NameDialogue1)]
-        //[InlineData(NameDialogue1)]
-        //public void FilterQuery_If_Name_filter_is_exist_get_only_dialoge_when_contains_filter_name(string nameFilter)
-        //{
-        //    var dialogues = GetDialogues();
+        [Theory]
+        [InlineData(NameDialogue1)]
+        [InlineData("DIALOGUE_1")]
+        [InlineData("_1")]
+        public void FilterQuery_If_Name_filter_is_exist_get_only_dialoge_when_contains_filter_name(string nameFilter)
+        {
+            var dialogues = GetDialogues();
 
-        //    var result = dialogues.Where(_service.FilterQuery(UserId1)).ToArray();
+            var result = dialogues.Where(_service.FilterQuery(UserId1, nameFilter)).ToArray();
 
-        //    Assert.Equal(result.Length, 2);
-        //    Assert.Equal(result[0].Name, NameDialogue1);
-        //    Assert.Equal(result[0].Status, DialogueStatus.Edit);
-        //    Assert.Equal(result[0].AutorId, UserId1);
-        //    Assert.Equal(result[1].Name, NameDialogue4);
-        //    Assert.Equal(result[1].Status, DialogueStatus.Pubish);
-        //    Assert.Equal(result[1].AutorId, UserId1);
-        //    Assert.Null(result.FirstOrDefault(d => d.AutorId == UserId2));
-        //}
+            Assert.Equal(result.Length, 1);
+            Assert.Equal(result[0].Name, NameDialogue1);
+            Assert.Equal(result[0].Status, DialogueStatus.Edit);
+            Assert.Equal(result[0].AutorId, UserId1);
+            Assert.Null(result.FirstOrDefault(d => d.AutorId == UserId2));
+        }
+
+        [Fact]
+        public void FilterQuery_If_IdLanguage_filter_is_exist_get_only_dialoge_selected_Language()
+        {
+            var dialogues = GetDialogues();
+
+            var result = dialogues.Where(_service.FilterQuery(languageId: LanguageId1)).ToArray();
+
+            Assert.Equal(result.Length, 1);
+            Assert.Equal(result[0].Name, NameDialogue4);
+            Assert.Equal(result[0].Status, DialogueStatus.Pubish);
+            Assert.Equal(result[0].AutorId, UserId1);
+            Assert.Equal(result[0].LanguageId, LanguageId1);
+            Assert.Null(result.FirstOrDefault(d => d.AutorId == UserId2));
+        }
     }
 }

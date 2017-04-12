@@ -137,6 +137,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="ServiceTest\DialogueServiceTest.cs" />
+    <Compile Include="ServiceTest\DialogueServiceWithDatabaseTest.cs" />
     <Compile Include="ServiceTest\PagingServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
