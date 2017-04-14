@@ -4,24 +4,27 @@ using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using System.Collections.Generic;
+using Contract.WebModel;
 using Repo.AbstractRepo;
+using Service;
 
 namespace Core.Applictaion
 {
     internal class LanguageApplication : BaseApplication, ILanguageApplication
     {
-        private readonly ILanguageRepository _languageRepository;
-        public static IEnumerable<Language> Languages;
+        private readonly ILanguageService _service;
+
+
         public LanguageApplication(IFactory factory)
         {
-            _languageRepository = factory.GetLanguageRepository;
+            _service = factory.GetLanguageService;
         }
 
         public BaseResponse Add(Language language)
         {
             return DoSuccess(() =>
             {
-                _languageRepository.Add(language);
+                _service.Add(language);
             });
         }
 
@@ -29,48 +32,47 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _languageRepository.Edit(language);
+                _service.Edit(language);
             });
         }
 
-        public QueryableDataResponse<Language> GetAll()
+        public CollectionDataResponse<Language> GetAll()
         {
-            Languages = _languageRepository.GetAll();
-            return Do(() => new QueryableDataResponse<Language>
+            return Do(() => new CollectionDataResponse<Language>
             {
-                Data = _languageRepository.GetAll()
+                Data = _service.GetAll()
             });
         }
 
-        public QueryableDataResponse<Language> GetMainAll()
+        public CollectionDataResponse<Language> GetMainAll()
         {
-            return Do(() => new QueryableDataResponse<Language>
+            return Do(() => new CollectionDataResponse<Language>
             {
-                Data = _languageRepository.GetMainAll()
+                Data = _service.GetMainAll()
             });
         }
 
-        public DataResponse<Language> GetOne(int languageId)
+        public DataResponse<Language> GetOne(int id)
         {
             return Do(() => new DataResponse<Language>
             {
-                Data = _languageRepository.GetOne(languageId)
+                Data = _service.GetOne(id)
             });
         }
 
-        public DataResponse<LanguagePageDto> GetPage(int page)
+        public PageResponse<Language> GetPage(int page)
         {
-            return Do(() => new DataResponse<LanguagePageDto>
+            return Do(() => new PageResponse<Language>
             {
-                Data = _languageRepository.GetPage(page)
+                PageData = _service.GetPage(page)
             });
         }
 
-        public BaseResponse Remove(int languageId)
+        public BaseResponse Remove(int id)
         {
             return DoSuccess(() =>
             {
-                _languageRepository.Remove(languageId);
+                _service.Remove(id);
             });
         }
     }

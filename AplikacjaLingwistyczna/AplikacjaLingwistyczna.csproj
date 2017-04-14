@@ -319,9 +319,8 @@
     <Content Include="Views\Actor\Edit.cshtml" />
     <Content Include="Views\Actor\ViewActor.cshtml" />
     <Content Include="Views\Dialogue\Create.cshtml" />
+    <Content Include="Views\Dialogue\EditView.cshtml" />
     <Content Include="Views\Dialogue\Edit.cshtml" />
-    <Content Include="Views\Dialogue\EditGeneral.cshtml" />
-    <Content Include="Views\Dialogue\GetAll.cshtml" />
     <Content Include="Views\Dialogue\ViewPage.cshtml" />
     <Content Include="Views\Issue\CreateIssue.cshtml" />
     <Content Include="Views\Issue\Edit.cshtml" />

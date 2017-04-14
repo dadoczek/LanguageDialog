@@ -19,5 +19,6 @@ namespace Core.Factories
         IFileRepository GetFileRepository { get; }
         IPlayerDialogueAppplication GetPlayerDiaogueApplication { get; }
         IDialogueService GetDialogueService { get; }
+        ILanguageService GetLanguageService { get; }
     }
 }

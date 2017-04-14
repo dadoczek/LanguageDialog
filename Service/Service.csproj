@@ -62,7 +62,9 @@
     <Compile Include="Exception\PagingExeption.cs" />
     <Compile Include="Helper\IRepositoryProvider.cs" />
     <Compile Include="Helper\RepositoryProvider.cs" />
-    <Compile Include="IDialogueService.cs" />
+    <Compile Include="Abstract\IDialogueService.cs" />
+    <Compile Include="Abstract\ILanguageService.cs" />
+    <Compile Include="LanguageService.cs" />
     <Compile Include="PagingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,9 +82,7 @@
       <Name>Repo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

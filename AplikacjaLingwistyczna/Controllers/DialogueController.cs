@@ -70,9 +70,9 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public string PublishDialogue(int dialogueId)
+        public string PublishDialogue(int id)
         {
-            var result = _dialogueApp.PublishDialogue(dialogueId);
+            var result = _dialogueApp.PublishDialogue(id);
 
             return result.Message;
         }
@@ -114,7 +114,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id, DialogueEditWindow activeWindow = DialogueEditWindow.GeneralWindow)
+        public ActionResult EditView(int id, DialogueEditWindow activeWindow = DialogueEditWindow.GeneralWindow)
         {
             var result = _dialogueApp.GetOne(id);
 
@@ -123,8 +123,14 @@ namespace AplikacjaLingwistyczna.Controllers
             return View(result.Data);
         }
 
+        //[HttpGet]
+        //public ActionResult Edit(Dialogue dialogue, DialogueEditWindow activeWindow)
+        //{
+        //    return View(dialogue);
+        //}
+
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Name,LanguageId")] Dialogue model)
+        public ActionResult Edit([Bind(Include = "Id,Name,LanguageId,AutorId")] Dialogue model)
         {
             if (ModelState.IsValid)
             {

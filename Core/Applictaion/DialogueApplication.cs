@@ -1,5 +1,4 @@
-﻿using Contract.Dtos;
-using Contract.Params;
+﻿using Contract.Params;
 using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;

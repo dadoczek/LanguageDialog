@@ -1,0 +1,83 @@
+﻿@using Contract.Enum
+@model Model.Models.Dialogue
+
+@{
+    var activeWindow = (DialogueEditWindow) ViewData["ActiveWindows"];
+}
+
+<h4>@Model.Name</h4>
+<hr />
+
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#General">Ogólne</a></li>
+    <li><a data-toggle="tab" href="#Actors">Aktorzy</a></li>
+    <li><a data-toggle="tab" href="#Issue">Kwestie</a></li>
+</ul>
+
+<div class="tab-content">
+    @if ( activeWindow == DialogueEditWindow.GeneralWindow)
+    {
+        <div id="General" class="tab-pane fade in active">
+            @Html.Partial("~/Views/Dialogue/Edit.cshtml", Model)
+        </div>
+    }
+    else
+    {
+        <div id="General" class="tab-pane fade">
+            @Html.Partial("~/Views/Dialogue/Edit.cshtml", Model)
+        </div>
+    }
+
+    @if (activeWindow == DialogueEditWindow.ActorWindow)
+    {
+        <div id="Actors" class="tab-pane fade in active">
+            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
+        </div>
+    }
+    else
+    {
+        <div id="Actors" class="tab-pane fade">
+            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
+        </div>
+    }
+
+    @if (activeWindow == DialogueEditWindow.IssueWindow)
+    {
+        <div id="Issue" class="tab-pane fade in active">
+            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
+        </div>
+    }
+    else
+    {
+        <div id="Issue" class="tab-pane fade">
+            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
+        </div>
+    }
+</div>
+
+<button onclick="@Url.Action("PublishDialogue", new {id = Model.Id})" class="btn btn-success pull-right"> Publikuj</button>
+
+<div>
+    @Html.ActionLink("Wróć do listy", "GetPage")
+</div>
+
+<script>
+    function PublishDialogue(id)
+    {
+        $.ajax({
+            url: '@Url.Action("PublishDialogue", "Dialogue")',
+            type: "POST",
+            data: { dialogueId: id },
+            success: function (data) {
+                var message = data;
+                alert(message);
+            },
+            error:function (xhr, ajaxOptions, thrownError){
+                alert(xhr.responseText);
+
+            }
+        });
+    }
+
+</script>
+

@@ -1,80 +1,38 @@
-﻿@using Contract.Dtos
-@using Contract.Enum
-@model DialogueViewDto
+﻿@using Model.Models
+@model Dialogue
 
-<h4>@Model.Dialogue.Name</h4>
-<hr />
+@using (Html.BeginForm("Edit", "Dialogue"))
+{
+    Html.RenderAction("GetAll", "Language", new { viewData = ViewData });
+    var languages = ViewData["Language"] as ICollection<Language>;
+        @Html.AntiForgeryToken()
 
-<ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#General">Ogólne</a></li>
-    <li><a data-toggle="tab" href="#Actors">Aktorzy</a></li>
-    <li><a data-toggle="tab" href="#Issue">Kwestie</a></li>
-</ul>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.AutorId)
 
-<div class="tab-content">
-    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.GeneralWindow)
-    {
-        <div id="General" class="tab-pane fade in active">
-            @Html.Partial("EditGeneral", Model)
+            <div class="form-group">
+                @Html.Label("Nazwa", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Język", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.LanguageId, new SelectList(languages, "Id", "Name"), new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(model => model.LanguageId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Zapisz" class="btn btn-success" />
+                </div>
+            </div>
         </div>
-    }
-    else
-    {
-        <div id="General" class="tab-pane fade">
-            @Html.Partial("EditGeneral", Model)
-        </div>
-    }
-
-    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.ActorWindow)
-    {
-        <div id="Actors" class="tab-pane fade in active">
-            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
-        </div>
-    }
-    else
-    {
-        <div id="Actors" class="tab-pane fade">
-            @Html.Partial("~/Views/Actor/ViewActor.cshtml", Model)
-        </div>
-    }
-
-    @if (Model.ActiveDialogueEditWindow == DialogueEditWindow.IssueWindow)
-    {
-        <div id="Issue" class="tab-pane fade in active">
-            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
-        </div>
-    }
-    else
-    {
-        <div id="Issue" class="tab-pane fade">
-            @Html.Partial("~/Views/Issue/ViewIssue.cshtml", Model)
-        </div>
-    }
-</div>
-
-<button onclick="PublishDialogue(@Model.Dialogue.Id)" class="btn btn-success pull-right"> Publikuj</button>
-
-<div>
-    @Html.ActionLink("Wróć do listy", "GetPage")
-</div>
-
-<script>
-    function PublishDialogue(id)
-    {
-        $.ajax({
-            url: '@Url.Action("PublishDialogue", "Dialogue")',
-            type: "POST",
-            data: { dialogueId: id },
-            success: function (data) {
-                var message = data;
-                alert(message);
-            },
-            error:function (xhr, ajaxOptions, thrownError){
-                alert(xhr.responseText);
-
-            }
-        });
-    }
-
-</script>
-
+        }

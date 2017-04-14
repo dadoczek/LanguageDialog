@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Core.AbstractApp;
+﻿using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using System.Web.Mvc;
@@ -21,8 +19,7 @@ namespace AplikacjaLingwistyczna.Controllers
         public EmptyResult GetAll(ViewDataDictionary viewData)
         {
             var response = _languageCrud.GetAll();
-            var data = response
-                .Data.ToList();
+            var data = response.Data;
             viewData.Add("Languages", data);
 
             return new EmptyResult();
@@ -31,7 +28,7 @@ namespace AplikacjaLingwistyczna.Controllers
         public ActionResult GetPage(int page = 1)
         {
             var model = _languageCrud.GetPage(page);
-            return View(model.Data);
+            return View(model.PageData);
         }
 
         [HttpGet]

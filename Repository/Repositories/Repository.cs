@@ -38,11 +38,11 @@ namespace Repo.Repositories
             _context.SaveChanges();
         }
 
-        public void Remove<T>(params T[] saveObjects) where T : class
+        public void Remove<T>(params T[] removeObjects) where T : class
         {
-            foreach (var saveObject in saveObjects)
+            foreach (var removeObject in removeObjects)
             {
-                _context.Entry(saveObject).State = EntityState.Deleted;
+                _context.Set<T>().Remove(removeObject);
             }
             _context.SaveChanges();
         }
@@ -51,6 +51,7 @@ namespace Repo.Repositories
         {
             var deleteObject = _context.Set<T>().Find(keys);
             _context.Set<T>().Remove(deleteObject);
+            _context.SaveChanges();
         }
 
         public T GetOne<T>(params object[] keys) where  T: class

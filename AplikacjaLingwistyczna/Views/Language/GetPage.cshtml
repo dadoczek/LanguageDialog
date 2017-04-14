@@ -1,5 +1,4 @@
-﻿@using Contract.Dtos
-@model LanguagePageDto
+﻿@model Contract.WebModel.PageData<Model.Models.Language>
 
 @{
     ViewBag.Title = "Języki";
@@ -18,7 +17,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.Language) {
+@foreach (var item in Model.Data) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -30,5 +29,4 @@
         </td>
     </tr>
 }
-
 </table>
