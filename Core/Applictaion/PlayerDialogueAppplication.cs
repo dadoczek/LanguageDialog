@@ -1,25 +1,28 @@
-﻿using Contract.Responses;
+﻿using System.Linq;
+using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
-using System.Linq;
 using Contract.Dtos;
+using Service;
 
 namespace Core.Applictaion
 {
     internal class PlayerDialogueAppplication : BaseApplication, IPlayerDialogueAppplication
     {
         private readonly Factory _factory;
+        private readonly IDialogueService _service;
 
         public PlayerDialogueAppplication(Factory factory)
         {
             _factory = factory;
+            _service = factory.GetDialogueService;
         }
 
         public DataResponse<PlayResponse> GetPlayerModel(int idDialogue)
         {
             return Do(() =>
             {
-                var dialogue = _factory.GetDialogueRepository.GetOne(idDialogue);
+                var dialogue = _service.GetOne(idDialogue);
                 var result = new PlayResponse
                 {
                     Dialogue = dialogue,
@@ -39,7 +42,7 @@ namespace Core.Applictaion
         {
             return Do(() =>
             {
-                playResponse.Dialogue = _factory.GetDialogueRepository.GetOne(playResponse.Dialogue.Id);
+                playResponse.Dialogue = _service.GetOne(playResponse.Dialogue.Id);
                 return new DataResponse<PlayResponse> { Data = playResponse };
             });
 
@@ -59,7 +62,7 @@ namespace Core.Applictaion
 
         public int PlayDialogue(int? nr, int idDialogue, int idActor)
         {
-            var dialogue = _factory.GetDialogueRepository.GetOne(idDialogue);
+            var dialogue = _service.GetOne(idDialogue);
             bool isPlay;
 
             do

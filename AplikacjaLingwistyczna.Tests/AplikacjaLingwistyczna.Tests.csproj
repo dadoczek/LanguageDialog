@@ -128,8 +128,6 @@
   <ItemGroup>
     <Compile Include="Contract\PagingDtoTest.cs" />
     <Compile Include="EntityTest\RepositoryTest.cs" />
-    <Compile Include="Fake\FactoryFake.cs" />
-    <Compile Include="Fake\FakeDialogueRepository.cs" />
     <Compile Include="Helper\DataProvider.cs" />
     <Compile Include="Helper\EntityBaseTest.cs" />
     <Compile Include="Helper\FakeRepositoryProvider.cs" />

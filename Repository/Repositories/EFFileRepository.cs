@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Model.Context;
 using Model.Models;
 using Repo.AbstractRepo;
 
+[assembly: InternalsVisibleTo("Core")]
 namespace Repo.Repositories
 {
     internal class EfFileRepository : IFileRepository

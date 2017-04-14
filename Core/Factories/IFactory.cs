@@ -6,8 +6,6 @@ namespace Core.Factories
 {
     public interface IFactory
     {
-        IDialogueRepository GetDialogueRepository { get; }
-        ILanguageRepository GetLanguageRepository { get; }
         IActorRepository GetActorRepository { get; }
         IIssueRepository GetIssueRepository { get; }
         IFileRepository GetTrackFileInfoRepository { get; }

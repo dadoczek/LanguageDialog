@@ -18,11 +18,7 @@ namespace Core.Factories
             _provider = new RepositoryProvider(Database);
         }
 
-        public virtual IDialogueRepository GetDialogueRepository => new EfDialogueRepository(new EfContext());
-
         public IActorRepository GetActorRepository => new EfActorRepository(new EfContext());
-
-        public ILanguageRepository GetLanguageRepository => new EfLanguageRepository(new EfContext(Database));
 
         public IIssueRepository GetIssueRepository => new EfIssueRepository(new EfContext());
 

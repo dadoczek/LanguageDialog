@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using System.Web.Mvc;
 using AplikacjaLingwistyczna.Controllers;
-using AplikacjaLingwistyczna.Tests.Fake;
 using Contract.Dtos;
 using Contract.Params;
 using Core.Factories;
@@ -18,10 +17,6 @@ namespace AplikacjaLingwistyczna.Tests.IntegrationTest
 {
     public class DialogueIntegrationTest
     {
-        public DialogueIntegrationTest()
-        {
-            FakeDialogueRepository.Dialogues.Clear();
-        }
 
     //    [Fact]
     //    public void Get_Page_Dialogue_Test()
