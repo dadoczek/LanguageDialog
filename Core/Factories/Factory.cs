@@ -3,16 +3,26 @@ using Core.Applictaion;
 using Model.Context;
 using Repo.AbstractRepo;
 using Repo.Repositories;
+using Service;
+using Service.Helper;
 
 namespace Core.Factories
 {
     public class Factory : IFactory
     {
+        private readonly IRepositoryProvider _provider;
+        private const string Database = "Aplikacja_Lingwistyczna_1";
+
+        public Factory()
+        {
+            _provider = new RepositoryProvider(Database);
+        }
+
         public virtual IDialogueRepository GetDialogueRepository => new EfDialogueRepository(new EfContext());
 
         public IActorRepository GetActorRepository => new EfActorRepository(new EfContext());
 
-        public ILanguageRepository GetLanguageRepository => new EfLanguageRepository(new EfContext());
+        public ILanguageRepository GetLanguageRepository => new EfLanguageRepository(new EfContext(Database));
 
         public IIssueRepository GetIssueRepository => new EfIssueRepository(new EfContext());
 
@@ -30,5 +40,6 @@ namespace Core.Factories
         public IFileRepository GetFileRepository => new EfFileRepository(new EfContext());
 
         public IPlayerDialogueAppplication GetPlayerDiaogueApplication => new PlayerDialogueAppplication(this);
+        public IDialogueService GetDialogueService => new DialogueService(_provider);
     }
 }

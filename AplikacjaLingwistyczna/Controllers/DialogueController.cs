@@ -1,12 +1,11 @@
-﻿using Contract.Dtos;
+﻿using System.Collections.Generic;
 using Contract.Enum;
 using Contract.Params;
-using Contract.Responses;
+using Contract.WebModel;
 using Core.AbstractApp;
 using Core.Factories;
 using Microsoft.AspNet.Identity;
 using Model.Models;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Web.Mvc;
@@ -17,59 +16,57 @@ namespace AplikacjaLingwistyczna.Controllers
     public class DialogueController : Controller
     {
         private readonly IDialogueApplication _dialogueApp;
-        private readonly IFactory _factory;
-        public static IEnumerable<Language> Languages;
 
         public DialogueController(IFactory factory)
         {
-            _factory = factory;
             _dialogueApp = factory.GetDialogueApplication;
         }
 
         [Authorize(Roles = "Admin,Moderator")]
-        public ActionResult GetAll()
+        public ICollection<Dialogue> GetAll()
         {
             var model = _dialogueApp.GetAll();
-            return View(model.Data);
+            return model.Data;
         }
 
         [AllowAnonymous]
-        public ActionResult GetPage(int page = 1, DialogueSortDto sort = null)
+        public ActionResult GetPage(DialoguePageParams @params = null)
         {
-            if (sort == null)
-                sort = new DialogueSortDto();
-            sort.MyView = false;
+            if (@params == null)
+                @params = new DialoguePageParams();
 
-            Languages = _factory.GetLanguageRepository.GetAll();
-            var model = _dialogueApp.GetPage(new DialoguePageParams
-            {
-                Page = page,
-                Sort = sort
-            });
-            return View(model.Data);
+            var model = _dialogueApp.GetPage(@params);
+            ViewData.Add("GetPage", model.PageData);
+            return View(model.PageData);
         }
 
-        public ActionResult GetMyDialoguePage(DialogueSortDto sort, int page = 1)
+        [AllowAnonymous]
+        public ActionResult ViewPage(DialoguePageParams @params = null)
         {
-            var data = MyDialogData(sort, page);
+            if (@params == null)
+                @params = new DialoguePageParams();
+
+            GetPage(@params);
+
+            return View(@params);
+        }
+
+        public ActionResult GetMyDialoguePage(DialoguePageParams @params)
+        {
+            var data = MyDialogData(@params);
             return View("GetPage", data);
         }
 
-        private DialoguePageDto MyDialogData(DialogueSortDto sort, int page)
+        private PageData<Dialogue> MyDialogData(DialoguePageParams @params)
         {
-            Languages = _factory.GetLanguageRepository.GetAll();
-            if (sort == null)
-                sort = new DialogueSortDto();
-            sort.IdUser = User.Identity.GetUserId();
-            sort.MyView = true;
+            if (@params == null)
+                @params = new DialoguePageParams();
+
+            @params.IdUser = User.Identity.GetUserId();
 
             ViewData.Add("UserId", User.Identity.GetUserId());
-            var model = _dialogueApp.GetMyDialoguePage(new DialoguePageParams
-            {
-                Page = page,
-                Sort = sort
-            });
-            return model.Data;
+            var model = _dialogueApp.GetMyDialoguePage(@params);
+            return model.PageData;
         }
 
         [HttpPost]
@@ -82,122 +79,73 @@ namespace AplikacjaLingwistyczna.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult SortPage(DialogueSortDto sort)
+        public ActionResult SortPage(DialoguePageParams @params)
         {
-            Languages = _factory.GetLanguageRepository.GetAll();
             ViewData.Add("UserId", User.Identity.GetUserId());
-            sort.IdUser = User.Identity.GetUserId();
-            DataResponse<DialoguePageDto> model;
-            if (sort.MyView)
-            {
-                model = _dialogueApp.GetMyDialoguePage(new DialoguePageParams
-                {
-                    Page = 1,
-                    Sort = sort
-                });
-            }
-            else
-            {
-                model = _dialogueApp.GetPage(new DialoguePageParams
-                {
-                    Page = 1,
-                    Sort = sort
-                });
-            }
+            @params.IdUser = User.Identity.GetUserId();
 
-            return View("GetPage", model.Data);
+            return View("ViewPage", @params);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            var model = _dialogueApp.GetToCreateData();
-            return View(model.Data);
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+
+            var userIdClaim = claimsIdentity?.Claims
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+            var model = new Dialogue {AutorId = userIdClaim.Value};
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Dialogue")] DialogueViewDto model)
+        public ActionResult Create([Bind(Include = "Name,LanguageId,AutorId")] Dialogue model)
         {
             if (ModelState.IsValid)
             {
-                var claimsIdentity = User.Identity as ClaimsIdentity;
-                if (claimsIdentity != null)
-                {
-                    // the principal identity is a claims identity.
-                    // now we need to find the NameIdentifier claim
-                    var userIdClaim = claimsIdentity.Claims
-                        .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-
-                    if (userIdClaim != null)
-                    {
-                        model.Dialogue.AutorId = userIdClaim.Value;
-                    }
-                }
-                _dialogueApp.Add(model.Dialogue);
-                return RedirectToAction("GetPage");
+                _dialogueApp.Add(model);
+                return RedirectToAction("ViewPage");
             }
             else
             {
-                var result = _dialogueApp.SetLanguages(model);
-                return View(result.Data);
+                return View(model);
             }
         }
 
         [HttpGet]
-        public ActionResult Edit(int idDialogue, DialogueEditWindow activeWindow = DialogueEditWindow.GeneralWindow)
+        public ActionResult Edit(int id, DialogueEditWindow activeWindow = DialogueEditWindow.GeneralWindow)
         {
-            var result = _dialogueApp.GetToEditData(
-                new DialogueEditWievParams
-                {
-                    Id = idDialogue,
-                    DialogueEditWindow = activeWindow
-                });
+            var result = _dialogueApp.GetOne(id);
+
+            ViewData.Add("ActiveWindows", activeWindow);
 
             return View(result.Data);
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Dialogue")] DialogueViewDto editModel)
+        public ActionResult Edit([Bind(Include = "Id,Name,LanguageId")] Dialogue model)
         {
             if (ModelState.IsValid)
             {
-                editModel = _dialogueApp.SetLanguages(editModel).Data;
-                return View(editModel);
+                _dialogueApp.Edit(model);
             }
-            else
-            {
-                editModel = _dialogueApp.SetLanguages(editModel).Data;
-                return View("Edit", editModel);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult EditGeneral([Bind(Include = "Dialogue")] DialogueViewDto editModel)
-        {
-            if (ModelState.IsValid)
-            {
-                _dialogueApp.Edit(editModel.Dialogue);
-                return RedirectToAction("Edit", new {idDialogue = editModel.Dialogue.Id});
-            }
-            else
-            {
-                return Edit(editModel);
-            }
+            return View(model);
         }
 
         [Authorize(Roles = "Admin,Moderator")]
         public ActionResult Remove(int idDialogue)
         {
             var result = _dialogueApp.Remove(idDialogue);
-            return RedirectToAction("GetPage");
+            return RedirectToAction("ViewPage");
         }
 
         [Authorize]
         public ActionResult RemoveEdit(int idDialogue)
         {
             var result = _dialogueApp.RemoveEdit(idDialogue, User.Identity.GetUserId());
-            var data = MyDialogData(null,1);
-            return RedirectToAction("GetPage",data);
+            var data = MyDialogData(new DialoguePageParams());
+            return RedirectToAction("ViewPage", data);
         }
     }
 }

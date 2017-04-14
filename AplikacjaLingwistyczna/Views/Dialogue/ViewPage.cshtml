@@ -1,0 +1,22 @@
+﻿@using System.Web.Mvc.Html
+@using Contract.Params
+@model DialoguePageParams
+
+@{
+    ViewBag.Title = "Dialogi";
+}
+
+<h2>Dialogi</h2>
+
+    @Html.ActionLink("Stwórz nowy", "Create")
+
+<table>
+    <tr>
+        <th class="col-xs-4">
+            @{ Html.RenderAction("GetPage", new {@params = Model}); }
+        </th>
+        <th class="col-xs-2">
+            @Html.Partial("~/Views/Dialogue/SortPage.cshtml", Model)
+        </th>
+    </tr>
+</table>

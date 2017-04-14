@@ -73,6 +73,10 @@
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -183,6 +187,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\ExtensionMethod.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -317,7 +322,7 @@
     <Content Include="Views\Dialogue\Edit.cshtml" />
     <Content Include="Views\Dialogue\EditGeneral.cshtml" />
     <Content Include="Views\Dialogue\GetAll.cshtml" />
-    <Content Include="Views\Dialogue\GetPage.cshtml" />
+    <Content Include="Views\Dialogue\ViewPage.cshtml" />
     <Content Include="Views\Issue\CreateIssue.cshtml" />
     <Content Include="Views\Issue\Edit.cshtml" />
     <Content Include="Views\Issue\IssueList.cshtml" />
@@ -330,7 +335,7 @@
     <Content Include="Views\DialoguePlay\PlaySetting.cshtml" />
     <Content Include="Views\Dialogue\SortPage.cshtml" />
     <Content Include="Views\AudioFile\RecordAudio.cshtml" />
-    <Content Include="Views\Dialogue\ListView.cshtml" />
+    <Content Include="Views\Dialogue\GetPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,7 @@ namespace Service
             var count = inputElements.Count();
             var skip = pageSize * (page - 1);
 
-            if(skip >= count)
+            if(skip >= count && count > 0)
                 throw new PagingExeption("Page is too large");
 
             return new PageData<T>
@@ -26,7 +26,7 @@ namespace Service
                 Count = count,
                 Page = page,
                 // ReSharper disable once PossibleMultipleEnumeration
-                Data = inputElements.Skip(skip).Take(pageSize),
+                Data = inputElements.Skip(skip).Take(pageSize).ToList(),
                 NextPage = pageSize * page < count,
                 PageSize = pageSize,
                 PreviousPage = page > 1,

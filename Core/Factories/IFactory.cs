@@ -1,5 +1,6 @@
 ﻿using Core.AbstractApp;
 using Repo.AbstractRepo;
+using Service;
 
 namespace Core.Factories
 {
@@ -17,5 +18,6 @@ namespace Core.Factories
         IFileApplication GetFileApplication { get; }
         IFileRepository GetFileRepository { get; }
         IPlayerDialogueAppplication GetPlayerDiaogueApplication { get; }
+        IDialogueService GetDialogueService { get; }
     }
 }

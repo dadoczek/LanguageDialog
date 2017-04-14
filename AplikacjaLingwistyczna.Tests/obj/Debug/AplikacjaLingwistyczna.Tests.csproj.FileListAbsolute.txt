@@ -287,3 +287,7 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Repo.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Service.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Ploeh.AutoFixture.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Ploeh.AutoFixture.Xunit2.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Ploeh.AutoFixture.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna.Tests\bin\Debug\Ploeh.AutoFixture.Xunit2.xml

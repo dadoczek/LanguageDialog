@@ -28,7 +28,7 @@
                     {
                         <li>@Html.ActionLink("Języki", "GetPage", "Language")</li>
                     }
-                    <li> @Html.ActionLink("Dialogi", "GetPage", "Dialogue") </li>
+                    <li> @Html.ActionLink("Dialogi", "ViewPage", "Dialogue") </li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Moje dialogi", "GetMyDialoguePage", "Dialogue")</li>

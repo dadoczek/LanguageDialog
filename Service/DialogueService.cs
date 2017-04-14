@@ -5,11 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Contract.Params;
+using Contract.WebModel;
 
 [assembly:InternalsVisibleTo("AplikacjaLingwistyczna.Tests")]
 namespace Service
 {
-    public class DialogueService : EntityBaseService
+    public class DialogueService : EntityBaseService, IDialogueService
     {
         public DialogueService(IRepositoryProvider provider) : base(provider) {}
 
@@ -28,6 +30,16 @@ namespace Service
             {
                 repo.Edit(dialogue);
             });
+        }
+
+        public Dialogue GetOne(int id)
+        {
+            return RepositoryProvider.Do(repo => repo.GetOne<Dialogue>(id));
+        }
+
+        public void Remove(int id)
+        {
+            RepositoryProvider.Do(repo => repo.Remove<Dialogue>(id));
         }
 
         public ICollection<Dialogue> GetAll()
@@ -63,6 +75,19 @@ namespace Service
             if(languageId != null)
                 return dialogue.LanguageId == languageId;
             return true;
+        }
+
+        public PageData<Dialogue> GetPage(DialoguePageParams @params)
+        {
+            return RepositoryProvider.Do(repo =>
+            {
+                var data = repo.GetCollection<Dialogue>()
+                .Where(FilterQuery(@params.IdUser,@params.Name, @params.LanguageId));
+
+                var pageData = PagingService.GetPaging(data,@params.Page, @params.SizePage);
+
+                return pageData;
+            });
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Core.AbstractApp;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using System.Web.Mvc;
@@ -13,6 +15,17 @@ namespace AplikacjaLingwistyczna.Controllers
         public LanguageController(IFactory factory)
         {
             _languageCrud = factory.GetLanguageApplication;
+        }
+
+        [AllowAnonymous]
+        public EmptyResult GetAll(ViewDataDictionary viewData)
+        {
+            var response = _languageCrud.GetAll();
+            var data = response
+                .Data.ToList();
+            viewData.Add("Languages", data);
+
+            return new EmptyResult();
         }
 
         public ActionResult GetPage(int page = 1)

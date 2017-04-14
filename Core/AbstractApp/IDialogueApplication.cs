@@ -1,5 +1,4 @@
-﻿using Contract.Dtos;
-using Contract.Params;
+﻿using Contract.Params;
 using Contract.Responses;
 using Model.Models;
 
@@ -11,13 +10,10 @@ namespace Core.AbstractApp
         BaseResponse PublishDialogue(int dialogueId);
         BaseResponse Add(Dialogue dialogue);
         BaseResponse Remove(int id);
-        DataResponse<DialoguePageDto> GetPage(DialoguePageParams @params);
-        DataResponse<DialoguePageDto> GetMyDialoguePage(DialoguePageParams @params);
-        QueryableDataResponse<Dialogue> GetAll();
+        PageResponse<Dialogue> GetPage(DialoguePageParams @params);
+        PageResponse<Dialogue> GetMyDialoguePage(DialoguePageParams @params);
+        CollectionDataResponse<Dialogue> GetAll();
         DataResponse<Dialogue> GetOne(int id);
-        DataResponse<DialogueViewDto> GetToEditData(DialogueEditWievParams @params);
-        DataResponse<DialogueViewDto> GetToCreateData();
-        DataResponse<DialogueViewDto> SetLanguages(DialogueViewDto data);
         BaseResponse RemoveEdit(int id, string userId);
     }
 }

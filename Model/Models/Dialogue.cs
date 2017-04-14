@@ -20,7 +20,7 @@ namespace Model.Models
         [Required]
         public string Name { get; set; }
 
-        public DialogueStatus Status { get; set; }
+        public DialogueStatus Status { get; set; } = DialogueStatus.Edit;
 
         //Tabele powiązane
 

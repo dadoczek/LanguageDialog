@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using AplikacjaLingwistyczna.Controllers;
 using AplikacjaLingwistyczna.Tests.Fake;
 using Contract.Dtos;
+using Contract.Params;
 using Model.EnumType;
 using Model.Models;
 using Newtonsoft.Json;
@@ -91,17 +92,17 @@ namespace AplikacjaLingwistyczna.Tests.IntegrationTest
             var factory = new FactoryFake();
             var controller = new DialogueController(factory);
             var serializer = new JavaScriptSerializer();
-            var sort = new DialogueSortDto
+            var sort = new DialoguePageParams()
             {
                 SizePage = 5,
             };
 
-            var result = controller.GetPage(1,sort) as ViewResult;
+            var result = controller.ViewPage(sort);
 
 
             Assert.NotNull(result);
 
-            var json = serializer.Serialize(result.Model);
+            var json = serializer.Serialize(result);
             var model = serializer.Deserialize<DialoguePageDto>(json);
 
             Assert.Equal(model.Dialogues.Count, 5);

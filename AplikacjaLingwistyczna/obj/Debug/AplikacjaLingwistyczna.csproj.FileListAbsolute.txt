@@ -418,3 +418,7 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\obj\Debug\AplikacjaLingwistyczna.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repo.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Repo.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Service.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Service.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\NSubstitute.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\NSubstitute.xml
