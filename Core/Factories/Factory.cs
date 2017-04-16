@@ -4,6 +4,7 @@ using Model.Context;
 using Repo.AbstractRepo;
 using Repo.Repositories;
 using Service;
+using Service.Abstract;
 using Service.Helper;
 
 namespace Core.Factories
@@ -18,7 +19,7 @@ namespace Core.Factories
             _provider = new RepositoryProvider(Database);
         }
 
-        public IActorRepository GetActorRepository => new EfActorRepository(new EfContext());
+        public IActorService GetActorService => new ActorService(new EfContext());
 
         public IIssueRepository GetIssueRepository => new EfIssueRepository(new EfContext());
 

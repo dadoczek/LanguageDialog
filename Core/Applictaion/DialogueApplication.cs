@@ -6,6 +6,7 @@ using Model.EnumType;
 using Model.Models;
 using Service;
 using System.Linq;
+using Service.Abstract;
 
 namespace Core.Applictaion
 {

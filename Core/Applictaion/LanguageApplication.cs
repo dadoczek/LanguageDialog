@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Contract.WebModel;
 using Repo.AbstractRepo;
 using Service;
+using Service.Abstract;
 
 namespace Core.Applictaion
 {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Contract.Params;
 using Contract.WebModel;
+using Service.Abstract;
 
 [assembly:InternalsVisibleTo("AplikacjaLingwistyczna.Tests")]
 namespace Service

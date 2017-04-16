@@ -123,12 +123,6 @@ namespace AplikacjaLingwistyczna.Controllers
             return View(result.Data);
         }
 
-        //[HttpGet]
-        //public ActionResult Edit(Dialogue dialogue, DialogueEditWindow activeWindow)
-        //{
-        //    return View(dialogue);
-        //}
-
         [HttpPost]
         public ActionResult Edit([Bind(Include = "Id,Name,LanguageId,AutorId")] Dialogue model)
         {

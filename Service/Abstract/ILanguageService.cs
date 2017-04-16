@@ -2,7 +2,7 @@
 using Contract.WebModel;
 using Model.Models;
 
-namespace Service
+namespace Service.Abstract
 {
     public interface ILanguageService
     {

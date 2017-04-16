@@ -24,13 +24,13 @@ namespace AplikacjaLingwistyczna.Controllers
             {
                 _actorApp.Add(model);
             }
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.ActorWindow });
+            return RedirectToAction("EditView", "Dialogue", new { id = model.DialogueId, activeWindow = DialogueEditWindow.ActorWindow });
         }
 
         public ActionResult Delete(int idActor, int idDialogue)
         {
             _actorApp.Remove(idActor);
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = idDialogue, activeWindow = DialogueEditWindow.ActorWindow });
+            return RedirectToAction("EditView", "Dialogue", new { id = idDialogue, activeWindow = DialogueEditWindow.ActorWindow });
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace AplikacjaLingwistyczna.Controllers
             if (ModelState.IsValid)
             {
                 _actorApp.Edit(model);
-                return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.ActorWindow });
+                return RedirectToAction("EditView", "Dialogue", new { id = model.DialogueId, activeWindow = DialogueEditWindow.ActorWindow });
             }
             else
                 return View(model);

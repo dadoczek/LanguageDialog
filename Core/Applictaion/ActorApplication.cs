@@ -3,23 +3,24 @@ using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
 using Repo.AbstractRepo;
+using Service.Abstract;
 
 namespace Core.Applictaion
 {
     internal class ActorApplication : BaseApplication, IActorApplication
     {
-        private readonly IActorRepository _actorRepository;
+        private readonly IActorService _service;
 
         public ActorApplication(IFactory factory)
         {
-            _actorRepository = factory.GetActorRepository;
+            _service = factory.GetActorService;
         }
 
         public BaseResponse Add(Actor actor)
         {
             return DoSuccess(() =>
             {
-                _actorRepository.Add(actor);
+                _service.Add(actor);
             });
         }
 
@@ -27,7 +28,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _actorRepository.Edit(actor);
+                _service.Edit(actor);
             });
         }
 
@@ -35,7 +36,7 @@ namespace Core.Applictaion
         {
             return Do(() => new DataResponse<Actor>
             {
-                Data = _actorRepository.GetOne(id)
+                Data = _service.GetOne(id)
             });
         }
 
@@ -43,7 +44,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _actorRepository.Remove(id);
+                _service.Remove(id);
             });
         }
     }

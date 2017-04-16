@@ -1,12 +1,13 @@
 ﻿using Core.AbstractApp;
 using Repo.AbstractRepo;
 using Service;
+using Service.Abstract;
 
 namespace Core.Factories
 {
     public interface IFactory
     {
-        IActorRepository GetActorRepository { get; }
+        IActorService GetActorService { get; }
         IIssueRepository GetIssueRepository { get; }
         IFileRepository GetTrackFileInfoRepository { get; }
         IDialogueApplication GetDialogueApplication { get; }

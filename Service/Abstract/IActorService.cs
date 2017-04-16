@@ -1,8 +1,8 @@
 ﻿using Model.Models;
 
-namespace Repo.AbstractRepo
+namespace Service.Abstract
 {
-    public interface IActorRepository
+    public interface IActorService
     {
         void Add(Actor actor);
         void Remove(int id);
