@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IActorService.cs" />
+    <Compile Include="Abstract\IIssueService.cs" />
+    <Compile Include="ActorService.cs" />
     <Compile Include="DialogueService.cs" />
     <Compile Include="EntityBaseService.cs" />
     <Compile Include="Exception\PagingExeption.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Helper\RepositoryProvider.cs" />
     <Compile Include="Abstract\IDialogueService.cs" />
     <Compile Include="Abstract\ILanguageService.cs" />
+    <Compile Include="IssueService.cs" />
     <Compile Include="LanguageService.cs" />
     <Compile Include="PagingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,7 +3,7 @@ using Model.Models;
 
 namespace Repo.AbstractRepo
 {
-    public interface IIssueRepository
+    public interface IIssueService
     {
         void Add(Issue issue);
         void Edit(Issue issue);

@@ -19,9 +19,9 @@ namespace Core.Factories
             _provider = new RepositoryProvider(Database);
         }
 
-        public IActorService GetActorService => new ActorService(new EfContext());
+        public IActorService GetActorService => new ActorService(_provider);
 
-        public IIssueRepository GetIssueRepository => new EfIssueRepository(new EfContext());
+        public IIssueService GetIssueService => new IssueService(_provider);
 
         public IFileRepository GetTrackFileInfoRepository => new EfFileRepository(new EfContext());
 

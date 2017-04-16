@@ -25,7 +25,7 @@ namespace AplikacjaLingwistyczna.Controllers
             {
                 _issueApp.Add(model);
             }
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
+            return RedirectToAction("EditView", "Dialogue", new { id = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
 
         }
 
@@ -36,7 +36,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 DialogueId = idDialogue,
                 PositionId = positionId }
             );
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
+            return RedirectToAction("EditView", "Dialogue", new { id = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
         }
 
         public ActionResult ChangePosition(int positionId, int idDialogue, int direction)
@@ -47,7 +47,7 @@ namespace AplikacjaLingwistyczna.Controllers
                 PositionId = positionId,
                 Direction = direction
             });
-            return RedirectToAction("Edit", "Dialogue", new { idDialogue = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
+            return RedirectToAction("EditView", "Dialogue", new { id = idDialogue, activeWindow = DialogueEditWindow.IssueWindow });
         }
 
         [HttpGet]
@@ -68,7 +68,7 @@ namespace AplikacjaLingwistyczna.Controllers
             if (ModelState.IsValid)
             {
                 _issueApp.Edit(model);
-                return RedirectToAction("Edit", "Dialogue", new { idDialogue = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
+                return RedirectToAction("EditView", "Dialogue", new { id = model.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
             }
             else
                 return View(model);

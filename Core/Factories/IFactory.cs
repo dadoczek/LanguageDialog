@@ -8,7 +8,7 @@ namespace Core.Factories
     public interface IFactory
     {
         IActorService GetActorService { get; }
-        IIssueRepository GetIssueRepository { get; }
+        IIssueService GetIssueService { get; }
         IFileRepository GetTrackFileInfoRepository { get; }
         IDialogueApplication GetDialogueApplication { get; }
         ILanguageApplication GetLanguageApplication { get; }

@@ -57,13 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRepo\IActorRepository.cs" />
-    <Compile Include="AbstractRepo\IIssueRepository.cs" />
+    <Compile Include="AbstractRepo\IIssueService.cs" />
     <Compile Include="AbstractRepo\IFileRepository.cs" />
     <Compile Include="AbstractRepo\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EFActorRepository.cs" />
-    <Compile Include="Repositories\EFIssueRepository.cs" />
     <Compile Include="Repositories\EFFileRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
