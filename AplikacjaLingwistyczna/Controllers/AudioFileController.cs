@@ -3,6 +3,7 @@ using Core.Factories;
 using Model.Models;
 using System.Web;
 using System.Web.Mvc;
+using Contract.Enum;
 
 namespace AplikacjaLingwistyczna.Controllers
 {
@@ -23,7 +24,7 @@ namespace AplikacjaLingwistyczna.Controllers
         }
 
         [HttpPost]
-        public bool PostRecordedAudioVideo(int IssueId)
+        public bool PostRecordedAudioVideo(int id)
         {
             foreach (string upload in Request.Files)
             {
@@ -32,7 +33,7 @@ namespace AplikacjaLingwistyczna.Controllers
 
                 var audioFile = new AudioFile
                 {
-                    Id = IssueId,
+                    Id = id,
                     FileName = file.FileName,
                     sufix = ".mp3",
                     Data = new byte[file.ContentLength]
@@ -43,5 +44,21 @@ namespace AplikacjaLingwistyczna.Controllers
             }
             return true;
         }
+
+        //[HttpPost]
+        //public ActionResult Upload(Issue issue, HttpPostedFileBase file)
+        //{
+        //    var audioFile = new AudioFile
+        //    {
+        //        Id = issue.Id,
+        //        FileName = file.FileName,
+        //        sufix = ".mp3",
+        //        Data = new byte[file.ContentLength]
+        //    };
+
+        //    file.InputStream.Read(audioFile.Data, 0, file.ContentLength);
+        //    _fileApp.Add(audioFile);
+        //    return RedirectToAction("Edit", "Dialogue", new { idDialogue = issue.DialogueId, activeWindow = DialogueEditWindow.IssueWindow });
+        //}
     }
 }

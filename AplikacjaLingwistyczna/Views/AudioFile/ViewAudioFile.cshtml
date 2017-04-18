@@ -74,7 +74,6 @@
 
 
     function Post(formData, idIssue) {
-
         var strong = document.createElement('strong');
         strong.id = 'percentage';
         strong.innerHTML = "file"+ ' upload progress: ';
@@ -82,7 +81,7 @@
         var progress = document.createElement('progress');
         container.appendChild(progress);
 
-        xhr('/AudioFile/PostRecordedAudioVideo?Id=' + idIssue,
+        xhr('/AudioFile/PostRecordedAudioVideo?id=' + idIssue,
             formData,
             progress,
             percentage,
