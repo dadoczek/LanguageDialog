@@ -55,7 +55,9 @@
     }
 </div>
 
-<button onclick="@Url.Action("PublishDialogue", new {id = Model.Id})" class="btn btn-success pull-right"> Publikuj</button>
+<form action="@Url.Action("PublishDialogue", new {id = Model.Id})" method="post">
+    <button name="foo" value="upvote" class="btn btn-success pull-right">Publikuj</button>
+</form>
 
 <div>
     @Html.ActionLink("Wróć do listy", "GetPage")
