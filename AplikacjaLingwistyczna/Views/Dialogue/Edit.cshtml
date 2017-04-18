@@ -4,7 +4,7 @@
 @using (Html.BeginForm("Edit", "Dialogue"))
 {
     Html.RenderAction("GetAll", "Language", new { viewData = ViewData });
-    var languages = ViewData["Language"] as ICollection<Language>;
+    var languages = ViewData["Languages"] as ICollection<Language>;
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">

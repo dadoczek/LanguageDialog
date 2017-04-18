@@ -17,9 +17,16 @@ namespace AplikacjaLingwistyczna.Controllers
             _issueApp = factory.GetIssueApplication;
         }
 
+        public ActionResult GetPage(int dialogueId, int page = 1)
+        {
+            var data =  _issueApp.GetPage(dialogueId, page);
+
+            return View(data.PageData);
+        }
+
 
         [HttpPost]
-        public ActionResult CreateIssue([Bind(Include = "Id,Text,IssueNr,Id")] Issue model)
+        public ActionResult CreateIssue([Bind(Include = "Id,Text,IssueNr,Id,DialogueId,ActorId")] Issue model)
         {
             if (ModelState.IsValid)
             {

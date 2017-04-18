@@ -1,4 +1,5 @@
-﻿using Model.Models;
+﻿using Contract.WebModel;
+using Model.Models;
 
 namespace Service.Abstract
 {
@@ -8,5 +9,6 @@ namespace Service.Abstract
         void Remove(int id);
         void Edit(Actor actor);
         Actor GetOne(int id);
+        PageData<Actor> GetPage(int idDialogue, int page);
     }
 }

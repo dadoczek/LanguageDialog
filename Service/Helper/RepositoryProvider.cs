@@ -16,18 +16,14 @@ namespace Service.Helper
 
         public T Do<T>(Func<IRepository, T> action)
         {
-            using (var context = new EfContext(_connectionString))
-            {
+            var context = new EfContext(_connectionString);
                 return action(new Repository(context));
-            }
         }
 
         public void Do(Action<IRepository> action)
         {
-            using (var context = new EfContext(_connectionString))
-            {
+            var context = new EfContext(_connectionString);
                 action(new Repository(context));
-            }
         }
     }
 }

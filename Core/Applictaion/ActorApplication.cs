@@ -2,7 +2,6 @@
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
-using Repo.AbstractRepo;
 using Service.Abstract;
 
 namespace Core.Applictaion
@@ -45,6 +44,14 @@ namespace Core.Applictaion
             return DoSuccess(() =>
             {
                 _service.Remove(id);
+            });
+        }
+
+        public PageResponse<Actor> GetPage(int idDialogue, int page)
+        {
+            return Do(() => new PageResponse<Actor>
+            {
+                PageData = _service.GetPage(idDialogue, page)
             });
         }
     }

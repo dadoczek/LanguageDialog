@@ -16,9 +16,16 @@ namespace AplikacjaLingwistyczna.Controllers
             _actorApp = factory.GetActorApplication;
         }
 
+        public ActionResult GetPage(int idDialogue, int page = 1)
+        {
+            var data = _actorApp.GetPage(idDialogue, page);
+
+            return View(data.PageData);
+        }
+
 
         [HttpPost]
-        public ActionResult CreateActor([Bind(Include = "Id,Name")] Actor model)
+        public ActionResult CreateActor([Bind(Include = "Id,Name,DialogueId")] Actor model)
         {
             if (ModelState.IsValid)
             {

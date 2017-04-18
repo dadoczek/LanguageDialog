@@ -2,10 +2,10 @@
 @model Dialogue
 
 <div>
-    @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Id, IssueNr = (Model.Issues.Count + 1), Dialogue = Model })
+    @Html.Partial("~/Views/Issue/CreateIssue.cshtml", new Issue { DialogueId = Model.Id, Dialogue = Model })
 </div>
 <div>
-    @Html.Partial("~/Views/Issue/IssueList.cshtml", Model.Issues)
+    @{Html.RenderAction("GetPage","Issue", new {dialogueId = Model.Id});}
 </div>
 @Scripts.Render("~/bundles/jquery")
 <script type="text/javascript">

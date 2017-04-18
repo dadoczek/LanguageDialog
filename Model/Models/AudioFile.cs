@@ -13,7 +13,6 @@ namespace Model.Models
         [Required]
         public string sufix { get; set; }
 
-        
         public byte[] Data { get; set; }
 
         public virtual Issue Issue { get; set; }

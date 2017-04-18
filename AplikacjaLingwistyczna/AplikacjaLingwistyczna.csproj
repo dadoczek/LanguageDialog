@@ -314,7 +314,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Actor\ActorList.cshtml" />
+    <Content Include="Views\Actor\GetPage.cshtml" />
     <Content Include="Views\Actor\CreateActor.cshtml" />
     <Content Include="Views\Actor\Edit.cshtml" />
     <Content Include="Views\Actor\ViewActor.cshtml" />
@@ -324,7 +324,7 @@
     <Content Include="Views\Dialogue\ViewPage.cshtml" />
     <Content Include="Views\Issue\CreateIssue.cshtml" />
     <Content Include="Views\Issue\Edit.cshtml" />
-    <Content Include="Views\Issue\IssueList.cshtml" />
+    <Content Include="Views\Issue\GetPage.cshtml" />
     <Content Include="Views\Issue\ViewIssue.cshtml" />
     <Content Include="Views\Language\Create.cshtml" />
     <Content Include="Views\Language\GetPage.cshtml" />

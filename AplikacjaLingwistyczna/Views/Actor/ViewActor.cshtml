@@ -5,5 +5,5 @@
     @Html.Partial("~/Views/Actor/CreateActor.cshtml", new Actor {DialogueId = Model.Id })
 </div>
 <div>
-    @Html.Partial("~/Views/Actor/ActorList.cshtml", Model.Actors)
+    @{ Html.RenderAction("GetPage","Actor", new {idDialogue = Model.Id}); }
 </div>

@@ -1,7 +1,8 @@
-﻿using Model.Models;
+﻿using System.Linq;
+using Contract.WebModel;
+using Model.Models;
 using Service.Abstract;
 using Service.Helper;
-using System.Data.Entity;
 
 namespace Service
 {
@@ -37,6 +38,19 @@ namespace Service
             RepositoryProvider.Do(repo =>
             {
                 repo.Remove<Actor>(id);
+            });
+        }
+
+        public PageData<Actor> GetPage(int idDialogue, int page)
+        {
+            return RepositoryProvider.Do(repo =>
+            {
+                var data = repo.GetCollection<Actor>()
+                    .Where(a => a.DialogueId == idDialogue);
+
+                var pageData = PagingService.GetPaging(data, page);
+
+                return pageData;
             });
         }
     }

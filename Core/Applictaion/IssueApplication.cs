@@ -3,24 +3,24 @@ using Contract.Responses;
 using Core.AbstractApp;
 using Core.Factories;
 using Model.Models;
-using Repo.AbstractRepo;
+using Service.Abstract;
 
 namespace Core.Applictaion
 {
     internal class IssueApplication : BaseApplication, IIssueApplication
     {
-        private readonly IIssueService _Service;
+        private readonly IIssueService _service;
 
         public IssueApplication(IFactory factory)
         {
-            _Service = factory.GetIssueService;
+            _service = factory.GetIssueService;
         }
 
         public BaseResponse Add(Issue issue)
         {
             return DoSuccess(() =>
             {
-                _Service.Add(issue);
+                _service.Add(issue);
             });
         }
 
@@ -28,7 +28,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _Service.ChangePosition(@params);
+                _service.ChangePosition(@params);
             });
         }
 
@@ -36,7 +36,7 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _Service.Edit(issue);
+                _service.Edit(issue);
             });
         }
 
@@ -44,7 +44,7 @@ namespace Core.Applictaion
         {
             return Do(() => new DataResponse<Issue>
             {
-                Data = _Service.GetOne(@params)
+                Data = _service.GetOne(@params)
             });
         }
 
@@ -52,7 +52,15 @@ namespace Core.Applictaion
         {
             return DoSuccess(() =>
             {
-                _Service.Remove(@params);
+                _service.Remove(@params);
+            });
+        }
+
+        public PageResponse<Issue> GetPage(int dialogueId, int page)
+        {
+            return Do(() => new PageResponse<Issue>
+            {
+                PageData = _service.GetPage(dialogueId, page)
             });
         }
     }

@@ -11,5 +11,6 @@ namespace Core.AbstractApp
         BaseResponse Remove(IssueParams @params);
         BaseResponse ChangePosition(IssueParams @params);
         DataResponse<Issue> GetOne(IssueParams @params);
+        PageResponse<Issue> GetPage(int dialogueId, int page);
     }
 }

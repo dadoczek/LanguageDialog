@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRepo\IIssueService.cs" />
     <Compile Include="AbstractRepo\IFileRepository.cs" />
     <Compile Include="AbstractRepo\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

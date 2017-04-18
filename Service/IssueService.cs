@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Contract.Params;
+using Contract.WebModel;
 using Model.Models;
 using Repo.AbstractRepo;
+using Service.Abstract;
 using Service.Helper;
 
 namespace Service
@@ -117,6 +119,16 @@ namespace Service
         private ICollection<Issue> SetElements(int dialogueId, IRepository repo)
         {
             return repo.GetCollection<Issue>(i => i.DialogueId == dialogueId,true).ToList();
+        }
+
+        public PageData<Issue> GetPage(int dialogueId, int page)
+        {
+            return RepositoryProvider.Do(repo =>
+            {
+                var data = repo.GetCollection<Issue>(i => i.DialogueId == dialogueId);
+
+                return PagingService.GetPaging(data, page, 100);
+            });
         }
     }
 }
