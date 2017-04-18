@@ -10,6 +10,7 @@ namespace Model.Context
         public EfContext()
             : base("Aplikacja_Lingwistyczna_1", false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, Configuration>());
         }
 
         public EfContext(string name)
@@ -24,6 +25,9 @@ namespace Model.Context
         public DbSet<Issue> Issue { get; set; }
         public DbSet<AudioFile> AudioFile { get; set; }
         public DbSet<UserDialogue> UserDialogue { get; set; }
+        public DbSet<UserLanguage> UserLanguage { get; set; }
+        public DbSet<ViewLanguage> ViewLanguage { get; set; }
+        public DbSet<ViewText> ViewText { get; set; }
 
         public static EfContext Create()
         {

@@ -422,3 +422,13 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Service.pdb
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\NSubstitute.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\NSubstitute.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\Swashbuckle.Core.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Net.Http.Formatting.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Http.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Http.WebHost.dll
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Net.Http.Formatting.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Http.xml
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\AplikacjaLingwistyczna\bin\System.Web.Http.WebHost.xml

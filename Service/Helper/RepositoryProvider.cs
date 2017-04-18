@@ -7,23 +7,21 @@ namespace Service.Helper
 {
     public class RepositoryProvider : IRepositoryProvider
     {
-        private readonly string _connectionString;
+        private readonly EfContext _context;
 
         public RepositoryProvider(string connectionString)
         {
-            _connectionString = connectionString;
+            _context = new EfContext(connectionString);
         }
 
         public T Do<T>(Func<IRepository, T> action)
         {
-            var context = new EfContext(_connectionString);
-                return action(new Repository(context));
+                return action(new Repository(_context));
         }
 
         public void Do(Action<IRepository> action)
         {
-            var context = new EfContext(_connectionString);
-                action(new Repository(context));
+                action(new Repository(_context));
         }
     }
 }

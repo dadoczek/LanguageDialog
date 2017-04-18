@@ -83,6 +83,6 @@ C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityF
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.dll
 C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.pdb
+C:\Users\Adrian\Documents\Github\Aplikacja Lingwistyczna\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
