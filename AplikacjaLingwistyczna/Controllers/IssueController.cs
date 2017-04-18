@@ -60,14 +60,14 @@ namespace AplikacjaLingwistyczna.Controllers
         [HttpGet]
         public ActionResult Edit(int positionId, int idDialogue)
         {
-            var issue = _issueApp.GetOne(new IssueParams
+            var response = _issueApp.GetOne(new IssueParams
             {
                 DialogueId = idDialogue,
                 PositionId = positionId
             });
-            if (issue == null)
+            if (response == null)
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            return View(issue);
+            return View(response.Data);
         }
         [HttpPost]
         public ActionResult Edit(Issue model)
