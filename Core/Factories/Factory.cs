@@ -39,5 +39,7 @@ namespace Core.Factories
         public IPlayerDialogueAppplication GetPlayerDiaogueApplication => new PlayerDialogueAppplication(this);
         public IDialogueService GetDialogueService => new DialogueService(_provider);
         public ILanguageService GetLanguageService => new LanguageService(_provider);
+        public IViewLanguageService GetViewLanguageService => new ViewLanguageService(_provider);
+        public IViewLanguageApplication GetViewLanguageApplication => new ViewLanguageApplication(this);
     }
 }

@@ -1,4 +1,6 @@
-﻿@model Contract.Responses.PlayResponse
+﻿@using Model.Models
+@using Service
+@model Contract.Responses.PlayResponse
 
 <div>
     <h4>@Model.Dialogue.Name</h4>
@@ -8,11 +10,14 @@
 
 <table style="width:100%" >
     <tr>
-        <th style="width:60%">
-            @foreach (var element in Model.Dialogue.Issues.OrderBy(i => i.IssueNr))
+        <th style="width: 60%">
+            @{
+                
+            }
+            @foreach (var element in Model.Dialogue.GetIssues().OrderBy(i => i.IssueNr))
             {
                 <div>
-                    @Html.Label(element.Actor.Name + ":", new { @style = "color:deepskyblue" })
+                    @Html.Label(element.Actor.Name + ":", new {@style = "color:deepskyblue"})
                     @if (Model.Setting.SelectActor == null)
                     {
                         if (Model.Setting.VisableOtherText)
@@ -26,20 +31,20 @@
                     }
 
                     <audio id="play-issue @element.IssueNr">
-                        <source src="PlayAudio?fileId=@element.Id" type="audio/mpeg" />
-                    </audio> 
-                    <button onclick="PlayIssue(@element.IssueNr)" class="glyphicon glyphicon-volume-down"></button> 
+                        <source src="PlayAudio?fileId=@element.Id" type="audio/mpeg"/>
+                    </audio>
+                    <button id="play-issue-button @element.IssueNr" onclick="PlayIssue(@element.IssueNr)" class="glyphicon glyphicon-volume-down" style="height: 50px; width: 50px"></button>
                 </div>
             }
             @if (@Model.Setting.SelectActor != null)
             {
-                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, @Model.Setting.SelectActor)" class="glyphicon glyphicon-play"></button>
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, @Model.Setting.SelectActor)" class="glyphicon glyphicon-play" style="height: 50px; width: 50px"></button>
             }
             else
             {
-                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, -1)" class="glyphicon glyphicon-play"></button>
+                <button onclick="PlayDialogue(@Model.Setting.IdNowPlay, @Model.Dialogue.Id, -1)" class="glyphicon glyphicon-play" style="height: 50px; width: 50px"></button>
             }
-            <button onclick="StopDialoguePlay(@Model.Setting.IdNowPlay)" class="glyphicon glyphicon-pause"></button>
+            @*<button onclick="StopDialoguePlay(@Model.Setting.IdNowPlay)" class="glyphicon glyphicon-pause"></button>*@
 
         </th>
         <th style="width:auto"> @Html.Partial("PlaySetting") </th>
@@ -70,7 +75,7 @@
             data: { nr: $numer, idDialogue: id, idActor: idActor },
             success: function (data) {
                 $numer = data;
-                document.getElementById("play-issue " + data).play();
+                document.getElementById("play-issue-button " + data).click();
             },
             error:function (xhr, ajaxOptions, thrownError){
                 alert(xhr.responseText);

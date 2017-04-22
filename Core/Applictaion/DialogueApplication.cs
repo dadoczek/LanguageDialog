@@ -4,7 +4,6 @@ using Core.AbstractApp;
 using Core.Factories;
 using Model.EnumType;
 using Model.Models;
-using Service;
 using System.Linq;
 using Service.Abstract;
 
@@ -109,7 +108,7 @@ namespace Core.Applictaion
                 return PublishStatus.ActorWarning;
             if(dialogue.Actors.Any(a => !a.Issues.Any()))
                 return  PublishStatus.IssueWarnig;
-            if(dialogue.Issues.Any(i => i.AudioFile == null))
+            if(dialogue.GetIssues().Any(i => i.AudioFile == null))
                 return PublishStatus.AudioWarning;
             return PublishStatus.Akcept;
         }

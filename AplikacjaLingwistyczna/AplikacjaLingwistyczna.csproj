@@ -226,6 +226,7 @@
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ViewLanguageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -366,6 +367,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="uploads\" />
+    <Folder Include="Views\ViewLanguage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -52,6 +52,7 @@
     <Compile Include="Params\DialogueWievParams.cs" />
     <Compile Include="Params\DialoguePageParams.cs" />
     <Compile Include="Responses\CollectionDataResponse.cs" />
+    <Compile Include="Responses\DictionaryResponse.cs" />
     <Compile Include="Responses\PageResponse.cs" />
     <Compile Include="Responses\PlayResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -56,7 +56,8 @@ namespace Repo.Repositories
 
         public T GetOne<T>(params object[] keys) where  T: class
         {
-            return _context.Set<T>().Find(keys);
+            var data = _context.Set<T>().Find(keys);
+            return data;
         }
 
         public IEnumerable<T> GetCollection<T>(Expression<Func<T,bool>> where, bool isTracing = false ) where T : class

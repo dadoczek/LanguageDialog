@@ -63,21 +63,23 @@ namespace Core.Applictaion
 
         public int PlayDialogue(int? nr, int idDialogue, int idActor)
         {
+
             var dialogue = _service.GetOne(idDialogue);
             bool isPlay;
 
             do
             {
+                var issues = dialogue.GetIssues();
                 if (nr < 0)
                 {
-                    nr = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
+                    nr = issues.OrderBy(i => i.IssueNr).First().IssueNr;
                 }
                 else
                 {
-                    var last = dialogue.Issues.OrderBy(i => i.IssueNr).Last().IssueNr;
+                    var last = issues.OrderBy(i => i.IssueNr).Last().IssueNr;
                     if (nr >= last)
                     {
-                        nr = dialogue.Issues.OrderBy(i => i.IssueNr).First().IssueNr;
+                        nr = issues.OrderBy(i => i.IssueNr).First().IssueNr;
                     }
                     else
                     {
